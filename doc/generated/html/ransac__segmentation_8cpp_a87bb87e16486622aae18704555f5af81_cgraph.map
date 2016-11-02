@@ -1,8 +1,0 @@
-<map id="clustersAcquisition" name="clustersAcquisition">
-<area shape="rect" id="node2" href="$ransac__segmentation_8cpp.html#aec52b04d4f14e655979ec0316bab27be" title="callRansacConeSegmentation" alt="" coords="195,5,394,32"/>
-<area shape="rect" id="node3" href="$ransac__segmentation_8cpp.html#a850aede9ccf4da9338681e9ea25b50c6" title="callRansacCylinderSegmentation" alt="" coords="187,56,402,83"/>
-<area shape="rect" id="node4" href="$ransac__segmentation_8cpp.html#afcfa79d6f194e0e582affcad49fec033" title="callRansacPlaneSegmentation" alt="" coords="195,107,395,133"/>
-<area shape="rect" id="node5" href="$ransac__segmentation_8cpp.html#a1c975f4a118598c3ab7eff48fa749476" title="callRansacSphereSegmentation" alt="" coords="191,157,399,184"/>
-<area shape="rect" id="node6" href="$ransac__segmentation_8cpp.html#a8f13fc832e8677f944e83fb870b8b6a0" title="callSemanticSceneRecognition\lServer" alt="" coords="193,209,396,250"/>
-<area shape="rect" id="node7" href="$ransac__segmentation_8cpp.html#a9fce32945b78e03d2b0abde7198fe623" title="returnPrimitiveNameFromTag" alt="" coords="198,275,391,301"/>
-</map>

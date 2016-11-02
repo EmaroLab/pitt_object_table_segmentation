@@ -1,7 +1,0 @@
-<map id="main" name="main">
-<area shape="rect" id="node2" href="$obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="depthAcquisition" alt="" coords="105,81,223,108"/>
-<area shape="rect" id="node3" href="$obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="callArmFilter" alt="" coords="307,5,402,32"/>
-<area shape="rect" id="node4" href="$obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="callClusterSegmentation" alt="" coords="273,56,437,83"/>
-<area shape="rect" id="node5" href="$obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="callDeepFilter" alt="" coords="303,107,406,133"/>
-<area shape="rect" id="node6" href="$obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="callSupportFilter" alt="" coords="297,157,413,184"/>
-</map>

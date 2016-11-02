@@ -70,6 +70,12 @@ void visSpin(){
 
 // call deep filter service (modifies the input data)
 // remove all the point over a threshold on the z-axis of the camera frame
+/*!
+ * AAAAA
+ * \brief BBBB
+ * @param cloud
+ * @return
+ */
 bool callDeepFilter( PCLCloudPtr& cloud){
 
 	float inputDepthThreshold;
