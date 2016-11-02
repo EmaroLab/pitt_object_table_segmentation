@@ -1,0 +1,14 @@
+<map id="src/point_cloud_library/pc_manager.h" name="src/point_cloud_library/pc_manager.h">
+<area shape="rect" id="node2" href="$obj__segmentation_8cpp.html" title="src/obj_segmentation.cpp" alt="" coords="5,201,176,228"/>
+<area shape="rect" id="node3" href="$srv__manager_8h.html" title="src/point_cloud_library\l/srv_manager.h" alt="" coords="968,97,1120,138"/>
+<area shape="rect" id="node4" href="$ransac__segmentation_8cpp.html" title="src/ransac_segmentation.cpp" alt="" coords="201,201,393,228"/>
+<area shape="rect" id="node5" href="$arm__filter__srv_8cpp.html" title="src/segmentation_services\l/arm_filter_srv.cpp" alt="" coords="419,194,597,235"/>
+<area shape="rect" id="node6" href="$cluster__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cluster_segmentation_srv.cpp" alt="" coords="621,194,820,235"/>
+<area shape="rect" id="node7" href="$cone__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cone_segmentation_srv.cpp" alt="" coords="845,194,1035,235"/>
+<area shape="rect" id="node8" href="$cylinder__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cylinder_segmentation\l_srv.cpp" alt="" coords="1059,187,1237,243"/>
+<area shape="rect" id="node9" href="$deep__filter__srv_8cpp.html" title="src/segmentation_services\l/deep_filter_srv.cpp" alt="" coords="1261,194,1440,235"/>
+<area shape="rect" id="node10" href="$plane__segmentation__srv_8cpp.html" title="src/segmentation_services\l/plane_segmentation_srv.cpp" alt="" coords="1464,194,1656,235"/>
+<area shape="rect" id="node11" href="$sphere__segmentation__srv_8cpp.html" title="src/segmentation_services\l/sphere_segmentation_srv.cpp" alt="" coords="1680,194,1879,235"/>
+<area shape="rect" id="node12" href="$supports__segmentation__srv_8cpp.html" title="src/segmentation_services\l/supports_segmentation\l_srv.cpp" alt="" coords="1904,187,2083,243"/>
+<area shape="rect" id="node13" href="$pc__manager_8cpp.html" title="src/point_cloud_library\l/pc_manager.cpp" alt="" coords="1397,97,1549,138"/>
+</map>

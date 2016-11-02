@@ -1,0 +1,210 @@
+\hypertarget{sphere__segmentation__srv_8cpp}{\section{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.cpp File Reference}
+\label{sphere__segmentation__srv_8cpp}\index{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.\-cpp@{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}ros/ros.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$pcl\-\_\-ros/point\-\_\-cloud.\-h$>$}\\*
+{\ttfamily \#include $<$pcl/segmentation/sac\-\_\-segmentation.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Primitive\-Segmentation.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../point\-\_\-cloud\-\_\-library/pc\-\_\-manager.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../point\-\_\-cloud\-\_\-library/srv\-\_\-manager.\-h\char`\"{}}\\*
+Include dependency graph for sphere\-\_\-segmentation\-\_\-srv.\-cpp\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sphere__segmentation__srv_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{sphere__segmentation__srv_8cpp_a1f0159654882376fcc188dd180e15e83}{ransac\-Sphere\-Detection} (Primitive\-Segmentation\-::\-Request \&req, Primitive\-Segmentation\-::\-Response \&res)
+\item 
+int \hyperlink{sphere__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ros\-::\-Node\-Handle $\ast$ \hyperlink{sphere__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}{nh\-\_\-ptr} = N\-U\-L\-L
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_a51198bd49385da85000793df51c4b532}{S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H} = 0.\-001
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_a6713bc5b168acba8d6bd3d67a987bf35}{S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H} = 0.\-007
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_a5ac02615cb665adab353391d8dd4fef3}{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T} = 0.\-005
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_aab4a7732d3cd7530c5c4bf2d7ad4ca3e}{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T} = 0.\-500
+\item 
+static const int \hyperlink{sphere__segmentation__srv_8cpp_a957f1a2151039b32d471c06adb64991a}{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T} = 1000
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_a45787661e469ad7a54efebe5541223f7}{S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H} = 0.\-0
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_a40aeb04d52aaae0ae0ef9ce7aec0290c}{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E} = 100.\-0
+\item 
+static const double \hyperlink{sphere__segmentation__srv_8cpp_a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b}{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E} = 180.\-0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{sphere__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!main@{main}}
+\index{main@{main}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{sphere__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 100 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References nh\-\_\-ptr, ransac\-Sphere\-Detection(), and srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-F\-I\-L\-T\-E\-R.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sphere__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sphere__segmentation__srv_8cpp_a1f0159654882376fcc188dd180e15e83}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!ransac\-Sphere\-Detection@{ransac\-Sphere\-Detection}}
+\index{ransac\-Sphere\-Detection@{ransac\-Sphere\-Detection}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{ransac\-Sphere\-Detection}]{\setlength{\rightskip}{0pt plus 5cm}bool ransac\-Sphere\-Detection (
+\begin{DoxyParamCaption}
+\item[{Primitive\-Segmentation\-::\-Request \&}]{req, }
+\item[{Primitive\-Segmentation\-::\-Response \&}]{res}
+\end{DoxyParamCaption}
+)}}\label{sphere__segmentation__srv_8cpp_a1f0159654882376fcc188dd180e15e83}
+
+
+Definition at line 29 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References pcm\-::\-P\-C\-Manager\-::cloud\-For\-Ros\-Msg(), pcm\-::\-P\-C\-Manager\-::coefficient\-To\-Vector\-Msg(), pcm\-::\-P\-C\-Manager\-::inlier\-To\-Vector\-Msg(), nh\-\_\-ptr, pcm\-::\-P\-C\-Manager\-::norm\-For\-Ros\-Msg(), srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-H\-T, seg, S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H, S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H, S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T, S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, and S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H.
+
+
+
+Referenced by main().
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sphere__segmentation__srv_8cpp_a1f0159654882376fcc188dd180e15e83_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{sphere__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!nh\-\_\-ptr@{nh\-\_\-ptr}}
+\index{nh\-\_\-ptr@{nh\-\_\-ptr}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{nh\-\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle$\ast$ nh\-\_\-ptr = N\-U\-L\-L}}\label{sphere__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}
+
+
+Definition at line 16 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by main(), and ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a6713bc5b168acba8d6bd3d67a987bf35}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H@{S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H@{S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H = 0.\-007\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a6713bc5b168acba8d6bd3d67a987bf35}
+
+
+Definition at line 20 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a45787661e469ad7a54efebe5541223f7}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H@{S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H@{S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H = 0.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a45787661e469ad7a54efebe5541223f7}
+
+
+Definition at line 24 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a957f1a2151039b32d471c06adb64991a}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T@{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T@{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const int S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T = 1000\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a957f1a2151039b32d471c06adb64991a}
+
+
+Definition at line 23 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E = 180.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b}
+
+
+Definition at line 26 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_aab4a7732d3cd7530c5c4bf2d7ad4ca3e}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T = 0.\-500\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_aab4a7732d3cd7530c5c4bf2d7ad4ca3e}
+
+
+Definition at line 22 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a40aeb04d52aaae0ae0ef9ce7aec0290c}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E = 100.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a40aeb04d52aaae0ae0ef9ce7aec0290c}
+
+
+Definition at line 25 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a5ac02615cb665adab353391d8dd4fef3}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T = 0.\-005\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a5ac02615cb665adab353391d8dd4fef3}
+
+
+Definition at line 21 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+
+\hypertarget{sphere__segmentation__srv_8cpp_a51198bd49385da85000793df51c4b532}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H@{S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}}
+\index{S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H@{S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H = 0.\-001\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a51198bd49385da85000793df51c4b532}
+
+
+Definition at line 19 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Sphere\-Detection().
+

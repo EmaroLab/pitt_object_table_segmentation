@@ -1,0 +1,11 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$ransac__segmentation_8cpp.html#a87bb87e16486622aae18704555f5af81" title="clustersAcquisition" alt="" coords="129,132,261,159"/>
+<area shape="rect" id="node8" href="$namespacesrvm.html#a4a300ace21cdfc4e753d7bbf97620f69" title="srvm::getBoolPtrParameter" alt="" coords="105,220,285,247"/>
+<area shape="rect" id="node10" href="$ransac__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc" title="visSpin" alt="" coords="162,271,227,297"/>
+<area shape="rect" id="node3" href="$ransac__segmentation_8cpp.html#aec52b04d4f14e655979ec0316bab27be" title="callRansacConeSegmentation" alt="" coords="342,5,541,32"/>
+<area shape="rect" id="node4" href="$ransac__segmentation_8cpp.html#a850aede9ccf4da9338681e9ea25b50c6" title="callRansacCylinderSegmentation" alt="" coords="334,56,549,83"/>
+<area shape="rect" id="node5" href="$ransac__segmentation_8cpp.html#afcfa79d6f194e0e582affcad49fec033" title="callRansacPlaneSegmentation" alt="" coords="341,107,541,133"/>
+<area shape="rect" id="node6" href="$ransac__segmentation_8cpp.html#a1c975f4a118598c3ab7eff48fa749476" title="callRansacSphereSegmentation" alt="" coords="337,157,545,184"/>
+<area shape="rect" id="node7" href="$ransac__segmentation_8cpp.html#a9fce32945b78e03d2b0abde7198fe623" title="returnPrimitiveNameFromTag" alt="" coords="345,208,538,235"/>
+<area shape="rect" id="node9" href="$namespacesrvm.html#ac652beec1eacae6f527677f11e2a9256" title="srvm::getBoolParameter" alt="" coords="360,259,523,285"/>
+</map>

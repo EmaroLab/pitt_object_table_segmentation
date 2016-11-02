@@ -1,0 +1,358 @@
+\hypertarget{cone__segmentation__srv_8cpp}{\section{src/segmentation\-\_\-services/cone\-\_\-segmentation\-\_\-srv.cpp File Reference}
+\label{cone__segmentation__srv_8cpp}\index{src/segmentation\-\_\-services/cone\-\_\-segmentation\-\_\-srv.\-cpp@{src/segmentation\-\_\-services/cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}ros/ros.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$pcl\-\_\-ros/point\-\_\-cloud.\-h$>$}\\*
+{\ttfamily \#include $<$pcl/segmentation/sac\-\_\-segmentation.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Primitive\-Segmentation.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../point\-\_\-cloud\-\_\-library/pc\-\_\-manager.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../point\-\_\-cloud\-\_\-library/srv\-\_\-manager.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/thread.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/thread/mutex.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/format.\-hpp$>$}\\*
+Include dependency graph for cone\-\_\-segmentation\-\_\-srv.\-cpp\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cone__segmentation__srv_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structvector3d}{vector3d}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{cone__segmentation__srv_8cpp_aca73ab26cae45b4b998a3cca9e4f75bc}{vis\-Spin} ()
+\item 
+\hyperlink{structvector3d}{vector3d} \hyperlink{cone__segmentation__srv_8cpp_a18fcf7fa2e84ef1176c2ca1abed744cf}{get\-Normalize\-Axes\-Direction\-Vector} (Model\-Coefficients\-::\-Ptr coefficients)
+\item 
+\hyperlink{structvector3d}{vector3d} \hyperlink{cone__segmentation__srv_8cpp_a255909b8e4ba570eea6756718bf79df1}{get\-Point\-On\-Axes} (Model\-Coefficients\-::\-Ptr coefficients, \hyperlink{structvector3d}{vector3d} direction, float t)
+\item 
+\hyperlink{structvector3d}{vector3d} \hyperlink{cone__segmentation__srv_8cpp_a00c9eb33d55847838be7bf32c23d1893}{get\-Vector\-Between\-Points} (\hyperlink{structvector3d}{vector3d} p1, \hyperlink{structvector3d}{vector3d} p2)
+\item 
+bool \hyperlink{cone__segmentation__srv_8cpp_a546c9eceb49309d94085dada4aae1755}{ransac\-Cone\-Detaction} (Primitive\-Segmentation\-::\-Request \&req, Primitive\-Segmentation\-::\-Response \&res)
+\item 
+int \hyperlink{cone__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ros\-::\-Node\-Handle $\ast$ \hyperlink{cone__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}{nh\-\_\-ptr} = N\-U\-L\-L
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_a58313fd9217054625ac4527d3633193e}{C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H} = 0.\-0006
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_a8fe7696768fcf8c3d5659116abacee6f}{C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H} = 0.\-0055
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_a9080b5047d249f3d1b9ba3581c77521f}{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T} = 0.\-001
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_a384e57e531632b1d04ae3174520b5063}{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T} = 0.\-500
+\item 
+static const int \hyperlink{cone__segmentation__srv_8cpp_af6c0c21521af2937dffda5d2ecf87cf5}{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T} = 1000
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_ade9321247b9be50dd895dc3edb7559f3}{C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H} = 0.\-4
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_a3e7e19175ddd4f8f95f350c1b86fd5c7}{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E} = 10.\-0
+\item 
+static const double \hyperlink{cone__segmentation__srv_8cpp_a1856e890b10fc7ece03e7cee6472f601}{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E} = 170.\-0
+\item 
+const bool \hyperlink{cone__segmentation__srv_8cpp_a20f88026cd9df482d817a3868c20fe43}{V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T} = false
+\item 
+boost\-::shared\-\_\-ptr\\*
+$<$ \hyperlink{pc__manager_8h_a38c805dbc7ad6f06109b85c8e540817a}{visualization\-::\-P\-C\-L\-Visualizer} $>$ \hyperlink{cone__segmentation__srv_8cpp_a6c2d87234fca8dcca11f888098558986}{vis}
+\item 
+boost\-::thread \hyperlink{cone__segmentation__srv_8cpp_ab83e6219895a4d26706c0d858f8ec288}{vis\-\_\-thread}
+\item 
+boost\-::mutex \hyperlink{cone__segmentation__srv_8cpp_a0dc8882293908d9c8cc15f76a2a49588}{vis\-\_\-mutex}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{cone__segmentation__srv_8cpp_a18fcf7fa2e84ef1176c2ca1abed744cf}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!get\-Normalize\-Axes\-Direction\-Vector@{get\-Normalize\-Axes\-Direction\-Vector}}
+\index{get\-Normalize\-Axes\-Direction\-Vector@{get\-Normalize\-Axes\-Direction\-Vector}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{get\-Normalize\-Axes\-Direction\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector3d} get\-Normalize\-Axes\-Direction\-Vector (
+\begin{DoxyParamCaption}
+\item[{Model\-Coefficients\-::\-Ptr}]{coefficients}
+\end{DoxyParamCaption}
+)}}\label{cone__segmentation__srv_8cpp_a18fcf7fa2e84ef1176c2ca1abed744cf}
+
+
+Definition at line 54 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References vector3d\-::x, vector3d\-::y, and vector3d\-::z.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a255909b8e4ba570eea6756718bf79df1}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!get\-Point\-On\-Axes@{get\-Point\-On\-Axes}}
+\index{get\-Point\-On\-Axes@{get\-Point\-On\-Axes}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{get\-Point\-On\-Axes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector3d} get\-Point\-On\-Axes (
+\begin{DoxyParamCaption}
+\item[{Model\-Coefficients\-::\-Ptr}]{coefficients, }
+\item[{{\bf vector3d}}]{direction, }
+\item[{float}]{t}
+\end{DoxyParamCaption}
+)}}\label{cone__segmentation__srv_8cpp_a255909b8e4ba570eea6756718bf79df1}
+
+
+Definition at line 65 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References vector3d\-::x, vector3d\-::y, and vector3d\-::z.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a00c9eb33d55847838be7bf32c23d1893}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!get\-Vector\-Between\-Points@{get\-Vector\-Between\-Points}}
+\index{get\-Vector\-Between\-Points@{get\-Vector\-Between\-Points}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{get\-Vector\-Between\-Points}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector3d} get\-Vector\-Between\-Points (
+\begin{DoxyParamCaption}
+\item[{{\bf vector3d}}]{p1, }
+\item[{{\bf vector3d}}]{p2}
+\end{DoxyParamCaption}
+)}}\label{cone__segmentation__srv_8cpp_a00c9eb33d55847838be7bf32c23d1893}
+
+
+Definition at line 74 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References vector3d\-::x, vector3d\-::y, and vector3d\-::z.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!main@{main}}
+\index{main@{main}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{cone__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 220 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References pcm\-::\-P\-C\-Manager\-::create\-Visor(), nh\-\_\-ptr, ransac\-Cone\-Detaction(), srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-C\-O\-N\-E\-\_\-\-F\-I\-L\-T\-E\-R, vis, vis\-\_\-thread, vis\-Spin(), and V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cone__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cone__segmentation__srv_8cpp_a546c9eceb49309d94085dada4aae1755}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!ransac\-Cone\-Detaction@{ransac\-Cone\-Detaction}}
+\index{ransac\-Cone\-Detaction@{ransac\-Cone\-Detaction}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{ransac\-Cone\-Detaction}]{\setlength{\rightskip}{0pt plus 5cm}bool ransac\-Cone\-Detaction (
+\begin{DoxyParamCaption}
+\item[{Primitive\-Segmentation\-::\-Request \&}]{req, }
+\item[{Primitive\-Segmentation\-::\-Response \&}]{res}
+\end{DoxyParamCaption}
+)}}\label{cone__segmentation__srv_8cpp_a546c9eceb49309d94085dada4aae1755}
+
+
+Definition at line 83 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References pcm\-::\-P\-C\-Manager\-::cloud\-For\-Ros\-Msg(), pcm\-::\-P\-C\-Manager\-::coefficient\-To\-Vector\-Msg(), C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H, C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H, C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T, C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H, get\-Normalize\-Axes\-Direction\-Vector(), get\-Point\-On\-Axes(), get\-Vector\-Between\-Points(), pcm\-::\-P\-C\-Manager\-::inlier\-To\-Vector\-Msg(), nh\-\_\-ptr, pcm\-::\-P\-C\-Manager\-::norm\-For\-Ros\-Msg(), srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-H\-T, seg, pcm\-::\-P\-C\-Manager\-::update\-Visor(), vis, vis\-\_\-mutex, V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T, vector3d\-::x, vector3d\-::y, and vector3d\-::z.
+
+
+
+Referenced by main().
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cone__segmentation__srv_8cpp_a546c9eceb49309d94085dada4aae1755_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cone__segmentation__srv_8cpp_aca73ab26cae45b4b998a3cca9e4f75bc}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!vis\-Spin@{vis\-Spin}}
+\index{vis\-Spin@{vis\-Spin}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{vis\-Spin}]{\setlength{\rightskip}{0pt plus 5cm}void vis\-Spin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{cone__segmentation__srv_8cpp_aca73ab26cae45b4b998a3cca9e4f75bc}
+
+
+Definition at line 46 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+References vis, and vis\-\_\-mutex.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{cone__segmentation__srv_8cpp_a8fe7696768fcf8c3d5659116abacee6f}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H@{C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}}
+\index{C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H@{C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H = 0.\-0055\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_a8fe7696768fcf8c3d5659116abacee6f}
+
+
+Definition at line 25 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_ade9321247b9be50dd895dc3edb7559f3}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H@{C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}}
+\index{C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H@{C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H = 0.\-4\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_ade9321247b9be50dd895dc3edb7559f3}
+
+
+Definition at line 29 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_af6c0c21521af2937dffda5d2ecf87cf5}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T@{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}}
+\index{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T@{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const int C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T = 1000\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_af6c0c21521af2937dffda5d2ecf87cf5}
+
+
+Definition at line 28 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a1856e890b10fc7ece03e7cee6472f601}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}}
+\index{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E = 170.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_a1856e890b10fc7ece03e7cee6472f601}
+
+
+Definition at line 31 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a384e57e531632b1d04ae3174520b5063}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}}
+\index{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T = 0.\-500\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_a384e57e531632b1d04ae3174520b5063}
+
+
+Definition at line 27 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a3e7e19175ddd4f8f95f350c1b86fd5c7}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}}
+\index{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E@{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E = 10.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_a3e7e19175ddd4f8f95f350c1b86fd5c7}
+
+
+Definition at line 30 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a9080b5047d249f3d1b9ba3581c77521f}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}}
+\index{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T@{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T = 0.\-001\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_a9080b5047d249f3d1b9ba3581c77521f}
+
+
+Definition at line 26 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a58313fd9217054625ac4527d3633193e}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H@{C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}}
+\index{C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H@{C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double C\-O\-N\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H = 0.\-0006\hspace{0.3cm}{\ttfamily [static]}}}\label{cone__segmentation__srv_8cpp_a58313fd9217054625ac4527d3633193e}
+
+
+Definition at line 24 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!nh\-\_\-ptr@{nh\-\_\-ptr}}
+\index{nh\-\_\-ptr@{nh\-\_\-ptr}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{nh\-\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle$\ast$ nh\-\_\-ptr = N\-U\-L\-L}}\label{cone__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}
+
+
+Definition at line 21 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by main(), and ransac\-Cone\-Detaction().
+
+\hypertarget{cone__segmentation__srv_8cpp_a6c2d87234fca8dcca11f888098558986}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!vis@{vis}}
+\index{vis@{vis}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{vis}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::shared\-\_\-ptr$<$ {\bf visualization\-::\-P\-C\-L\-Visualizer}$>$ vis}}\label{cone__segmentation__srv_8cpp_a6c2d87234fca8dcca11f888098558986}
+
+
+Definition at line 42 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by main(), ransac\-Cone\-Detaction(), and vis\-Spin().
+
+\hypertarget{cone__segmentation__srv_8cpp_a0dc8882293908d9c8cc15f76a2a49588}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!vis\-\_\-mutex@{vis\-\_\-mutex}}
+\index{vis\-\_\-mutex@{vis\-\_\-mutex}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{vis\-\_\-mutex}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::mutex vis\-\_\-mutex}}\label{cone__segmentation__srv_8cpp_a0dc8882293908d9c8cc15f76a2a49588}
+
+
+Definition at line 44 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by ransac\-Cone\-Detaction(), and vis\-Spin().
+
+\hypertarget{cone__segmentation__srv_8cpp_ab83e6219895a4d26706c0d858f8ec288}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!vis\-\_\-thread@{vis\-\_\-thread}}
+\index{vis\-\_\-thread@{vis\-\_\-thread}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{vis\-\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::thread vis\-\_\-thread}}\label{cone__segmentation__srv_8cpp_ab83e6219895a4d26706c0d858f8ec288}
+
+
+Definition at line 43 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by main().
+
+\hypertarget{cone__segmentation__srv_8cpp_a20f88026cd9df482d817a3868c20fe43}{\index{cone\-\_\-segmentation\-\_\-srv.\-cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}!V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T@{V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T}}
+\index{V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T@{V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T}!cone_segmentation_srv.cpp@{cone\-\_\-segmentation\-\_\-srv.\-cpp}}
+\subsubsection[{V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T}]{\setlength{\rightskip}{0pt plus 5cm}const bool V\-I\-S\-U\-A\-L\-I\-Z\-E\-\_\-\-R\-E\-S\-U\-L\-T = false}}\label{cone__segmentation__srv_8cpp_a20f88026cd9df482d817a3868c20fe43}
+
+
+Definition at line 41 of file cone\-\_\-segmentation\-\_\-srv.\-cpp.
+
+
+
+Referenced by main(), and ransac\-Cone\-Detaction().
+

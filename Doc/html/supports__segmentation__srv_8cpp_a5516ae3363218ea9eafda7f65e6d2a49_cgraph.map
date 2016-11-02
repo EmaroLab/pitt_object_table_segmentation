@@ -1,0 +1,13 @@
+<map id="findSupports" name="findSupports">
+<area shape="rect" id="node2" href="$supports__segmentation__srv_8cpp.html#a32c40c5b97dadeee297fd5e4f8d36513" title="createNewIdxMap" alt="" coords="169,5,297,32"/>
+<area shape="rect" id="node4" href="$supports__segmentation__srv_8cpp.html#a7788e49ce18c43d68c6e9b31f7c8c1eb" title="getPointOnPlane" alt="" coords="173,56,293,83"/>
+<area shape="rect" id="node5" href="$supports__segmentation__srv_8cpp.html#affb7755ce6cde52d83d9feb377e11ff1" title="initializeInputParameters" alt="" coords="151,107,316,133"/>
+<area shape="rect" id="node9" href="$supports__segmentation__srv_8cpp.html#aab51e8e0fe534fc0ece846759cf3e514" title="isHorizontalPlane" alt="" coords="171,157,295,184"/>
+<area shape="rect" id="node10" href="$supports__segmentation__srv_8cpp.html#a93fe6461918fe6c40665c81167c39f43" title="ransacPlaneSegmentator" alt="" coords="149,208,317,235"/>
+<area shape="rect" id="node11" href="$supports__segmentation__srv_8cpp.html#aec3cb01834351aa77d85fb42364ff543" title="removePlaneInliner" alt="" coords="167,259,300,285"/>
+<area shape="rect" id="node3" href="$supports__segmentation__srv_8cpp.html#af7452b4e42ac3352d3b9ff7c19dff6ea" title="valueBelongsToArray" alt="" coords="407,5,553,32"/>
+<area shape="rect" id="node6" href="$namespacesrvm.html#ab17b035d854cf06a49bf869d1c23d76d" title="srvm::getServiceFloatParameter" alt="" coords="375,56,585,83"/>
+<area shape="rect" id="node7" href="$namespacesrvm.html#aca4253032e76670dd7e7b3c31fb59714" title="srvm::getServiceIntParameter" alt="" coords="382,107,578,133"/>
+<area shape="rect" id="node8" href="$namespacesrvm.html#a40e6c519b06c6f44c4706e35ccd2b3dd" title="srvm::getService3DArrayParameter" alt="" coords="365,157,595,184"/>
+<area shape="rect" id="node12" href="$supports__segmentation__srv_8cpp.html#ad788fb6fb1f61d45a10993e909fddad8" title="extract" alt="" coords="449,259,511,285"/>
+</map>
