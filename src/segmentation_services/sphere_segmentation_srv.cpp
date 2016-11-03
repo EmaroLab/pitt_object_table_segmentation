@@ -1,10 +1,53 @@
+/**
+ * @file sphere_segmentation_srv.cpp
+ * **File** <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; src/segmentation_services/sphere_segmentation_srv.cpp
+ * @author Buoncompagni Luca, </p>
+ * **Contacts** <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <mailto:luca.buoncompagni@edu.unige.it>
+ * @date May 10, 2015 </p>
+ * **Institution** <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIBRIS, emaroLAB, University of Genoa.
+ * @version 2.1
+ *
+ * @brief The ROS service, to **identify a sphere** in a point cloud.
+ *
+ * -------------------------------
+ * **Programm behaviour** </p>
+ *
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ * This implementation uses RANSAC methods to identify a sphere in a point cloud.
+ * Its inputs and outputs messages are implmented in the <a href="https://github.com/EmaroLab/pitt_msgs">pitt_msgs</a> package,
+ * at the file:
+ * @code pitt_msgs/srv/PrimitiveSegmentation.srv @endcode
+ *
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ * In particular, inputs are:
+ * - \c sensor_msgs/PointCloud2 \c cloud    &nbsp;&nbsp; the cloud in which search for a sphere,
+ * - \c sensor_msgs/PointCloud2 \c normals  &nbsp;&nbsp; the normal vector for all the points of the cloud.
+ * While input parameters are:
+ *
+ * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ * On the other hand, outputs are:
+ * -
+ * Finally, also outup parameters are provided with the value of that parameter used during computation.
+ * This is identified by the suffix \c used_
+ * (e.g., )
+ *
+ * @see Point Cloud Library (PCL) <a href="http://docs.pointclouds.org/1.7.0/group__sample__consensus.html">RANSAC</a> API
+ * @see ransac_segmentation
+ */
+
+
+// #######################################################
+// #   DEPENDENCIES
+// #######################################################
+
+// for pcl and ros
 #include "ros/ros.h"
-#include <pcl_ros/point_cloud.h>				// pcl to ros conversion library
-#include <pcl/segmentation/sac_segmentation.h>	// ransac
-
-#include "pitt_msgs/PrimitiveSegmentation.h"	// services and messages
-
-#include "../point_cloud_library/pc_manager.h"	// my static library
+#include <pcl_ros/point_cloud.h>
+#include <pcl/segmentation/sac_segmentation.h>
+// for my message
+#include "pitt_msgs/PrimitiveSegmentation.h"
+// for my static library
+#include "../point_cloud_library/pc_manager.h"
 #include "../point_cloud_library/srv_manager.h"
 
 using namespace pcm;

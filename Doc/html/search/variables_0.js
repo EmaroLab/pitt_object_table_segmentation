@@ -6,7 +6,7 @@ var searchData=
   ['cluster_5fmin_5finput_5fsize_5fdefault',['CLUSTER_MIN_INPUT_SIZE_DEFAULT',['../cluster__segmentation__srv_8cpp.html#a9ebfbbca18470dcde3857728e18e1247',1,'cluster_segmentation_srv.cpp']]],
   ['cluster_5fmin_5frate_5fdefault',['CLUSTER_MIN_RATE_DEFAULT',['../cluster__segmentation__srv_8cpp.html#a4a514e6543a3304047ee344acf96b565',1,'cluster_segmentation_srv.cpp']]],
   ['cluster_5ftolerance_5fdefault',['CLUSTER_TOLERANCE_DEFAULT',['../cluster__segmentation__srv_8cpp.html#ac3266207fd4ea22474675128faa0f4b8',1,'cluster_segmentation_srv.cpp']]],
-  ['clusterpub',['clusterPub',['../obj__segmentation_8cpp.html#a27c3ab807dd4360a5b35f9b4813ac85c',1,'obj_segmentation.cpp']]],
+  ['clusterpub',['clusterPub',['../obj__segmentation_8cpp.html#a431711d7fd270977af34b226ed5d5cef',1,'obj_segmentation.cpp']]],
   ['cone_5fdistance_5fth',['CONE_DISTANCE_TH',['../cone__segmentation__srv_8cpp.html#a8fe7696768fcf8c3d5659116abacee6f',1,'cone_segmentation_srv.cpp']]],
   ['cone_5feps_5fangle_5fth',['CONE_EPS_ANGLE_TH',['../cone__segmentation__srv_8cpp.html#ade9321247b9be50dd895dc3edb7559f3',1,'cone_segmentation_srv.cpp']]],
   ['cone_5fmax_5fiteration_5flimit',['CONE_MAX_ITERATION_LIMIT',['../cone__segmentation__srv_8cpp.html#af6c0c21521af2937dffda5d2ecf87cf5',1,'cone_segmentation_srv.cpp']]],

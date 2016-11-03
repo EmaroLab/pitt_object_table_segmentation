@@ -26,19 +26,19 @@ DOXYFILE_ENCODING = UTF-8
 # identify the project. Note that if you do not use Doxywizard you need
 # to put quotes around the project name if it contains spaces.
 
-PROJECT_NAME = Document Class Hierarchy
+PROJECT_NAME = "Primitive Identification Tagging & Tracking (PITT)"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number.
 # This could be handy for archiving the generated documentation or
 # if some version control system is used.
 
-PROJECT_NUMBER = 1.0
+PROJECT_NUMBER = V.2.1
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer
 # a quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF =
+PROJECT_BRIEF = "A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass."
 
 # With the PROJECT_LOGO tag one can specify an logo or icon that is
 # included in the documentation. The maximum height of the logo should not

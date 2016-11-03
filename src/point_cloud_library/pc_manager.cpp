@@ -16,7 +16,7 @@ namespace pcm {
 	const string PCManager::DEFAULT_VISUALIZER_TITLE = "PointCloud manager";
 	// constants for common preprocessing
 	const int PCManager::DEFAULT_NORM_SEARCH = 50;//20;
-	const float PCManager::DEFAULT_DOWSEAMPLIG_RATE = 0.01f;//0.007f;// 0.0098f;// 0.015f;
+	const float PCManager::DEFAULT_DOWSEAMPLIG_RATE = 0.01f;//0.007f;// 0.0098f;// 0.015f; // TODO: make it as parameter!!!!
 
 
 // ######################################## GLOBAL VARAIBLES #######################################

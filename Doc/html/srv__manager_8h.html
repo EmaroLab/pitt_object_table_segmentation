@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: src/point_cloud_library/srv_manager.h File Reference</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): src/point_cloud_library/srv_manager.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -124,7 +125,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="srv__manager_8h__dep__incl.png" border="0" usemap="#src_2point__cloud__library_2srv__manager_8hdep" alt=""/></div>
 <map name="src_2point__cloud__library_2srv__manager_8hdep" id="src_2point__cloud__library_2srv__manager_8hdep">
-<area shape="rect" id="node2" href="obj__segmentation_8cpp.html" title="src/obj_segmentation.cpp" alt="" coords="5,111,176,137"/><area shape="rect" id="node3" href="ransac__segmentation_8cpp.html" title="src/ransac_segmentation.cpp" alt="" coords="201,111,393,137"/><area shape="rect" id="node4" href="arm__filter__srv_8cpp.html" title="src/segmentation_services\l/arm_filter_srv.cpp" alt="" coords="419,103,597,145"/><area shape="rect" id="node5" href="cluster__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cluster_segmentation_srv.cpp" alt="" coords="621,103,820,145"/><area shape="rect" id="node6" href="cone__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cone_segmentation_srv.cpp" alt="" coords="845,103,1035,145"/><area shape="rect" id="node7" href="cylinder__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cylinder_segmentation\l_srv.cpp" alt="" coords="1059,96,1237,152"/><area shape="rect" id="node8" href="deep__filter__srv_8cpp.html" title="src/segmentation_services\l/deep_filter_srv.cpp" alt="" coords="1261,103,1440,145"/><area shape="rect" id="node9" href="plane__segmentation__srv_8cpp.html" title="src/segmentation_services\l/plane_segmentation_srv.cpp" alt="" coords="1464,103,1656,145"/><area shape="rect" id="node10" href="sphere__segmentation__srv_8cpp.html" title="src/segmentation_services\l/sphere_segmentation_srv.cpp" alt="" coords="1680,103,1879,145"/><area shape="rect" id="node11" href="supports__segmentation__srv_8cpp.html" title="src/segmentation_services\l/supports_segmentation\l_srv.cpp" alt="" coords="1904,96,2083,152"/></map>
+<area shape="rect" id="node2" href="obj__segmentation_8cpp.html" title="The PITT starting node, to preprocessing the Point Cloud for primitive identification. " alt="" coords="5,111,176,137"/><area shape="rect" id="node3" href="ransac__segmentation_8cpp.html" title="src/ransac_segmentation.cpp" alt="" coords="201,111,393,137"/><area shape="rect" id="node4" href="arm__filter__srv_8cpp.html" title="src/segmentation_services\l/arm_filter_srv.cpp" alt="" coords="419,103,597,145"/><area shape="rect" id="node5" href="cluster__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cluster_segmentation_srv.cpp" alt="" coords="621,103,820,145"/><area shape="rect" id="node6" href="cone__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cone_segmentation_srv.cpp" alt="" coords="845,103,1035,145"/><area shape="rect" id="node7" href="cylinder__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cylinder_segmentation\l_srv.cpp" alt="" coords="1059,96,1237,152"/><area shape="rect" id="node8" href="deep__filter__srv_8cpp.html" title="src/segmentation_services\l/deep_filter_srv.cpp" alt="" coords="1261,103,1440,145"/><area shape="rect" id="node9" href="plane__segmentation__srv_8cpp.html" title="src/segmentation_services\l/plane_segmentation_srv.cpp" alt="" coords="1464,103,1656,145"/><area shape="rect" id="node10" href="sphere__segmentation__srv_8cpp.html" title="The ROS service, to identify a sphere in a point cloud. " alt="" coords="1680,103,1879,145"/><area shape="rect" id="node11" href="supports__segmentation__srv_8cpp.html" title="src/segmentation_services\l/supports_segmentation\l_srv.cpp" alt="" coords="1904,96,2083,152"/></map>
 </div>
 </div>
 <p><a href="srv__manager_8h_source.html">Go to the source code of this file.</a></p>
@@ -296,6 +297,7 @@ Variables</h2></td></tr>
 <tr class="memitem:a228565e6d2ec6f457f78c4412d6c7daa"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesrvm.html#a228565e6d2ec6f457f78c4412d6c7daa">srvm::DEFAULT_PARAM_OUTPUT_CLOUD_REFERENCE_FRAME</a> = &quot;/world&quot;</td></tr>
 <tr class="separator:a228565e6d2ec6f457f78c4412d6c7daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb9bab9dced618a8992cf505cf484b1c"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesrvm.html#afb9bab9dced618a8992cf505cf484b1c">srvm::DEFAULT_INPUT_PARAM_RAW_CLOUD_TOPIC</a> = &quot;/camera/depth/points&quot;</td></tr>
+<tr class="memdesc:afb9bab9dced618a8992cf505cf484b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the name of the input topic  <a href="#afb9bab9dced618a8992cf505cf484b1c">More...</a><br/></td></tr>
 <tr class="separator:afb9bab9dced618a8992cf505cf484b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92921b8b79655fa69a697a54dca42056"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesrvm.html#a92921b8b79655fa69a697a54dca42056">srvm::DEFAULT_INPUT_PARAM_CENTROID_LOG_FILE</a> = &quot;&quot;</td></tr>
 <tr class="separator:a92921b8b79655fa69a697a54dca42056"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -338,7 +340,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5e23dc2f4fff83684b554677feda7b95.html">point_cloud_library</a></li><li class="navelem"><a class="el" href="srv__manager_8h.html">srv_manager.h</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:35 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

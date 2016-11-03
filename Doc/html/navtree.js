@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "DocumentClassHierarchy", "index.html", [
+  [ "Primitive Identification Tagging & Tracking (PITT)", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [

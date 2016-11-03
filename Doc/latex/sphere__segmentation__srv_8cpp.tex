@@ -1,14 +1,18 @@
 \hypertarget{sphere__segmentation__srv_8cpp}{\section{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.cpp File Reference}
 \label{sphere__segmentation__srv_8cpp}\index{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.\-cpp@{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
 }
+
+
+The R\-O\-S service, to {\bfseries identify a sphere} in a point cloud.  
+
+
 {\ttfamily \#include \char`\"{}ros/ros.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$pcl\-\_\-ros/point\-\_\-cloud.\-h$>$}\\*
 {\ttfamily \#include $<$pcl/segmentation/sac\-\_\-segmentation.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Primitive\-Segmentation.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}../point\-\_\-cloud\-\_\-library/pc\-\_\-manager.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}../point\-\_\-cloud\-\_\-library/srv\-\_\-manager.\-h\char`\"{}}\\*
-Include dependency graph for sphere\-\_\-segmentation\-\_\-srv.\-cpp\-:
-\nopagebreak
+Include dependency graph for sphere\-\_\-segmentation\-\_\-srv.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,6 +49,42 @@ static const double \hyperlink{sphere__segmentation__srv_8cpp_a4cb5a0882ef8c8ddb
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The R\-O\-S service, to {\bfseries identify a sphere} in a point cloud. {\bfseries File} \par
+ ~~~~~~~~~ \hyperlink{sphere__segmentation__srv_8cpp}{src/segmentation\-\_\-services/sphere\-\_\-segmentation\-\_\-srv.\-cpp} \begin{DoxyAuthor}{Author}
+Buoncompagni Luca, 
+\end{DoxyAuthor}
+{\bfseries Contacts} \par
+ ~~~~~~~~~ \href{mailto:luca.buoncompagni@edu.unige.it}{\tt luca.\-buoncompagni@edu.\-unige.\-it} \begin{DoxyDate}{Date}
+May 10, 2015 
+\end{DoxyDate}
+{\bfseries Institution} \par
+ ~~~~~~~~~ D\-I\-B\-R\-I\-S, emaro\-L\-A\-B, University of Genoa. \begin{DoxyVersion}{Version}
+2.\-1 
+
+ {\bfseries Programm behaviour} 
+\end{DoxyVersion}
+
+
+~~~~~~~~~ This is the implementation of a R\-O\-S service which uses R\-A\-N\-S\-A\-C methods to identify a sphere in a point cloud. Its inputs and outputs messages are implmented in the \href{https://github.com/EmaroLab/pitt_msgs}{\tt pitt\-\_\-msgs} package\-: 
+\begin{DoxyCode}
+pitt\_message/srv/PrimitiveSegmentation.srv 
+\end{DoxyCode}
+
+
+~~~~~~~~~ It ta
+
+\begin{DoxySeeAlso}{See Also}
+Point Cloud Library (P\-C\-L) \href{http://docs.pointclouds.org/1.7.0/group__sample__consensus.html}{\tt R\-A\-N\-S\-A\-C} A\-P\-I 
+
+ransac\-\_\-segmentation 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{sphere__segmentation__srv_8cpp_source}{sphere\-\_\-segmentation\-\_\-srv.\-cpp}.
+
+
+
 \subsection{Function Documentation}
 \hypertarget{sphere__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{\index{sphere\-\_\-segmentation\-\_\-srv.\-cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}!main@{main}}
 \index{main@{main}!sphere_segmentation_srv.cpp@{sphere\-\_\-segmentation\-\_\-srv.\-cpp}}
@@ -56,7 +96,7 @@ static const double \hyperlink{sphere__segmentation__srv_8cpp_a4cb5a0882ef8c8ddb
 )}}\label{sphere__segmentation__srv_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
 
 
-Definition at line 100 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 132 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -64,8 +104,7 @@ References nh\-\_\-ptr, ransac\-Sphere\-Detection(), and srvm\-::\-S\-R\-V\-\_\-
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -84,7 +123,7 @@ Here is the call graph for this function\-:
 )}}\label{sphere__segmentation__srv_8cpp_a1f0159654882376fcc188dd180e15e83}
 
 
-Definition at line 29 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 61 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -96,8 +135,7 @@ Referenced by main().
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -114,7 +152,7 @@ Here is the call graph for this function\-:
 \subsubsection[{nh\-\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle$\ast$ nh\-\_\-ptr = N\-U\-L\-L}}\label{sphere__segmentation__srv_8cpp_afe3fec681d3658d114dfa8cfff163e82}
 
 
-Definition at line 16 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 48 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -125,7 +163,7 @@ Referenced by main(), and ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-T\-H = 0.\-007\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a6713bc5b168acba8d6bd3d67a987bf35}
 
 
-Definition at line 20 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 52 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -136,7 +174,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-E\-P\-S\-\_\-\-A\-N\-G\-L\-E\-\_\-\-T\-H = 0.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a45787661e469ad7a54efebe5541223f7}
 
 
-Definition at line 24 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 56 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -147,7 +185,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const int S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-L\-I\-M\-I\-T = 1000\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a957f1a2151039b32d471c06adb64991a}
 
 
-Definition at line 23 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 55 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -158,7 +196,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E = 180.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b}
 
 
-Definition at line 26 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 58 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -169,7 +207,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-A\-X\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T = 0.\-500\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_aab4a7732d3cd7530c5c4bf2d7ad4ca3e}
 
 
-Definition at line 22 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 54 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -180,7 +218,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-O\-P\-E\-N\-I\-N\-G\-\_\-\-A\-N\-G\-L\-E\-\_\-\-D\-E\-G\-R\-E\-E = 100.\-0\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a40aeb04d52aaae0ae0ef9ce7aec0290c}
 
 
-Definition at line 25 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 57 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -191,7 +229,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-M\-I\-N\-\_\-\-R\-A\-D\-I\-U\-S\-\_\-\-L\-I\-M\-I\-T = 0.\-005\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a5ac02615cb665adab353391d8dd4fef3}
 
 
-Definition at line 21 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 53 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 
@@ -202,7 +240,7 @@ Referenced by ransac\-Sphere\-Detection().
 \subsubsection[{S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}const double S\-P\-H\-E\-R\-E\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-T\-H = 0.\-001\hspace{0.3cm}{\ttfamily [static]}}}\label{sphere__segmentation__srv_8cpp_a51198bd49385da85000793df51c4b532}
 
 
-Definition at line 19 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
+Definition at line 51 of file sphere\-\_\-segmentation\-\_\-srv.\-cpp.
 
 
 

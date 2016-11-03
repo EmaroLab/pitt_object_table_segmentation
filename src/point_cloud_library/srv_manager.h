@@ -97,6 +97,7 @@ using namespace std;
         // parameter (not ros) default value
         const string DEFAULT_PARAM_INPUT_CLOUD_REFERENCE_FRAME = "/camera_depth_optical_frame";
         const string DEFAULT_PARAM_OUTPUT_CLOUD_REFERENCE_FRAME = "/world";
+        /// the name of the input topic
         const string DEFAULT_INPUT_PARAM_RAW_CLOUD_TOPIC = "/camera/depth/points"; 	// default for freenect driver
         const string DEFAULT_INPUT_PARAM_CENTROID_LOG_FILE = ""; 					// empty do not print
         const bool DEFAULT_INPUT_PARAM_SHOW_ORIGINAL_CLOUD = false; 				// with norms [white]

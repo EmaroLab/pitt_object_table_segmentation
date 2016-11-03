@@ -20,7 +20,7 @@ var searchData=
   ['cluster_5fsegmentation_5fsrv_2ecpp',['cluster_segmentation_srv.cpp',['../cluster__segmentation__srv_8cpp.html',1,'']]],
   ['cluster_5ftolerance_5fdefault',['CLUSTER_TOLERANCE_DEFAULT',['../cluster__segmentation__srv_8cpp.html#ac3266207fd4ea22474675128faa0f4b8',1,'cluster_segmentation_srv.cpp']]],
   ['clusterize',['clusterize',['../cluster__segmentation__srv_8cpp.html#ab4a01859dbef47b81c5744d85d81a097',1,'cluster_segmentation_srv.cpp']]],
-  ['clusterpub',['clusterPub',['../obj__segmentation_8cpp.html#a27c3ab807dd4360a5b35f9b4813ac85c',1,'obj_segmentation.cpp']]],
+  ['clusterpub',['clusterPub',['../obj__segmentation_8cpp.html#a431711d7fd270977af34b226ed5d5cef',1,'obj_segmentation.cpp']]],
   ['clustersacquisition',['clustersAcquisition',['../ransac__segmentation_8cpp.html#a87bb87e16486622aae18704555f5af81',1,'ransac_segmentation.cpp']]],
   ['coefficienttovectormsg',['coefficientToVectorMsg',['../classpcm_1_1PCManager.html#a79353f94b8396268bea0a1358c260421',1,'pcm::PCManager']]],
   ['cone_5fdistance_5fth',['CONE_DISTANCE_TH',['../cone__segmentation__srv_8cpp.html#a8fe7696768fcf8c3d5659116abacee6f',1,'cone_segmentation_srv.cpp']]],

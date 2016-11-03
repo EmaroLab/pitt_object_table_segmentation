@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: src/obj_segmentation.cpp File Reference</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): src/obj_segmentation.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -110,157 +111,237 @@ $(document).ready(function(){initNavTree('obj__segmentation_8cpp.html','');});
 <div class="title">obj_segmentation.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The PITT starting node, to <b>preprocessing</b> the Point Cloud for primitive identification.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;pcl_ros/point_cloud.h&gt;</code><br/>
-<code>#include &lt;std_msgs/Float64.h&gt;</code><br/>
 <code>#include &lt;pcl/common/transforms.h&gt;</code><br/>
-<code>#include &lt;eigen3/Eigen/Dense&gt;</code><br/>
-<code>#include &lt;eigen3/Eigen/Core&gt;</code><br/>
-<code>#include &lt;math.h&gt;</code><br/>
 <code>#include &lt;tf/transform_listener.h&gt;</code><br/>
-<code>#include &lt;tf/tf.h&gt;</code><br/>
+<code>#include &lt;std_msgs/Float64.h&gt;</code><br/>
 <code>#include &quot;pitt_msgs/DeepFilter.h&quot;</code><br/>
 <code>#include &quot;pitt_msgs/SupportSegmentation.h&quot;</code><br/>
 <code>#include &quot;pitt_msgs/ClusterSegmentation.h&quot;</code><br/>
 <code>#include &quot;pitt_msgs/ArmFilter.h&quot;</code><br/>
-<code>#include &quot;pitt_msgs/Support.h&quot;</code><br/>
-<code>#include &quot;pitt_msgs/InliersCluster.h&quot;</code><br/>
 <code>#include &quot;pitt_msgs/ClustersOutput.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="pc__manager_8h_source.html">point_cloud_library/pc_manager.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="srv__manager_8h_source.html">point_cloud_library/srv_manager.h</a>&quot;</code><br/>
-<code>#include &lt;boost/thread.hpp&gt;</code><br/>
-<code>#include &lt;boost/thread/mutex.hpp&gt;</code><br/>
-<code>#include &lt;boost/format.hpp&gt;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for obj_segmentation.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__segmentation_8cpp__incl.png" border="0" usemap="#src_2obj__segmentation_8cpp" alt=""/></div>
 <map name="src_2obj__segmentation_8cpp" id="src_2obj__segmentation_8cpp">
-<area shape="rect" id="node17" href="pc__manager_8h.html" title="point_cloud_library\l/pc_manager.h" alt="" coords="2035,171,2164,213"/><area shape="rect" id="node25" href="srv__manager_8h.html" title="point_cloud_library\l/srv_manager.h" alt="" coords="2451,81,2580,122"/><area shape="rect" id="node23" href="pc__primitive_8h.html" title="../point_cloud_library\l/pc_primitive.h" alt="" coords="1950,262,2092,303"/></map>
+<area shape="rect" id="node11" href="pc__manager_8h.html" title="point_cloud_library\l/pc_manager.h" alt="" coords="545,171,675,213"/><area shape="rect" id="node20" href="srv__manager_8h.html" title="point_cloud_library\l/srv_manager.h" alt="" coords="596,81,725,122"/><area shape="rect" id="node18" href="pc__primitive_8h.html" title="../point_cloud_library\l/pc_primitive.h" alt="" coords="125,262,267,303"/></map>
 </div>
 </div>
 <p><a href="obj__segmentation_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a2e5691fdacd383e69e88a6ea80c51884"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
-&lt; vector&lt; Support &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a2e5691fdacd383e69e88a6ea80c51884">InlierSupportsPtr</a></td></tr>
-<tr class="separator:a2e5691fdacd383e69e88a6ea80c51884"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8e00b01b83bb50a18345fc3806f4ac7"><td class="memItemLeft" align="right" valign="top">typedef vector&lt; Support &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#af8e00b01b83bb50a18345fc3806f4ac7">InlierSupports</a></td></tr>
-<tr class="separator:af8e00b01b83bb50a18345fc3806f4ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4c38bb82a38d13ea44bb3c66816597"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
-&lt; vector&lt; InliersCluster &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a8f4c38bb82a38d13ea44bb3c66816597">InlierClusterPtr</a></td></tr>
-<tr class="separator:a8f4c38bb82a38d13ea44bb3c66816597"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7abe79d0733f39c4aa0c917a5af115ae"><td class="memItemLeft" align="right" valign="top">typedef vector&lt; InliersCluster &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a7abe79d0733f39c4aa0c917a5af115ae">InlierClusters</a></td></tr>
-<tr class="separator:a7abe79d0733f39c4aa0c917a5af115ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e1c5ec7922766e1a02d8e9b7e3856e"><td class="memItemLeft" align="right" valign="top">typedef vector<br class="typebreak"/>
+&lt; pitt_msgs::Support &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a54e1c5ec7922766e1a02d8e9b7e3856e">InlierSupports</a></td></tr>
+<tr class="memdesc:a54e1c5ec7922766e1a02d8e9b7e3856e"><td class="mdescLeft">&#160;</td><td class="mdescRight">a vector of costom messages to describe tables.  <a href="#a54e1c5ec7922766e1a02d8e9b7e3856e">More...</a><br/></td></tr>
+<tr class="separator:a54e1c5ec7922766e1a02d8e9b7e3856e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a794c4e0ea8acf9f34c17b066fbf0869d"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; vector&lt; pitt_msgs::Support &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a794c4e0ea8acf9f34c17b066fbf0869d">InlierSupportsPtr</a></td></tr>
+<tr class="memdesc:a794c4e0ea8acf9f34c17b066fbf0869d"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to a <a class="el" href="obj__segmentation_8cpp.html#a54e1c5ec7922766e1a02d8e9b7e3856e" title="a vector of costom messages to describe tables. ">InlierSupports</a>.  <a href="#a794c4e0ea8acf9f34c17b066fbf0869d">More...</a><br/></td></tr>
+<tr class="separator:a794c4e0ea8acf9f34c17b066fbf0869d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b657f4959d56c53eaf6be891386bd22"><td class="memItemLeft" align="right" valign="top">typedef vector<br class="typebreak"/>
+&lt; pitt_msgs::InliersCluster &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a6b657f4959d56c53eaf6be891386bd22">InlierClusters</a></td></tr>
+<tr class="memdesc:a6b657f4959d56c53eaf6be891386bd22"><td class="mdescLeft">&#160;</td><td class="mdescRight">a vector of costom messages to describe objects on a table.  <a href="#a6b657f4959d56c53eaf6be891386bd22">More...</a><br/></td></tr>
+<tr class="separator:a6b657f4959d56c53eaf6be891386bd22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50bb89dc3a9b0601f031cbd80235d27e"><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; vector<br class="typebreak"/>
+&lt; pitt_msgs::InliersCluster &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a50bb89dc3a9b0601f031cbd80235d27e">InlierClusterPtr</a></td></tr>
+<tr class="memdesc:a50bb89dc3a9b0601f031cbd80235d27e"><td class="mdescLeft">&#160;</td><td class="mdescRight">a pointer to a <a class="el" href="obj__segmentation_8cpp.html#a6b657f4959d56c53eaf6be891386bd22" title="a vector of costom messages to describe objects on a table. ">InlierClusters</a>.  <a href="#a50bb89dc3a9b0601f031cbd80235d27e">More...</a><br/></td></tr>
+<tr class="separator:a50bb89dc3a9b0601f031cbd80235d27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aca73ab26cae45b4b998a3cca9e4f75bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc">visSpin</a> ()</td></tr>
+<tr class="memdesc:aca73ab26cae45b4b998a3cca9e4f75bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">make the visualisation spinning without lagging acroos multi updating.  <a href="#aca73ab26cae45b4b998a3cca9e4f75bc">More...</a><br/></td></tr>
 <tr class="separator:aca73ab26cae45b4b998a3cca9e4f75bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af07806e44f4c8e8e053c64eeee54dca2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2">callDeepFilter</a> (<a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a> &amp;cloud)</td></tr>
-<tr class="memdesc:af07806e44f4c8e8e053c64eeee54dca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">BBBB.  <a href="#af07806e44f4c8e8e053c64eeee54dca2">More...</a><br/></td></tr>
+<tr class="memdesc:af07806e44f4c8e8e053c64eeee54dca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">call <a class="el" href="deep__filter__srv_8cpp.html">deep_filter_srv.cpp</a> ROS service.  <a href="#af07806e44f4c8e8e053c64eeee54dca2">More...</a><br/></td></tr>
 <tr class="separator:af07806e44f4c8e8e053c64eeee54dca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bba1d36e0ba20c917da78be7258a8ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae">callArmFilter</a> (<a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a> &amp;cloud)</td></tr>
+<tr class="memdesc:a3bba1d36e0ba20c917da78be7258a8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">call <a class="el" href="arm__filter__srv_8cpp.html">arm_filter_srv.cpp</a> ROS service.  <a href="#a3bba1d36e0ba20c917da78be7258a8ae">More...</a><br/></td></tr>
 <tr class="separator:a3bba1d36e0ba20c917da78be7258a8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7eb9ce1c694ace5adb8e94f09e54cdae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="obj__segmentation_8cpp.html#a2e5691fdacd383e69e88a6ea80c51884">InlierSupportsPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae">callSupportFilter</a> (<a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a> <a class="el" href="arm__filter__srv_8cpp.html#a974bd4721d13dc5fa4bd9608eca657db">inputCloud</a>, <a class="el" href="pc__primitive_8h.html#a1bc38ce8b0c26e5f2d28fae9f3e3ea97">PCLNormalPtr</a> normal)</td></tr>
+<tr class="memitem:a7eb9ce1c694ace5adb8e94f09e54cdae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="obj__segmentation_8cpp.html#a794c4e0ea8acf9f34c17b066fbf0869d">InlierSupportsPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae">callSupportFilter</a> (<a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a> <a class="el" href="arm__filter__srv_8cpp.html#a974bd4721d13dc5fa4bd9608eca657db">inputCloud</a>, <a class="el" href="pc__primitive_8h.html#a1bc38ce8b0c26e5f2d28fae9f3e3ea97">PCLNormalPtr</a> normal)</td></tr>
+<tr class="memdesc:a7eb9ce1c694ace5adb8e94f09e54cdae"><td class="mdescLeft">&#160;</td><td class="mdescRight">call support_segmentation_srv.cpp ROS service.  <a href="#a7eb9ce1c694ace5adb8e94f09e54cdae">More...</a><br/></td></tr>
 <tr class="separator:a7eb9ce1c694ace5adb8e94f09e54cdae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35f42b33ad39e60ed879678fd116fa5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="obj__segmentation_8cpp.html#a8f4c38bb82a38d13ea44bb3c66816597">InlierClusterPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b">callClusterSegmentation</a> (<a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a> cloud)</td></tr>
+<tr class="memitem:a35f42b33ad39e60ed879678fd116fa5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="obj__segmentation_8cpp.html#a50bb89dc3a9b0601f031cbd80235d27e">InlierClusterPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b">callClusterSegmentation</a> (<a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a> cloud)</td></tr>
+<tr class="memdesc:a35f42b33ad39e60ed879678fd116fa5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">call <a class="el" href="cluster__segmentation__srv_8cpp.html">cluster_segmentation_srv.cpp</a> ROS service.  <a href="#a35f42b33ad39e60ed879678fd116fa5b">More...</a><br/></td></tr>
 <tr class="separator:a35f42b33ad39e60ed879678fd116fa5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a480da8a5bc48bba4ac0cd49cfa4e5e7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a">depthAcquisition</a> (const PointCloud2Ptr &amp;input)</td></tr>
+<tr class="memdesc:a480da8a5bc48bba4ac0cd49cfa4e5e7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node callback.  <a href="#a480da8a5bc48bba4ac0cd49cfa4e5e7a">More...</a><br/></td></tr>
 <tr class="separator:a480da8a5bc48bba4ac0cd49cfa4e5e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">It initialise this ROS node and spin in order to activate the <a class="el" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="Node callback. ">depthAcquisition</a> callback as soon as new data is available. It also listens and updates the <a class="el" href="obj__segmentation_8cpp.html#abeb91134d7b10cc7475f7fa946e66a34" title="the transformation matrix between the RGB-D sensor and the srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRA...">pclTransform</a> matrix.  <a href="#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br/></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:afe3fec681d3658d114dfa8cfff163e82"><td class="memItemLeft" align="right" valign="top">ros::NodeHandle *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#afe3fec681d3658d114dfa8cfff163e82">nh_ptr</a> = NULL</td></tr>
-<tr class="separator:afe3fec681d3658d114dfa8cfff163e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acece8259b4a7b4327562daa817a43ef0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#acece8259b4a7b4327562daa817a43ef0">inputShowSupportClouds</a></td></tr>
-<tr class="separator:acece8259b4a7b4327562daa817a43ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fea3689c92e1b2fcebd3eeafee94a5e"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a3fea3689c92e1b2fcebd3eeafee94a5e">MIN_POINT_IN_ORIGINAL_CLOUD</a> = 30</td></tr>
+<tr class="memdesc:a3fea3689c92e1b2fcebd3eeafee94a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the cloud will be not not processed if has less number of points  <a href="#a3fea3689c92e1b2fcebd3eeafee94a5e">More...</a><br/></td></tr>
+<tr class="separator:a3fea3689c92e1b2fcebd3eeafee94a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6f703bc9e7358560334737266db326c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#ac6f703bc9e7358560334737266db326c">inputShowOriginalCloud</a></td></tr>
+<tr class="memdesc:ac6f703bc9e7358560334737266db326c"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag for showing raw cloud (white points) on the visualiser of this node.  <a href="#ac6f703bc9e7358560334737266db326c">More...</a><br/></td></tr>
 <tr class="separator:ac6f703bc9e7358560334737266db326c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acece8259b4a7b4327562daa817a43ef0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#acece8259b4a7b4327562daa817a43ef0">inputShowSupportClouds</a></td></tr>
+<tr class="memdesc:acece8259b4a7b4327562daa817a43ef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag for showing identified tables (brown points) on the visualiser of this node.  <a href="#acece8259b4a7b4327562daa817a43ef0">More...</a><br/></td></tr>
+<tr class="separator:acece8259b4a7b4327562daa817a43ef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab64cbde8b32aa3524e9fb94bb4d24525"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#ab64cbde8b32aa3524e9fb94bb4d24525">inputShowClusterClouds</a></td></tr>
+<tr class="memdesc:ab64cbde8b32aa3524e9fb94bb4d24525"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag for showing identified objects (random colors) on the visualiser of this node.  <a href="#ab64cbde8b32aa3524e9fb94bb4d24525">More...</a><br/></td></tr>
 <tr class="separator:ab64cbde8b32aa3524e9fb94bb4d24525"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea198f61928e89fc5332d092619b04f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#aea198f61928e89fc5332d092619b04f5">inputShowObjectOnSupport</a></td></tr>
+<tr class="memdesc:aea198f61928e89fc5332d092619b04f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag for showing identified all the points on the table (orange points) on the visualiser of this node.  <a href="#aea198f61928e89fc5332d092619b04f5">More...</a><br/></td></tr>
 <tr class="separator:aea198f61928e89fc5332d092619b04f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6317446c893a78108aab89bf69a4b66a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a6317446c893a78108aab89bf69a4b66a">centroidLogFilePath</a></td></tr>
+<tr class="memdesc:a6317446c893a78108aab89bf69a4b66a"><td class="mdescLeft">&#160;</td><td class="mdescRight">file path to lag the centroids of the acquired objects in a table. Set to empty to do not log on file.  <a href="#a6317446c893a78108aab89bf69a4b66a">More...</a><br/></td></tr>
 <tr class="separator:a6317446c893a78108aab89bf69a4b66a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a484374fe771cd860a2ea9f9feda68905"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a484374fe771cd860a2ea9f9feda68905">log_str_depth</a> = &quot;Loading...&quot;</td></tr>
-<tr class="separator:a484374fe771cd860a2ea9f9feda68905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7024ef4623a4562d025033aa950364f5"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a7024ef4623a4562d025033aa950364f5">log_str_supp</a> = &quot;Loading...&quot;</td></tr>
-<tr class="separator:a7024ef4623a4562d025033aa950364f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a848f9977cb150e83cf5464a65dcc9fe4"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a848f9977cb150e83cf5464a65dcc9fe4">scanId</a> = 0</td></tr>
-<tr class="separator:a848f9977cb150e83cf5464a65dcc9fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fea3689c92e1b2fcebd3eeafee94a5e"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a3fea3689c92e1b2fcebd3eeafee94a5e">MIN_POINT_IN_ORIGINAL_CLOUD</a> = 30</td></tr>
-<tr class="separator:a3fea3689c92e1b2fcebd3eeafee94a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21221f555fa05f2c3f45ff5592a25197"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpcm_1_1PCManager.html">pcm::PCManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a21221f555fa05f2c3f45ff5592a25197">manager</a> = new <a class="el" href="classpcm_1_1PCManager.html">pcm::PCManager</a>( false)</td></tr>
+<tr class="memdesc:a21221f555fa05f2c3f45ff5592a25197"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to initialise the <a class="el" href="classpcm_1_1PCManager.html">pcm::PCManager</a>.  <a href="#a21221f555fa05f2c3f45ff5592a25197">More...</a><br/></td></tr>
 <tr class="separator:a21221f555fa05f2c3f45ff5592a25197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3fec681d3658d114dfa8cfff163e82"><td class="memItemLeft" align="right" valign="top">ros::NodeHandle *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#afe3fec681d3658d114dfa8cfff163e82">nh_ptr</a> = NULL</td></tr>
+<tr class="memdesc:afe3fec681d3658d114dfa8cfff163e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">ros handle passed across all services calls.  <a href="#afe3fec681d3658d114dfa8cfff163e82">More...</a><br/></td></tr>
+<tr class="separator:afe3fec681d3658d114dfa8cfff163e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c2d87234fca8dcca11f888098558986"><td class="memItemLeft" align="right" valign="top">boost::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="pc__manager_8h.html#a38c805dbc7ad6f06109b85c8e540817a">visualization::PCLVisualizer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a6c2d87234fca8dcca11f888098558986">vis</a></td></tr>
+<tr class="memdesc:a6c2d87234fca8dcca11f888098558986"><td class="mdescLeft">&#160;</td><td class="mdescRight">the PCL visualiser for this node.  <a href="#a6c2d87234fca8dcca11f888098558986">More...</a><br/></td></tr>
 <tr class="separator:a6c2d87234fca8dcca11f888098558986"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27c3ab807dd4360a5b35f9b4813ac85c"><td class="memItemLeft" align="right" valign="top">Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a27c3ab807dd4360a5b35f9b4813ac85c">clusterPub</a></td></tr>
-<tr class="separator:a27c3ab807dd4360a5b35f9b4813ac85c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a431711d7fd270977af34b226ed5d5cef"><td class="memItemLeft" align="right" valign="top">ros::Publisher&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a431711d7fd270977af34b226ed5d5cef">clusterPub</a></td></tr>
+<tr class="memdesc:a431711d7fd270977af34b226ed5d5cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">the ROS publisher in which the message of a new acquistion will be send.  <a href="#a431711d7fd270977af34b226ed5d5cef">More...</a><br/></td></tr>
+<tr class="separator:a431711d7fd270977af34b226ed5d5cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeb91134d7b10cc7475f7fa946e66a34"><td class="memItemLeft" align="right" valign="top">Eigen::Matrix4f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#abeb91134d7b10cc7475f7fa946e66a34">pclTransform</a></td></tr>
+<tr class="memdesc:abeb91134d7b10cc7475f7fa946e66a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">the transformation matrix between the RGB-D sensor and the <a class="el" href="namespacesrvm.html#ac5228e86d6d396c944b11f847746b3b8">srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRAME</a> frame (it can be changed on the fly).  <a href="#abeb91134d7b10cc7475f7fa946e66a34">More...</a><br/></td></tr>
+<tr class="separator:abeb91134d7b10cc7475f7fa946e66a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83e6219895a4d26706c0d858f8ec288"><td class="memItemLeft" align="right" valign="top">boost::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#ab83e6219895a4d26706c0d858f8ec288">vis_thread</a></td></tr>
+<tr class="memdesc:ab83e6219895a4d26706c0d858f8ec288"><td class="mdescLeft">&#160;</td><td class="mdescRight">for a better visualiser updating on parallel thread.  <a href="#ab83e6219895a4d26706c0d858f8ec288">More...</a><br/></td></tr>
 <tr class="separator:ab83e6219895a4d26706c0d858f8ec288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dc8882293908d9c8cc15f76a2a49588"><td class="memItemLeft" align="right" valign="top">boost::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a0dc8882293908d9c8cc15f76a2a49588">vis_mutex</a></td></tr>
+<tr class="memdesc:a0dc8882293908d9c8cc15f76a2a49588"><td class="mdescLeft">&#160;</td><td class="mdescRight">for a better visualiser updating during different services calls.  <a href="#a0dc8882293908d9c8cc15f76a2a49588">More...</a><br/></td></tr>
 <tr class="separator:a0dc8882293908d9c8cc15f76a2a49588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeb91134d7b10cc7475f7fa946e66a34"><td class="memItemLeft" align="right" valign="top">Eigen::Matrix4f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#abeb91134d7b10cc7475f7fa946e66a34">pclTransform</a></td></tr>
-<tr class="separator:abeb91134d7b10cc7475f7fa946e66a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484374fe771cd860a2ea9f9feda68905"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a484374fe771cd860a2ea9f9feda68905">log_str_depth</a> = &quot;Loading...&quot;</td></tr>
+<tr class="memdesc:a484374fe771cd860a2ea9f9feda68905"><td class="mdescLeft">&#160;</td><td class="mdescRight">string that will contains info about <a class="el" href="deep__filter__srv_8cpp.html">deep_filter_srv.cpp</a> service, shown in the visualiser while the parameters are changed on the fly.  <a href="#a484374fe771cd860a2ea9f9feda68905">More...</a><br/></td></tr>
+<tr class="separator:a484374fe771cd860a2ea9f9feda68905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7024ef4623a4562d025033aa950364f5"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a7024ef4623a4562d025033aa950364f5">log_str_supp</a> = &quot;Loading...&quot;</td></tr>
+<tr class="memdesc:a7024ef4623a4562d025033aa950364f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">string that will contains info about support_segmentation_srv.cpp service, shown in the visualiser while the parameters are changed on the fly.  <a href="#a7024ef4623a4562d025033aa950364f5">More...</a><br/></td></tr>
+<tr class="separator:a7024ef4623a4562d025033aa950364f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848f9977cb150e83cf5464a65dcc9fe4"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="obj__segmentation_8cpp.html#a848f9977cb150e83cf5464a65dcc9fe4">scanId</a> = 0</td></tr>
+<tr class="memdesc:a848f9977cb150e83cf5464a65dcc9fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">so far, it is used only for logging.  <a href="#a848f9977cb150e83cf5464a65dcc9fe4">More...</a><br/></td></tr>
+<tr class="separator:a848f9977cb150e83cf5464a65dcc9fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="a8f4c38bb82a38d13ea44bb3c66816597"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The PITT starting node, to <b>preprocessing</b> the Point Cloud for primitive identification. </p>
+<p><b>File</b> <br/>
+ &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <a class="el" href="obj__segmentation_8cpp.html" title="The PITT starting node, to preprocessing the Point Cloud for primitive identification. ">src/obj_segmentation.cpp</a> </p>
+<dl class="section author"><dt>Author</dt><dd>Buoncompagni Luca, </dd></dl>
+<p><b>Contacts</b> <br/>
+ &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <a href="#" onclick="location.href='mai'+'lto:'+'luc'+'a.'+'buo'+'nc'+'omp'+'ag'+'ni@'+'ed'+'u.u'+'ni'+'ge.'+'it'; return false;">luca.<span style="display: none;">.nosp@m.</span>buon<span style="display: none;">.nosp@m.</span>compa<span style="display: none;">.nosp@m.</span>gni@<span style="display: none;">.nosp@m.</span>edu.u<span style="display: none;">.nosp@m.</span>nige<span style="display: none;">.nosp@m.</span>.it</a> </p>
+<dl class="section date"><dt>Date</dt><dd>May 10, 2015 </dd></dl>
+<p><b>Institution</b> <br/>
+ &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; DIBRIS, emaroLAB, University of Genoa. </p>
+<dl class="section version"><dt>Version</dt><dd>2.1 <hr/>
+ <b>Programm behaviour</b> </dd></dl>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; This file implements a ROS node that acquires Kinect Point Cloud (PC) from the topic specified through the: <a class="el" href="namespacesrvm.html#afb9bab9dced618a8992cf505cf484b1c" title="the name of the input topic ">srvm::DEFAULT_INPUT_PARAM_RAW_CLOUD_TOPIC</a> parameter (see <a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> function for more) and performs preprocessing (on <a class="el" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="Node callback. ">depthAcquisition</a> callback) with the following order:</p>
+<ol type="1">
+<li>PC downsampling (see PCL documentation for more),</li>
+<li>filtering out far points (see <a class="el" href="deep__filter__srv_8cpp.html">deep_filter_srv.cpp</a> ROS service),</li>
+<li>filtering out points of robotic arms (see <a class="el" href="arm__filter__srv_8cpp.html">arm_filter_srv.cpp</a> ROS service),</li>
+<li>PC transforming w.r.t. robot base frame (see TF for more),</li>
+<li>tables segmentation (see <a class="el" href="supports__segmentation__srv_8cpp.html">supports_segmentation_srv.cpp</a> ROS service),</li>
+<li>objects segmentation, for each support (see <a class="el" href="cluster__segmentation__srv_8cpp.html">cluster_segmentation_srv.cpp</a> ROS service)</li>
+</ol>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; The results of this computation (for each table) is published into the topic specified through the <a class="el" href="namespacesrvm.html#a520b8813dc65ba764d59f05a0b316e5c">srvm::TOPIC_OUT_NAME_OBJECT_PERCEPTION</a> parameter. This topic accommodates an array of </p>
+<div class="fragment"><div class="line">pitt_msgs/msg/InlierCluster.msg </div>
+</div><!-- fragment --><p> messages (see <a href="https://github.com/EmaroLab/pitt_msgs">pitt_msgs</a> package for more details) that contains, for each recognised object in that table:</p>
+<ul>
+<li><code>sensor_msgs/PointCloud2</code> <code>cloud:</code> &#160;&#160; the cloud containing only the object,</li>
+<li><code>int32</code>[] <code>inliers:</code> &#160;&#160; the index of the points of the object w.r.t. the original cloud,</li>
+<li><code>float32</code> <code>x_centroid</code>, <code>y_centroid</code>, <code>z_centroid:</code> &#160;&#160; the coordinates of the center of mass of the cloud</li>
+<li><code>int32</code> <code>shape_id:</code> &#160;&#160; object identifier. At this stage of the architecture this value is not set (the tracker will do it, see the <a href="https://github.com/EmaroLab/pitt_geometric_tracking">pitt_geometric_tracking </a> for an example).</li>
+</ul>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="pc__manager_8h.html">pc_manager.h</a> </dd>
+<dd>
+<a class="el" href="pc__primitive_8h.html">pc_primitive.h</a> </dd>
+<dd>
+<a class="el" href="srv__manager_8h.html">srv_manager.h</a> </dd>
+<dd>
+<a class="el" href="ransac__segmentation_8cpp.html">ransac_segmentation.cpp</a> </dd>
+<dd>
+&lt;a href="<a href="https://github.com/EmaroLab/pitt_geometric_tracking">https://github.com/EmaroLab/pitt_geometric_tracking</a>&gt;pitt_geometric_tracking </dd></dl>
+
+<p>Definition in file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a50bb89dc3a9b0601f031cbd80235d27e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::shared_ptr&lt; vector&lt; InliersCluster&gt; &gt; <a class="el" href="obj__segmentation_8cpp.html#a8f4c38bb82a38d13ea44bb3c66816597">InlierClusterPtr</a></td>
+          <td class="memname">typedef boost::shared_ptr&lt; vector&lt; pitt_msgs::InliersCluster&gt; &gt; <a class="el" href="obj__segmentation_8cpp.html#a50bb89dc3a9b0601f031cbd80235d27e">InlierClusterPtr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00040">40</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>a pointer to a <a class="el" href="obj__segmentation_8cpp.html#a6b657f4959d56c53eaf6be891386bd22" title="a vector of costom messages to describe objects on a table. ">InlierClusters</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><div class="fragment"><div class="line">pitt_msgs/msg/InliersCluster.msg </div>
+</div><!-- fragment --> </dd></dl>
+
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00092">92</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7abe79d0733f39c4aa0c917a5af115ae"></a>
+<a class="anchor" id="a6b657f4959d56c53eaf6be891386bd22"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef vector&lt; InliersCluster&gt; <a class="el" href="obj__segmentation_8cpp.html#a7abe79d0733f39c4aa0c917a5af115ae">InlierClusters</a></td>
+          <td class="memname">typedef vector&lt; pitt_msgs::InliersCluster&gt; <a class="el" href="obj__segmentation_8cpp.html#a6b657f4959d56c53eaf6be891386bd22">InlierClusters</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00041">41</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>a vector of costom messages to describe objects on a table. </p>
+<dl class="section see"><dt>See Also</dt><dd><div class="fragment"><div class="line">pitt_msgs/msg/InliersCluster.msg </div>
+</div><!-- fragment --> </dd></dl>
+
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00087">87</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af8e00b01b83bb50a18345fc3806f4ac7"></a>
+<a class="anchor" id="a54e1c5ec7922766e1a02d8e9b7e3856e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef vector&lt; Support&gt; <a class="el" href="obj__segmentation_8cpp.html#af8e00b01b83bb50a18345fc3806f4ac7">InlierSupports</a></td>
+          <td class="memname">typedef vector&lt; pitt_msgs::Support&gt; <a class="el" href="obj__segmentation_8cpp.html#a54e1c5ec7922766e1a02d8e9b7e3856e">InlierSupports</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00039">39</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>a vector of costom messages to describe tables. </p>
+<dl class="section see"><dt>See Also</dt><dd><div class="fragment"><div class="line">pitt_msgs/msg/Support.msg </div>
+</div><!-- fragment --> </dd></dl>
+
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00077">77</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2e5691fdacd383e69e88a6ea80c51884"></a>
+<a class="anchor" id="a794c4e0ea8acf9f34c17b066fbf0869d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::shared_ptr&lt; vector&lt; Support&gt; &gt; <a class="el" href="obj__segmentation_8cpp.html#a2e5691fdacd383e69e88a6ea80c51884">InlierSupportsPtr</a></td>
+          <td class="memname">typedef boost::shared_ptr&lt; vector&lt; pitt_msgs::Support&gt; &gt; <a class="el" href="obj__segmentation_8cpp.html#a794c4e0ea8acf9f34c17b066fbf0869d">InlierSupportsPtr</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00038">38</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>a pointer to a <a class="el" href="obj__segmentation_8cpp.html#a54e1c5ec7922766e1a02d8e9b7e3856e" title="a vector of costom messages to describe tables. ">InlierSupports</a>. </p>
+<dl class="section see"><dt>See Also</dt><dd><div class="fragment"><div class="line">pitt_msgs/msg/Support.msg </div>
+</div><!-- fragment --> </dd></dl>
+
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00082">82</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
 </div>
 </div>
@@ -279,18 +360,43 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00112">112</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>call <a class="el" href="arm__filter__srv_8cpp.html">arm_filter_srv.cpp</a> ROS service. </p>
+<p>It removes, from input parameter, all the points that are belonging to a bounding box around the robot arms.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cloud</td><td>the PC from which remove all the points of the arms. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if an error occurs during service call, true otherwise. </dd></dl>
+<p>Following, the steeps that this function performs:</p>
+<ul>
+<li>load the baunding box parameters (default values: <a class="el" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc">srvm::DEFAULT_SERVICE_VEC_PARAMETER_REQUEST</a>):<ul>
+<li><a class="el" href="namespacesrvm.html#a78229888a94a0362b2a4242a212e496f">srvm::PARAM_NAME_ARM_SRV_MIN_FOREARM_BOX</a>,</li>
+<li><a class="el" href="namespacesrvm.html#a566bcfbd837fb5450a2c9c6de09d522a">srvm::PARAM_NAME_ARM_SRV_MAX_FOREARM_BOX</a>,</li>
+<li><a class="el" href="namespacesrvm.html#ae85ac94c938b94bb075b175237d198b0">srvm::PARAM_NAME_ARM_SRV_MIN_ELBOW_BOX</a>,</li>
+<li><a class="el" href="namespacesrvm.html#afeb3197fee2f13444309f3e4ed314392">srvm::PARAM_NAME_ARM_SRV_MAX_ELBOW_BOX</a>,</li>
+</ul>
+</li>
+<li>initialise arm filter server,</li>
+<li>set input data and parameters,</li>
+<li>call service</li>
+<li>check for error during service calls.</li>
+<li>get the repose and overwrite the cloud, if no errors occur. </li>
+</ul>
 
-<p>References <a class="el" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc">srvm::DEFAULT_SERVICE_VEC_PARAMETER_REQUEST()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00036">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00042">srvm::PARAM_NAME_ARM_SRV_MAX_ELBOW_BOX</a>, <a class="el" href="srv__manager_8h_source.html#l00040">srvm::PARAM_NAME_ARM_SRV_MAX_FOREARM_BOX</a>, <a class="el" href="srv__manager_8h_source.html#l00041">srvm::PARAM_NAME_ARM_SRV_MIN_ELBOW_BOX</a>, <a class="el" href="srv__manager_8h_source.html#l00039">srvm::PARAM_NAME_ARM_SRV_MIN_FOREARM_BOX</a>, and <a class="el" href="srv__manager_8h_source.html#l00028">srvm::SRV_NAME_ARM_FILTER</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00251">251</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>.</p>
+<p>References <a class="el" href="pc__manager_8cpp_source.html#l00090">pcm::PCManager::cloudForRosMsg()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00080">pcm::PCManager::cloudToRosMsg()</a>, <a class="el" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc">srvm::DEFAULT_SERVICE_VEC_PARAMETER_REQUEST()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00167">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00042">srvm::PARAM_NAME_ARM_SRV_MAX_ELBOW_BOX</a>, <a class="el" href="srv__manager_8h_source.html#l00040">srvm::PARAM_NAME_ARM_SRV_MAX_FOREARM_BOX</a>, <a class="el" href="srv__manager_8h_source.html#l00041">srvm::PARAM_NAME_ARM_SRV_MIN_ELBOW_BOX</a>, <a class="el" href="srv__manager_8h_source.html#l00039">srvm::PARAM_NAME_ARM_SRV_MIN_FOREARM_BOX</a>, and <a class="el" href="srv__manager_8h_source.html#l00028">srvm::SRV_NAME_ARM_FILTER</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae_cgraph.png" border="0" usemap="#obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae_cgraph" alt=""/></div>
 <map name="obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae_cgraph" id="obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae_cgraph">
-<area shape="rect" id="node2" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="150,5,370,46"/></map>
+<area shape="rect" id="node2" href="classpcm_1_1PCManager.html#acb513ed7a3b898e398fd211bafac6f6a" title="pcm::PCManager::cloudFor\lRosMsg" alt="" coords="171,5,354,46"/><area shape="rect" id="node3" href="classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="149,71,376,97"/><area shape="rect" id="node4" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="153,122,373,163"/></map>
 </div>
 </p>
 
@@ -301,7 +407,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="obj__segmentation_8cpp.html#a8f4c38bb82a38d13ea44bb3c66816597">InlierClusterPtr</a> callClusterSegmentation </td>
+          <td class="memname"><a class="el" href="obj__segmentation_8cpp.html#a50bb89dc3a9b0601f031cbd80235d27e">InlierClusterPtr</a> callClusterSegmentation </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a>&#160;</td>
           <td class="paramname"><em>cloud</em></td><td>)</td>
@@ -310,11 +416,45 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00214">214</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>call <a class="el" href="cluster__segmentation__srv_8cpp.html">cluster_segmentation_srv.cpp</a> ROS service. </p>
+<p>It segments a PC in smaller structure where each of them represents a separated object. The points are also described in terms of index in the original cloud.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cloud</td><td>the PC to be segmented in clusters. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an array of structures that describes separated objects in the cloud. An empty array if errors occur on service call. </dd></dl>
+<p>Following, the steeps that this function performs:</p>
+<ul>
+<li>load the parameters for the server (default values: <a class="el" href="namespacesrvm.html#a27b2693a98ba8791767e3c8bebdab105">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST</a> or <a class="el" href="namespacesrvm.html#a5a9ae08c1a139bbf76b39c5d34f90e2a">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>):<ul>
+<li><a class="el" href="namespacesrvm.html#a606c20312640e9cc8710e4d43f0cb167">srvm::PARAM_NAME_CLUSTER_TOLERANCE</a>,</li>
+<li><a class="el" href="namespacesrvm.html#a68216326c13293ff70084f03bb4efa98">srvm::PARAM_NAME_CLUSTER_MIN_RATE</a>,</li>
+<li><a class="el" href="namespacesrvm.html#ac57a3b8f3addc024383db76f1d2c55da">srvm::PARAM_NAME_CLUSTER_MAX_RATE</a>,</li>
+<li><a class="el" href="namespacesrvm.html#a606c20312640e9cc8710e4d43f0cb167">srvm::PARAM_NAME_CLUSTER_TOLERANCE</a>,</li>
+</ul>
+</li>
+<li>initialise claster segmentation server,</li>
+<li>set input data and parameters,</li>
+<li>call service,</li>
+<li>check and log for errors,</li>
+<li>get the service responce to be returned. </li>
+</ul>
 
-<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00036">nh_ptr</a>, and <a class="el" href="srv__manager_8h_source.html#l00027">srvm::SRV_NAME_CUSTER_FILTER</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00387">387</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>.</p>
+<p>References <a class="el" href="pc__manager_8cpp_source.html#l00080">pcm::PCManager::cloudToRosMsg()</a>, <a class="el" href="srv__manager_8h_source.html#l00119">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST</a>, <a class="el" href="srv__manager_8h_source.html#l00120">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00167">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00046">srvm::PARAM_NAME_CLUSTER_MAX_RATE</a>, <a class="el" href="srv__manager_8h_source.html#l00045">srvm::PARAM_NAME_CLUSTER_MIN_RATE</a>, <a class="el" href="srv__manager_8h_source.html#l00044">srvm::PARAM_NAME_CLUSTER_TOLERANCE</a>, and <a class="el" href="srv__manager_8h_source.html#l00027">srvm::SRV_NAME_CUSTER_FILTER</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b_cgraph.png" border="0" usemap="#obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b_cgraph" alt=""/></div>
+<map name="obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b_cgraph" id="obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b_cgraph">
+<area shape="rect" id="node2" href="classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="219,5,445,32"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -332,21 +472,40 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>BBBB. </p>
-<p>AAAAA </p>
+<p>call <a class="el" href="deep__filter__srv_8cpp.html">deep_filter_srv.cpp</a> ROS service. </p>
+<p>It removes, from input parameter, all the points further than a threshold on the z-axis of the cloud.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cloud</td><td></td></tr>
+    <tr><td class="paramname">cloud</td><td>the PC from which remove all the points further than a threshold. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>false if an error occurs during service call, true otherwise. </dd></dl>
+<p>Following, the steeps that this function performs:</p>
+<ul>
+<li>load the threshold parameter: <a class="el" href="namespacesrvm.html#af5f0c98fe811a1ad130ec625e9b2cf75">srvm::PARAM_NAME_DEEP_SRV_Z_THRESHOLD</a> from ROS pull. Use <a class="el" href="namespacesrvm.html#a5a9ae08c1a139bbf76b39c5d34f90e2a">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a> as default value,</li>
+<li>update visualiser texts about the deep threshold value,</li>
+<li>initialise deep filter server,</li>
+<li>set input data and parameters,</li>
+<li>call service,</li>
+<li>check for error during service calls.</li>
+<li>get the repose and overwrite the cloud, if no errors occur. </li>
+</ul>
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00079">79</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00207">207</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>References <a class="el" href="srv__manager_8h_source.html#l00119">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00048">log_str_depth</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00036">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00037">srvm::PARAM_NAME_DEEP_SRV_Z_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00025">srvm::SRV_NAME_DEEP_FILTER</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00059">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00062">vis_mutex</a>.</p>
+<p>References <a class="el" href="pc__manager_8cpp_source.html#l00090">pcm::PCManager::cloudForRosMsg()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00080">pcm::PCManager::cloudToRosMsg()</a>, <a class="el" href="srv__manager_8h_source.html#l00120">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00135">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00144">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00117">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00126">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00179">log_str_depth</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00167">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00037">srvm::PARAM_NAME_DEEP_SRV_Z_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00025">srvm::SRV_NAME_DEEP_FILTER</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00169">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00177">vis_mutex</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2_cgraph.png" border="0" usemap="#obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2_cgraph" alt=""/></div>
+<map name="obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2_cgraph" id="obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2_cgraph">
+<area shape="rect" id="node2" href="classpcm_1_1PCManager.html#acb513ed7a3b898e398fd211bafac6f6a" title="pcm::PCManager::cloudFor\lRosMsg" alt="" coords="179,5,362,46"/><area shape="rect" id="node3" href="classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="157,71,384,97"/></map>
+</div>
+</p>
 
 </div>
 </div>
@@ -355,7 +514,7 @@ Here is the call graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="obj__segmentation_8cpp.html#a2e5691fdacd383e69e88a6ea80c51884">InlierSupportsPtr</a> callSupportFilter </td>
+          <td class="memname"><a class="el" href="obj__segmentation_8cpp.html#a794c4e0ea8acf9f34c17b066fbf0869d">InlierSupportsPtr</a> callSupportFilter </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="pc__primitive_8h.html#aa14a240c8d999c4f56133c0f70e88783">PCLCloudPtr</a>&#160;</td>
           <td class="paramname"><em>inputCloud</em>, </td>
@@ -374,18 +533,49 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00147">147</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>call support_segmentation_srv.cpp ROS service. </p>
+<p>It detects all the vertical planes in the scene and returns the index of their point w.r.t. to original cloud.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inputCloud</td><td>the PC from which retrieve the supports. </td></tr>
+    <tr><td class="paramname">normal</td><td>the Nolrmal vector of the points of the above cloud. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector of set of index indicating the points of a support w.r.t. to acquired cloud. It returns an empty array if errors occur during service call. </dd></dl>
+<p>Following, the steeps that this function performs:</p>
+<ul>
+<li>load the parameters for the server (default values: <a class="el" href="namespacesrvm.html#a27b2693a98ba8791767e3c8bebdab105">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST</a> or <a class="el" href="namespacesrvm.html#a5a9ae08c1a139bbf76b39c5d34f90e2a">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>):<ul>
+<li><a class="el" href="namespacesrvm.html#ac6d56e59d27ae79b392d58c0b57d03e1">srvm::PARAM_NAME_MIN_ITERATIVE_CLOUD_PERCENTAGE</a>,</li>
+<li><a class="el" href="namespacesrvm.html#a209e7ad2de58ec5193770fc4d9cd98ab">srvm::PARAM_NAME_MIN_ITERATIVE_SUPPORT_PERCENTAGE</a>,</li>
+<li><a class="el" href="namespacesrvm.html#adb071b5e180a1109af154bd4241a250e">srvm::PARAM_NAME_HORIZONTAL_VARIANCE_THRESHOLD</a>,</li>
+<li><a class="el" href="namespacesrvm.html#af1a83a2964c2f60f7f497f05ef454cfd">srvm::PARAM_NAME_RANSAC_IN_SHAPE_DISTANCE_POINT_THRESHOLD</a>,</li>
+<li><a class="el" href="namespacesrvm.html#ad592efae9026788849614a69053f3914">srvm::PARAM_NAME_RANSAC_MODEL_NORMAL_DISTANCE_WEIGHT</a>,</li>
+<li><a class="el" href="namespacesrvm.html#aa6b5f05b01cb661c1481c0f40bd916e4">srvm::PARAM_NAME_RANSAC_MAX_ITERATION_THRESHOLD</a>,</li>
+<li><a class="el" href="namespacesrvm.html#a2957bf6ee16944664364c470f1beb958">srvm::PARAM_NAME_HORIZONTAL_AXIS</a>,</li>
+<li><a class="el" href="namespacesrvm.html#a07211b3f36f93931af6e67097b75f145">srvm::PARAM_NAME_SUPPORT_EDGE_REMOVE_OFFSET</a>,</li>
+</ul>
+</li>
+<li>initialise support segmentation server,</li>
+<li>set input data and parameters,</li>
+<li>call service,</li>
+<li>check and log for errors,</li>
+<li>get the service responce to be returned,</li>
+<li>update the visualiser texts. </li>
+</ul>
 
-<p>References <a class="el" href="srv__manager_8h_source.html#l00118">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST</a>, <a class="el" href="srv__manager_8h_source.html#l00119">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>, <a class="el" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc">srvm::DEFAULT_SERVICE_VEC_PARAMETER_REQUEST()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">horizontalAxis</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00049">log_str_supp</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00036">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00094">srvm::PARAM_NAME_HORIZONTAL_AXIS</a>, <a class="el" href="srv__manager_8h_source.html#l00090">srvm::PARAM_NAME_HORIZONTAL_VARIANCE_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00088">srvm::PARAM_NAME_MIN_ITERATIVE_CLOUD_PERCENTAGE</a>, <a class="el" href="srv__manager_8h_source.html#l00089">srvm::PARAM_NAME_MIN_ITERATIVE_SUPPORT_PERCENTAGE</a>, <a class="el" href="srv__manager_8h_source.html#l00091">srvm::PARAM_NAME_RANSAC_IN_SHAPE_DISTANCE_POINT_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00093">srvm::PARAM_NAME_RANSAC_MAX_ITERATION_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00092">srvm::PARAM_NAME_RANSAC_MODEL_NORMAL_DISTANCE_WEIGHT</a>, <a class="el" href="srv__manager_8h_source.html#l00095">srvm::PARAM_NAME_SUPPORT_EDGE_REMOVE_OFFSET</a>, <a class="el" href="srv__manager_8h_source.html#l00026">srvm::SRV_NAME_SUPPORT_FILTER</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00059">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00062">vis_mutex</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00299">299</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>.</p>
+<p>References <a class="el" href="pc__manager_8cpp_source.html#l00080">pcm::PCManager::cloudToRosMsg()</a>, <a class="el" href="srv__manager_8h_source.html#l00119">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST</a>, <a class="el" href="srv__manager_8h_source.html#l00120">srvm::DEFAULT_SERVICE_PARAMETER_REQUEST_F</a>, <a class="el" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc">srvm::DEFAULT_SERVICE_VEC_PARAMETER_REQUEST()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">horizontalAxis</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00135">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00144">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00117">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00126">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00181">log_str_supp</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00167">nh_ptr</a>, <a class="el" href="pc__manager_8cpp_source.html#l00095">pcm::PCManager::normToRosMsg()</a>, <a class="el" href="srv__manager_8h_source.html#l00094">srvm::PARAM_NAME_HORIZONTAL_AXIS</a>, <a class="el" href="srv__manager_8h_source.html#l00090">srvm::PARAM_NAME_HORIZONTAL_VARIANCE_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00088">srvm::PARAM_NAME_MIN_ITERATIVE_CLOUD_PERCENTAGE</a>, <a class="el" href="srv__manager_8h_source.html#l00089">srvm::PARAM_NAME_MIN_ITERATIVE_SUPPORT_PERCENTAGE</a>, <a class="el" href="srv__manager_8h_source.html#l00091">srvm::PARAM_NAME_RANSAC_IN_SHAPE_DISTANCE_POINT_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00093">srvm::PARAM_NAME_RANSAC_MAX_ITERATION_THRESHOLD</a>, <a class="el" href="srv__manager_8h_source.html#l00092">srvm::PARAM_NAME_RANSAC_MODEL_NORMAL_DISTANCE_WEIGHT</a>, <a class="el" href="srv__manager_8h_source.html#l00095">srvm::PARAM_NAME_SUPPORT_EDGE_REMOVE_OFFSET</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00047">ransacMaxIteration</a>, <a class="el" href="srv__manager_8h_source.html#l00026">srvm::SRV_NAME_SUPPORT_FILTER</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00169">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00177">vis_mutex</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae_cgraph.png" border="0" usemap="#obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae_cgraph" alt=""/></div>
 <map name="obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae_cgraph" id="obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae_cgraph">
-<area shape="rect" id="node2" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="171,5,391,46"/></map>
+<area shape="rect" id="node2" href="classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="171,5,397,32"/><area shape="rect" id="node3" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="174,57,394,98"/><area shape="rect" id="node4" href="classpcm_1_1PCManager.html#aad8d4dd6c1bb761213134760be5673c3" title="pcm::PCManager::normToRosMsg" alt="" coords="171,123,397,149"/></map>
 </div>
 </p>
 
@@ -405,18 +595,65 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00234">234</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>Node callback. </p>
+<p>It is called as soon as a new PC acquisition is available from the sensor. It processes the clud based on ROS services:</p>
+<ol type="1">
+<li><a class="el" href="deep__filter__srv_8cpp.html">deep_filter_srv.cpp</a></li>
+<li><a class="el" href="arm__filter__srv_8cpp.html">arm_filter_srv.cpp</a></li>
+<li><a class="el" href="supports__segmentation__srv_8cpp.html">supports_segmentation_srv.cpp</a></li>
+<li><a class="el" href="cluster__segmentation__srv_8cpp.html">cluster_segmentation_srv.cpp</a></li>
+</ol>
+<p>and publishes the output message if a successfully acquisition occurs.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>the Point Cloud message published on the input topic. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> </dd>
+<dd>
+<a class="el" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="call deep_filter_srv.cpp ROS service. ">callDeepFilter</a> </dd>
+<dd>
+<a class="el" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="call arm_filter_srv.cpp ROS service. ">callArmFilter</a> </dd>
+<dd>
+<a class="el" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="call support_segmentation_srv.cpp ROS service. ">callSupportFilter</a> </dd>
+<dd>
+<a class="el" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="call cluster_segmentation_srv.cpp ROS service. ">callClusterSegmentation</a> </dd></dl>
+<p>Following, the steeps that this function performs:</p>
+<ul>
+<li>get Kinect PC inputs as a standard pcl cloud,</li>
+<li>compute down-sampling (<a class="el" href="classpcm_1_1PCManager.html#ab9c66b0834ca1ef0c1c01e21400103dd">pcm::PCManager::downSampling</a>),</li>
+<li>call deep filter server (<a class="el" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="call deep_filter_srv.cpp ROS service. ">callDeepFilter</a>),</li>
+<li>if success: call arm filter server (<a class="el" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="call arm_filter_srv.cpp ROS service. ">callArmFilter</a>),</li>
+<li>if success: transform the cloud w.r.t. <a class="el" href="obj__segmentation_8cpp.html#abeb91134d7b10cc7475f7fa946e66a34" title="the transformation matrix between the RGB-D sensor and the srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRA...">pclTransform</a>,</li>
+<li>stop if too few points are remaining (w.r.t. <a class="el" href="obj__segmentation_8cpp.html#a3fea3689c92e1b2fcebd3eeafee94a5e" title="the cloud will be not not processed if has less number of points ">MIN_POINT_IN_ORIGINAL_CLOUD</a>). Otherwise ...</li>
+<li>compute the normals off all the points,</li>
+<li>show original cloud as gray points, if <a class="el" href="obj__segmentation_8cpp.html#ac6f703bc9e7358560334737266db326c" title="flag for showing raw cloud (white points) on the visualiser of this node. ">inputShowOriginalCloud</a> is true,</li>
+<li>call the support segmentation service (<a class="el" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="call support_segmentation_srv.cpp ROS service. ">callSupportFilter</a>),</li>
+<li>for all the detected supports ...</li>
+<li>show supports as brown points, if <a class="el" href="obj__segmentation_8cpp.html#acece8259b4a7b4327562daa817a43ef0" title="flag for showing identified tables (brown points) on the visualiser of this node. ...">inputShowSupportClouds</a> is true,</li>
+<li>show cloud of the object on the horizontal plane, as orange points, if <a class="el" href="obj__segmentation_8cpp.html#aea198f61928e89fc5332d092619b04f5" title="flag for showing identified all the points on the table (orange points) on the visualiser of this nod...">inputShowObjectOnSupport</a> is true,</li>
+<li>call cluster segmentation service (<a class="el" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="call cluster_segmentation_srv.cpp ROS service. ">callClusterSegmentation</a>),</li>
+<li>if there is at least one cluster, prepare node output message containing all the claster information for a support,</li>
+<li>show cloud of the segmented objects, with random colors, if <a class="el" href="obj__segmentation_8cpp.html#ab64cbde8b32aa3524e9fb94bb4d24525" title="flag for showing identified objects (random colors) on the visualiser of this node. ">inputShowClusterClouds</a> is true,</li>
+<li>prepare detached clusters center of mass for logging,</li>
+<li>publish the center of mass of the detached clusters for a specific support,</li>
+<li>print on screen the results,</li>
+<li>if <a class="el" href="obj__segmentation_8cpp.html#a6317446c893a78108aab89bf69a4b66a" title="file path to lag the centroids of the acquired objects in a table. Set to empty to do not log on file...">centroidLogFilePath</a> is not empty, print the same results on file. </li>
+</ul>
 
-<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00112">callArmFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00214">callClusterSegmentation()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="ransac__segmentation_8cpp_source.html#l00222">centroidFileLog</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00045">centroidLogFilePath</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00060">clusterPub</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00055">MIN_POINT_IN_ORIGINAL_CLOUD</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00232">pclTransform</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00052">scanId</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00059">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00062">vis_mutex</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00451">451</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00251">callArmFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00387">callClusterSegmentation()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="ransac__segmentation_8cpp_source.html#l00222">centroidFileLog</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00156">centroidLogFilePath</a>, <a class="el" href="pc__manager_8cpp_source.html#l00090">pcm::PCManager::cloudForRosMsg()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00171">clusterPub</a>, <a class="el" href="pc__manager_8cpp_source.html#l00055">pcm::PCManager::downSampling()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00068">pcm::PCManager::estimateNormal()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00135">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00144">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00117">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00126">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00101">MIN_POINT_IN_ORIGINAL_CLOUD</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00173">pclTransform</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00183">scanId</a>, <a class="el" href="pc__manager_8cpp_source.html#l00152">pcm::PCManager::updateVisor()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00169">vis</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00177">vis_mutex</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00215">pcm::PCManager::writeToFile()</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a_cgraph.png" border="0" usemap="#obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a_cgraph" alt=""/></div>
 <map name="obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a_cgraph" id="obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a_cgraph">
-<area shape="rect" id="node2" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="callArmFilter" alt="" coords="209,5,303,32"/><area shape="rect" id="node4" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="callClusterSegmentation" alt="" coords="174,56,338,83"/><area shape="rect" id="node5" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="BBBB. " alt="" coords="205,107,307,133"/><area shape="rect" id="node6" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="callSupportFilter" alt="" coords="198,157,314,184"/><area shape="rect" id="node3" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="387,74,607,115"/></map>
+<area shape="rect" id="node2" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="call arm_filter_srv.cpp ROS service. " alt="" coords="235,151,330,178"/><area shape="rect" id="node3" href="classpcm_1_1PCManager.html#acb513ed7a3b898e398fd211bafac6f6a" title="pcm::PCManager::cloudFor\lRosMsg" alt="" coords="462,38,645,80"/><area shape="rect" id="node6" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="call cluster_segmentation_srv.cpp ROS service. " alt="" coords="201,100,365,127"/><area shape="rect" id="node7" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="call deep_filter_srv.cpp ROS service. " alt="" coords="231,50,334,76"/><area shape="rect" id="node8" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="call support_segmentation_srv.cpp ROS service. " alt="" coords="225,202,341,228"/><area shape="rect" id="node10" href="classpcm_1_1PCManager.html#ab9c66b0834ca1ef0c1c01e21400103dd" title="pcm::PCManager::downSampling" alt="" coords="174,252,391,279"/><area shape="rect" id="node11" href="classpcm_1_1PCManager.html#ab2cdef39cbe4f3d6c3660d873bd9a38e" title="pcm::PCManager::estimate\lNormal" alt="" coords="191,304,374,345"/><area shape="rect" id="node12" href="classpcm_1_1PCManager.html#a8b6dfcce0709c29f63a82c4dfa6ef6e6" title="pcm::PCManager::updateVisor" alt="" coords="182,370,383,396"/><area shape="rect" id="node13" href="classpcm_1_1PCManager.html#a43f25363aa71aafc754a2ae42c832797" title="pcm::PCManager::writeToFile" alt="" coords="185,420,381,447"/><area shape="rect" id="node4" href="classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="440,104,667,131"/><area shape="rect" id="node5" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="443,156,663,197"/><area shape="rect" id="node9" href="classpcm_1_1PCManager.html#aad8d4dd6c1bb761213134760be5673c3" title="pcm::PCManager::normToRosMsg" alt="" coords="441,222,666,248"/></map>
 </div>
 </p>
 
@@ -445,26 +682,46 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This method implements the main node loop and it spins as soon as a new data is available in the input topic. Particularly, the input topic can be specified through its name into the parameter ..... </p>
+
+<p>It initialise this ROS node and spin in order to activate the <a class="el" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="Node callback. ">depthAcquisition</a> callback as soon as new data is available. It also listens and updates the <a class="el" href="obj__segmentation_8cpp.html#abeb91134d7b10cc7475f7fa946e66a34" title="the transformation matrix between the RGB-D sensor and the srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRA...">pclTransform</a> matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">argc</td><td></td></tr>
-    <tr><td class="paramname">argv</td><td></td></tr>
+    <tr><td class="paramname">argv</td><td>the value of the input parameters, respectively:<ol type="1">
+<li>the name of the input topic (containing a PointCloud2) (default value: <a class="el" href="namespacesrvm.html#afb9bab9dced618a8992cf505cf484b1c" title="the name of the input topic ">srvm::DEFAULT_INPUT_PARAM_RAW_CLOUD_TOPIC</a>),</li>
+<li>the flag for showing the original cloud (see <a class="el" href="obj__segmentation_8cpp.html#ac6f703bc9e7358560334737266db326c" title="flag for showing raw cloud (white points) on the visualiser of this node. ">inputShowOriginalCloud</a>),</li>
+<li>the flag for showing the supports cloud (see <a class="el" href="obj__segmentation_8cpp.html#acece8259b4a7b4327562daa817a43ef0" title="flag for showing identified tables (brown points) on the visualiser of this node. ...">inputShowSupportClouds</a>),</li>
+<li>the flag for showing the clusters cloud (see <a class="el" href="obj__segmentation_8cpp.html#ab64cbde8b32aa3524e9fb94bb4d24525" title="flag for showing identified objects (random colors) on the visualiser of this node. ">inputShowClusterClouds</a>),</li>
+<li>the flag for showing the cloud of the object above the supports (see <a class="el" href="obj__segmentation_8cpp.html#aea198f61928e89fc5332d092619b04f5" title="flag for showing identified all the points on the table (orange points) on the visualiser of this nod...">inputShowObjectOnSupport</a>),</li>
+<li>the file path in which store the logging information about the segmented cluster centroids (see <a class="el" href="obj__segmentation_8cpp.html#a6317446c893a78108aab89bf69a4b66a" title="file path to lag the centroids of the acquired objects in a table. Set to empty to do not log on file...">centroidLogFilePath</a>). </li>
+</ol>
+</td></tr>
+    <tr><td class="paramname">argc</td><td>the number of input parameters + 1 (defaults: executable name). It has to be equal to 7.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0. </dd></dl>
+<p>Following, the steeps that this function performs:</p>
+<ul>
+<li>instantiate the ROS node with name "obj_segmentation",</li>
+<li>read and configure input parameters,</li>
+<li>log info about this node set up,</li>
+<li>set subscriber to get RGB-D data (from the topic defied by argv[ 1]) that will be processed from <a class="el" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="Node callback. ">depthAcquisition</a> callback,</li>
+<li>eventually, create window (with name "Object Table Segmentation") to visualize clouds from this node,</li>
+<li>set the publisher for the node output to contains<div class="fragment"><div class="line">pitt_msgs::msg::ClustersOutput</div>
+</div><!-- fragment --> and named as <a class="el" href="namespacesrvm.html#a520b8813dc65ba764d59f05a0b316e5c">srvm::TOPIC_OUT_NAME_OBJECT_PERCEPTION</a> (with buffer size 10),</li>
+<li>wait for callbacl and listen for the transformation between the sensor camera (specified through the parameter: <a class="el" href="namespacesrvm.html#ac5228e86d6d396c944b11f847746b3b8">srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRAME</a>) and the output frame (specified through the parameter: <a class="el" href="namespacesrvm.html#a2984c458ad628e1230d49e4f1a3ee84a">srvm::PARAM_NAME_OUTPUT_CLOUD_REFERENCE_FRAME</a>).. </li>
+</ul>
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00337">337</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00571">571</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00045">centroidLogFilePath</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00060">clusterPub</a>, <a class="el" href="srv__manager_8h_source.html#l00101">srvm::DEFAULT_INPUT_PARAM_CENTROID_LOG_FILE</a>, <a class="el" href="srv__manager_8h_source.html#l00100">srvm::DEFAULT_INPUT_PARAM_RAW_CLOUD_TOPIC</a>, <a class="el" href="srv__manager_8h_source.html#l00105">srvm::DEFAULT_INPUT_PARAM_SHOW_CLUSTERS</a>, <a class="el" href="srv__manager_8h_source.html#l00104">srvm::DEFAULT_INPUT_PARAM_SHOW_OBJECT_ON_SUPPORT</a>, <a class="el" href="srv__manager_8h_source.html#l00102">srvm::DEFAULT_INPUT_PARAM_SHOW_ORIGINAL_CLOUD</a>, <a class="el" href="srv__manager_8h_source.html#l00103">srvm::DEFAULT_INPUT_PARAM_SHOW_SUPPORTS</a>, <a class="el" href="srv__manager_8h_source.html#l00098">srvm::DEFAULT_PARAM_INPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="srv__manager_8h_source.html#l00099">srvm::DEFAULT_PARAM_OUTPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="srv__manager_8h_source.html#l00125">srvm::DEFAULT_TF_WAIT_SECONDS</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, <a class="el" href="srv__manager_8h_source.html#l00144">srvm::getBoolPtrParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00191">srvm::getFlagValueToPrint()</a>, <a class="el" href="srv__manager_8h_source.html#l00158">srvm::getPathPtrParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00129">srvm::getStringParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00134">srvm::getStringPtrParameter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00044">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00048">log_str_depth</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00049">log_str_supp</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00036">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00035">srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="srv__manager_8h_source.html#l00036">srvm::PARAM_NAME_OUTPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00232">pclTransform</a>, <a class="el" href="srv__manager_8h_source.html#l00115">srvm::TOPIC_OUT_NAME_OBJECT_PERCEPTION</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00059">vis</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00061">vis_thread</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00064">visSpin()</a>.</p>
+<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00156">centroidLogFilePath</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00171">clusterPub</a>, <a class="el" href="pc__manager_8cpp_source.html#l00131">pcm::PCManager::createVisor()</a>, <a class="el" href="srv__manager_8h_source.html#l00102">srvm::DEFAULT_INPUT_PARAM_CENTROID_LOG_FILE</a>, <a class="el" href="srv__manager_8h_source.html#l00101">srvm::DEFAULT_INPUT_PARAM_RAW_CLOUD_TOPIC</a>, <a class="el" href="srv__manager_8h_source.html#l00106">srvm::DEFAULT_INPUT_PARAM_SHOW_CLUSTERS</a>, <a class="el" href="srv__manager_8h_source.html#l00105">srvm::DEFAULT_INPUT_PARAM_SHOW_OBJECT_ON_SUPPORT</a>, <a class="el" href="srv__manager_8h_source.html#l00103">srvm::DEFAULT_INPUT_PARAM_SHOW_ORIGINAL_CLOUD</a>, <a class="el" href="srv__manager_8h_source.html#l00104">srvm::DEFAULT_INPUT_PARAM_SHOW_SUPPORTS</a>, <a class="el" href="srv__manager_8h_source.html#l00098">srvm::DEFAULT_PARAM_INPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="srv__manager_8h_source.html#l00099">srvm::DEFAULT_PARAM_OUTPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="srv__manager_8h_source.html#l00126">srvm::DEFAULT_TF_WAIT_SECONDS</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, <a class="el" href="srv__manager_8h_source.html#l00145">srvm::getBoolPtrParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00192">srvm::getFlagValueToPrint()</a>, <a class="el" href="srv__manager_8h_source.html#l00159">srvm::getPathPtrParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00130">srvm::getStringParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00135">srvm::getStringPtrParameter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00135">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00144">inputShowObjectOnSupport</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00117">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00126">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00179">log_str_depth</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00181">log_str_supp</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00167">nh_ptr</a>, <a class="el" href="srv__manager_8h_source.html#l00035">srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="srv__manager_8h_source.html#l00036">srvm::PARAM_NAME_OUTPUT_CLOUD_REFERENCE_FRAME</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00173">pclTransform</a>, <a class="el" href="srv__manager_8h_source.html#l00116">srvm::TOPIC_OUT_NAME_OBJECT_PERCEPTION</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00169">vis</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00175">vis_thread</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00192">visSpin()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00215">pcm::PCManager::writeToFile()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph.png" border="0" usemap="#obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" alt=""/></div>
 <map name="obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph" id="obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627_cgraph">
-<area shape="rect" id="node2" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="depthAcquisition" alt="" coords="139,107,258,133"/><area shape="rect" id="node8" href="namespacesrvm.html#a4a300ace21cdfc4e753d7bbf97620f69" title="srvm::getBoolPtrParameter" alt="" coords="109,183,289,209"/><area shape="rect" id="node10" href="namespacesrvm.html#a0ceb768d016b217ced8c3d0b2a520862" title="srvm::getFlagValueToPrint" alt="" coords="110,233,287,260"/><area shape="rect" id="node11" href="namespacesrvm.html#acad80730421eaf35cda6c8dcb0c3b4d6" title="srvm::getPathPtrParameter" alt="" coords="108,284,289,311"/><area shape="rect" id="node14" href="namespacesrvm.html#a9c76ccfdb20b5ade1a837f4888a64997" title="srvm::getStringParameter" alt="" coords="341,360,512,387"/><area shape="rect" id="node15" href="namespacesrvm.html#a2fe9c141c7827eaa0269319f179dfee5" title="srvm::getStringPtrParameter" alt="" coords="105,385,293,412"/><area shape="rect" id="node16" href="obj__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc" title="visSpin" alt="" coords="166,436,231,463"/><area shape="rect" id="node3" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="callArmFilter" alt="" coords="379,5,474,32"/><area shape="rect" id="node5" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="callClusterSegmentation" alt="" coords="345,56,509,83"/><area shape="rect" id="node6" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="BBBB. " alt="" coords="375,107,478,133"/><area shape="rect" id="node7" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="callSupportFilter" alt="" coords="369,157,485,184"/><area shape="rect" id="node4" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="569,74,789,115"/><area shape="rect" id="node9" href="namespacesrvm.html#ac652beec1eacae6f527677f11e2a9256" title="srvm::getBoolParameter" alt="" coords="345,208,508,235"/><area shape="rect" id="node12" href="namespacesrvm.html#a2d37598ea68edd23c273e90b7f544e85" title="srvm::getPathParameter" alt="" coords="345,284,509,311"/><area shape="rect" id="node13" href="classpcm_1_1PCManager.html#ac1a98146a63dfd36626a16ed1a50098a" title="pcm::PCManager::getFomrattedData" alt="" coords="560,284,797,311"/></map>
+<area shape="rect" id="node2" href="classpcm_1_1PCManager.html#a23d8e95e891a3330785375e6672ec1fe" title="pcm::PCManager::createVisor" alt="" coords="105,224,303,251"/><area shape="rect" id="node3" href="obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="Node callback. " alt="" coords="145,275,263,301"/><area shape="rect" id="node15" href="classpcm_1_1PCManager.html#a43f25363aa71aafc754a2ae42c832797" title="pcm::PCManager::writeToFile" alt="" coords="363,427,559,453"/><area shape="rect" id="node16" href="namespacesrvm.html#a4a300ace21cdfc4e753d7bbf97620f69" title="srvm::getBoolPtrParameter" alt="" coords="114,452,294,479"/><area shape="rect" id="node18" href="namespacesrvm.html#a0ceb768d016b217ced8c3d0b2a520862" title="srvm::getFlagValueToPrint" alt="" coords="115,503,293,529"/><area shape="rect" id="node19" href="namespacesrvm.html#acad80730421eaf35cda6c8dcb0c3b4d6" title="srvm::getPathPtrParameter" alt="" coords="113,553,295,580"/><area shape="rect" id="node22" href="namespacesrvm.html#a9c76ccfdb20b5ade1a837f4888a64997" title="srvm::getStringParameter" alt="" coords="376,629,547,656"/><area shape="rect" id="node23" href="namespacesrvm.html#a2fe9c141c7827eaa0269319f179dfee5" title="srvm::getStringPtrParameter" alt="" coords="110,604,298,631"/><area shape="rect" id="node24" href="obj__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc" title="make the visualisation spinning without lagging acroos multi updating. " alt="" coords="171,705,237,732"/><area shape="rect" id="node4" href="obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="call arm_filter_srv.cpp ROS service. " alt="" coords="414,275,509,301"/><area shape="rect" id="node5" href="classpcm_1_1PCManager.html#acb513ed7a3b898e398fd211bafac6f6a" title="pcm::PCManager::cloudFor\lRosMsg" alt="" coords="646,318,829,359"/><area shape="rect" id="node8" href="obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="call cluster_segmentation_srv.cpp ROS service. " alt="" coords="379,224,543,251"/><area shape="rect" id="node9" href="obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="call deep_filter_srv.cpp ROS service. " alt="" coords="410,325,513,352"/><area shape="rect" id="node10" href="obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="call support_segmentation_srv.cpp ROS service. " alt="" coords="403,5,519,32"/><area shape="rect" id="node12" href="classpcm_1_1PCManager.html#ab9c66b0834ca1ef0c1c01e21400103dd" title="pcm::PCManager::downSampling" alt="" coords="353,56,570,83"/><area shape="rect" id="node13" href="classpcm_1_1PCManager.html#ab2cdef39cbe4f3d6c3660d873bd9a38e" title="pcm::PCManager::estimate\lNormal" alt="" coords="370,107,553,149"/><area shape="rect" id="node14" href="classpcm_1_1PCManager.html#a8b6dfcce0709c29f63a82c4dfa6ef6e6" title="pcm::PCManager::updateVisor" alt="" coords="361,173,562,200"/><area shape="rect" id="node6" href="classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="624,245,851,272"/><area shape="rect" id="node7" href="namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="627,118,847,159"/><area shape="rect" id="node11" href="classpcm_1_1PCManager.html#aad8d4dd6c1bb761213134760be5673c3" title="pcm::PCManager::normToRosMsg" alt="" coords="625,5,850,32"/><area shape="rect" id="node17" href="namespacesrvm.html#ac652beec1eacae6f527677f11e2a9256" title="srvm::getBoolParameter" alt="" coords="380,477,543,504"/><area shape="rect" id="node20" href="namespacesrvm.html#a2d37598ea68edd23c273e90b7f544e85" title="srvm::getPathParameter" alt="" coords="379,553,543,580"/><area shape="rect" id="node21" href="classpcm_1_1PCManager.html#ac1a98146a63dfd36626a16ed1a50098a" title="pcm::PCManager::getFomrattedData" alt="" coords="619,553,856,580"/></map>
 </div>
 </p>
 
@@ -483,11 +740,13 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00064">64</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>make the visualisation spinning without lagging acroos multi updating. </p>
 
-<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00059">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00062">vis_mutex</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00192">192</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>References <a class="el" href="obj__segmentation_8cpp_source.html#l00169">vis</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00177">vis_mutex</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -502,25 +761,35 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00045">45</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>file path to lag the centroids of the acquired objects in a table. Set to empty to do not log on file. </p>
+<p>The data, that will be appended on the file for each acquisition will have the following shape: </p>
+<div class="fragment"><div class="line"><span class="stringliteral">&quot;scan id, support idx, cluster idx, centroid X, centroid Y, centroid Z;\n&quot;</span> </div>
+</div><!-- fragment --><p>This is a global input parameter that is settable from launcher and acquired during node initialization (see also <a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> function: argv[ 6]). <br/>
+ It cannot be changed on the fly. <br/>
+ It default values is set to: <a class="el" href="namespacesrvm.html#a92921b8b79655fa69a697a54dca42056">srvm::DEFAULT_INPUT_PARAM_CENTROID_LOG_FILE</a> </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00156">156</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a27c3ab807dd4360a5b35f9b4813ac85c"></a>
+<a class="anchor" id="a431711d7fd270977af34b226ed5d5cef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Publisher clusterPub</td>
+          <td class="memname">ros::Publisher clusterPub</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00060">60</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>the ROS publisher in which the message of a new acquistion will be send. </p>
+<p>Its name is: <a class="el" href="namespacesrvm.html#a520b8813dc65ba764d59f05a0b316e5c">srvm::TOPIC_OUT_NAME_OBJECT_PERCEPTION</a>. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00171">171</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -534,9 +803,14 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00044">44</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>flag for showing identified objects (random colors) on the visualiser of this node. </p>
+<p>This is a global input parameter that is settable from launcher and acquired during node initialization (see also <a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> function: argv[ 4]). <br/>
+ It cannot be changed on the fly. <br/>
+ It default values is set to: <a class="el" href="namespacesrvm.html#aef053199a3f95b1da712ef187b096f93">srvm::DEFAULT_INPUT_PARAM_SHOW_CLUSTERS</a> </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00135">135</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -550,9 +824,14 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00044">44</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>flag for showing identified all the points on the table (orange points) on the visualiser of this node. </p>
+<p>This is a global input parameter that is settable from launcher and acquired during node initialization (see also <a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> function: argv[ 5]). <br/>
+ It cannot be changed on the fly. <br/>
+ It default values is set to: <a class="el" href="namespacesrvm.html#a8e6760e3e9557fc2fb87cbb6fcd8b3e6">srvm::DEFAULT_INPUT_PARAM_SHOW_OBJECT_ON_SUPPORT</a> </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00144">144</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -566,9 +845,14 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00044">44</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>flag for showing raw cloud (white points) on the visualiser of this node. </p>
+<p>This is a global input parameter that is settable from launcher and acquired during node initialization (see also <a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> function: argv[ 2]). <br/>
+ It cannot be changed on the fly. <br/>
+ It default values is set to: <a class="el" href="namespacesrvm.html#ac54afc31491c977345ef1a1fbb563be3">srvm::DEFAULT_INPUT_PARAM_SHOW_ORIGINAL_CLOUD</a> </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00117">117</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -582,9 +866,14 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00044">44</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>flag for showing identified tables (brown points) on the visualiser of this node. </p>
+<p>This is a global input parameter that is settable from launcher and acquired during node initialization (see also <a class="el" href="obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title="It initialise this ROS node and spin in order to activate the depthAcquisition callback as soon as ne...">main</a> function: argv[ 3]). <br/>
+ It cannot be changed on the fly. <br/>
+ It default values is set to: <a class="el" href="namespacesrvm.html#a9880144ef0df953c3b583e4f20dbff76">srvm::DEFAULT_INPUT_PARAM_SHOW_SUPPORTS</a> </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00126">126</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -598,9 +887,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00048">48</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>string that will contains info about <a class="el" href="deep__filter__srv_8cpp.html">deep_filter_srv.cpp</a> service, shown in the visualiser while the parameters are changed on the fly. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00179">179</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -614,9 +905,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00049">49</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>string that will contains info about support_segmentation_srv.cpp service, shown in the visualiser while the parameters are changed on the fly. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00181">181</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -630,7 +923,9 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00058">58</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>variable to initialise the <a class="el" href="classpcm_1_1PCManager.html">pcm::PCManager</a>. </p>
+
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00165">165</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
 
 </div>
 </div>
@@ -652,9 +947,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00055">55</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>the cloud will be not not processed if has less number of points </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00101">101</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>.</p>
 
 </div>
 </div>
@@ -668,9 +965,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00036">36</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>ros handle passed across all services calls. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00112">callArmFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00214">callClusterSegmentation()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00167">167</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00251">callArmFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00387">callClusterSegmentation()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -684,9 +983,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00232">232</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>the transformation matrix between the RGB-D sensor and the <a class="el" href="namespacesrvm.html#ac5228e86d6d396c944b11f847746b3b8">srvm::PARAM_NAME_INPUT_CLOUD_REFERENCE_FRAME</a> frame (it can be changed on the fly). </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00173">173</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -700,9 +1001,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00052">52</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>so far, it is used only for logging. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00183">183</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>.</p>
 
 </div>
 </div>
@@ -716,9 +1019,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00059">59</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>the PCL visualiser for this node. </p>
+<p>It will happear if at least one of: <a class="el" href="obj__segmentation_8cpp.html#ac6f703bc9e7358560334737266db326c" title="flag for showing raw cloud (white points) on the visualiser of this node. ">inputShowOriginalCloud</a>, <a class="el" href="obj__segmentation_8cpp.html#acece8259b4a7b4327562daa817a43ef0" title="flag for showing identified tables (brown points) on the visualiser of this node. ...">inputShowSupportClouds</a>, <a class="el" href="obj__segmentation_8cpp.html#ab64cbde8b32aa3524e9fb94bb4d24525" title="flag for showing identified objects (random colors) on the visualiser of this node. ">inputShowClusterClouds</a>, <a class="el" href="obj__segmentation_8cpp.html#aea198f61928e89fc5332d092619b04f5" title="flag for showing identified all the points on the table (orange points) on the visualiser of this nod...">inputShowObjectOnSupport</a>; is true. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00064">visSpin()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00169">169</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00192">visSpin()</a>.</p>
 
 </div>
 </div>
@@ -732,9 +1038,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00062">62</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>for a better visualiser updating during different services calls. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00079">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00234">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00064">visSpin()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00177">177</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00192">visSpin()</a>.</p>
 
 </div>
 </div>
@@ -748,9 +1056,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00061">61</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+<p>for a better visualiser updating on parallel thread. </p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00337">main()</a>.</p>
+<p>Definition at line <a class="el" href="obj__segmentation_8cpp_source.html#l00175">175</a> of file <a class="el" href="obj__segmentation_8cpp_source.html">obj_segmentation.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -760,7 +1070,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="obj__segmentation_8cpp.html">obj_segmentation.cpp</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:35 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

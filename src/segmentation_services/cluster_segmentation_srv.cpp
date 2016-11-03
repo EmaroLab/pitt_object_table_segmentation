@@ -39,9 +39,11 @@ bool clusterize(ClusterSegmentation::Request  &req, ClusterSegmentation::Respons
 
 	// get data and convert in useful format considering also default
 	PCLCloudPtr cloud = pcm::PCManager::cloudForRosMsg( req.cloud);
+
+
+	// TODO: da rimettere apposto come gli altri servizzi
 	double tolerance, minClusterSizeRate, maxClusterSizeRate;
 	int minInputSize;
-
     nh_ptr->param(srvm::PARAM_NAME_CLUSTER_TOLERANCE,
                   tolerance, CLUSTER_TOLERANCE_DEFAULT);
     nh_ptr->param(srvm::PARAM_NAME_CLUSTER_MIN_RATE,
@@ -103,6 +105,8 @@ bool clusterize(ClusterSegmentation::Request  &req, ClusterSegmentation::Respons
 			res.cluster_objs.push_back( *cluster);
 		}
 	}
+
+    // TODO: add used_partameters!!!
 
 	return true;
 }

@@ -1,17 +1,25 @@
 <map id="main" name="main">
-<area shape="rect" id="node2" href="$obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="depthAcquisition" alt="" coords="139,107,258,133"/>
-<area shape="rect" id="node8" href="$namespacesrvm.html#a4a300ace21cdfc4e753d7bbf97620f69" title="srvm::getBoolPtrParameter" alt="" coords="109,183,289,209"/>
-<area shape="rect" id="node10" href="$namespacesrvm.html#a0ceb768d016b217ced8c3d0b2a520862" title="srvm::getFlagValueToPrint" alt="" coords="110,233,287,260"/>
-<area shape="rect" id="node11" href="$namespacesrvm.html#acad80730421eaf35cda6c8dcb0c3b4d6" title="srvm::getPathPtrParameter" alt="" coords="108,284,289,311"/>
-<area shape="rect" id="node14" href="$namespacesrvm.html#a9c76ccfdb20b5ade1a837f4888a64997" title="srvm::getStringParameter" alt="" coords="341,360,512,387"/>
-<area shape="rect" id="node15" href="$namespacesrvm.html#a2fe9c141c7827eaa0269319f179dfee5" title="srvm::getStringPtrParameter" alt="" coords="105,385,293,412"/>
-<area shape="rect" id="node16" href="$obj__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc" title="visSpin" alt="" coords="166,436,231,463"/>
-<area shape="rect" id="node3" href="$obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="callArmFilter" alt="" coords="379,5,474,32"/>
-<area shape="rect" id="node5" href="$obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="callClusterSegmentation" alt="" coords="345,56,509,83"/>
-<area shape="rect" id="node6" href="$obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="BBBB. " alt="" coords="375,107,478,133"/>
-<area shape="rect" id="node7" href="$obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="callSupportFilter" alt="" coords="369,157,485,184"/>
-<area shape="rect" id="node4" href="$namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="569,74,789,115"/>
-<area shape="rect" id="node9" href="$namespacesrvm.html#ac652beec1eacae6f527677f11e2a9256" title="srvm::getBoolParameter" alt="" coords="345,208,508,235"/>
-<area shape="rect" id="node12" href="$namespacesrvm.html#a2d37598ea68edd23c273e90b7f544e85" title="srvm::getPathParameter" alt="" coords="345,284,509,311"/>
-<area shape="rect" id="node13" href="$classpcm_1_1PCManager.html#ac1a98146a63dfd36626a16ed1a50098a" title="pcm::PCManager::getFomrattedData" alt="" coords="560,284,797,311"/>
+<area shape="rect" id="node2" href="$classpcm_1_1PCManager.html#a23d8e95e891a3330785375e6672ec1fe" title="pcm::PCManager::createVisor" alt="" coords="105,224,303,251"/>
+<area shape="rect" id="node3" href="$obj__segmentation_8cpp.html#a480da8a5bc48bba4ac0cd49cfa4e5e7a" title="Node callback. " alt="" coords="145,275,263,301"/>
+<area shape="rect" id="node15" href="$classpcm_1_1PCManager.html#a43f25363aa71aafc754a2ae42c832797" title="pcm::PCManager::writeToFile" alt="" coords="363,427,559,453"/>
+<area shape="rect" id="node16" href="$namespacesrvm.html#a4a300ace21cdfc4e753d7bbf97620f69" title="srvm::getBoolPtrParameter" alt="" coords="114,452,294,479"/>
+<area shape="rect" id="node18" href="$namespacesrvm.html#a0ceb768d016b217ced8c3d0b2a520862" title="srvm::getFlagValueToPrint" alt="" coords="115,503,293,529"/>
+<area shape="rect" id="node19" href="$namespacesrvm.html#acad80730421eaf35cda6c8dcb0c3b4d6" title="srvm::getPathPtrParameter" alt="" coords="113,553,295,580"/>
+<area shape="rect" id="node22" href="$namespacesrvm.html#a9c76ccfdb20b5ade1a837f4888a64997" title="srvm::getStringParameter" alt="" coords="376,629,547,656"/>
+<area shape="rect" id="node23" href="$namespacesrvm.html#a2fe9c141c7827eaa0269319f179dfee5" title="srvm::getStringPtrParameter" alt="" coords="110,604,298,631"/>
+<area shape="rect" id="node24" href="$obj__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc" title="make the visualisation spinning without lagging acroos multi updating. " alt="" coords="171,705,237,732"/>
+<area shape="rect" id="node4" href="$obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae" title="call arm_filter_srv.cpp ROS service. " alt="" coords="414,275,509,301"/>
+<area shape="rect" id="node5" href="$classpcm_1_1PCManager.html#acb513ed7a3b898e398fd211bafac6f6a" title="pcm::PCManager::cloudFor\lRosMsg" alt="" coords="646,318,829,359"/>
+<area shape="rect" id="node8" href="$obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b" title="call cluster_segmentation_srv.cpp ROS service. " alt="" coords="379,224,543,251"/>
+<area shape="rect" id="node9" href="$obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2" title="call deep_filter_srv.cpp ROS service. " alt="" coords="410,325,513,352"/>
+<area shape="rect" id="node10" href="$obj__segmentation_8cpp.html#a7eb9ce1c694ace5adb8e94f09e54cdae" title="call support_segmentation_srv.cpp ROS service. " alt="" coords="403,5,519,32"/>
+<area shape="rect" id="node12" href="$classpcm_1_1PCManager.html#ab9c66b0834ca1ef0c1c01e21400103dd" title="pcm::PCManager::downSampling" alt="" coords="353,56,570,83"/>
+<area shape="rect" id="node13" href="$classpcm_1_1PCManager.html#ab2cdef39cbe4f3d6c3660d873bd9a38e" title="pcm::PCManager::estimate\lNormal" alt="" coords="370,107,553,149"/>
+<area shape="rect" id="node14" href="$classpcm_1_1PCManager.html#a8b6dfcce0709c29f63a82c4dfa6ef6e6" title="pcm::PCManager::updateVisor" alt="" coords="361,173,562,200"/>
+<area shape="rect" id="node6" href="$classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="624,245,851,272"/>
+<area shape="rect" id="node7" href="$namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="627,118,847,159"/>
+<area shape="rect" id="node11" href="$classpcm_1_1PCManager.html#aad8d4dd6c1bb761213134760be5673c3" title="pcm::PCManager::normToRosMsg" alt="" coords="625,5,850,32"/>
+<area shape="rect" id="node17" href="$namespacesrvm.html#ac652beec1eacae6f527677f11e2a9256" title="srvm::getBoolParameter" alt="" coords="380,477,543,504"/>
+<area shape="rect" id="node20" href="$namespacesrvm.html#a2d37598ea68edd23c273e90b7f544e85" title="srvm::getPathParameter" alt="" coords="379,553,543,580"/>
+<area shape="rect" id="node21" href="$classpcm_1_1PCManager.html#ac1a98146a63dfd36626a16ed1a50098a" title="pcm::PCManager::getFomrattedData" alt="" coords="619,553,856,580"/>
 </map>

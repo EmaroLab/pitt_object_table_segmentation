@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: pcm::PCManager Class Reference</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): pcm::PCManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -446,7 +447,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00090">90</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="cluster__segmentation__srv_8cpp_source.html#l00038">clusterize()</a>, <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00326">setOriginalCloud()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00251">callArmFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="cluster__segmentation__srv_8cpp_source.html#l00038">clusterize()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00326">setOriginalCloud()</a>.</p>
 
 </div>
 </div>
@@ -500,7 +501,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00080">80</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="pc__manager_8cpp_source.html#l00292">getOriginalCloudRosMsg()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00251">callArmFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00387">callClusterSegmentation()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00207">callDeepFilter()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00292">getOriginalCloudRosMsg()</a>.</p>
 
 </div>
 </div>
@@ -528,7 +529,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00112">112</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -634,7 +635,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00131">131</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="pc__manager_8cpp_source.html#l00347">initialize()</a>, <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00220">main()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00330">setVisualizationFlag()</a>.</p>
+<p>Referenced by <a class="el" href="pc__manager_8cpp_source.html#l00347">initialize()</a>, <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00330">setVisualizationFlag()</a>.</p>
 
 </div>
 </div>
@@ -664,7 +665,7 @@ Here is the call graph for this function:</div>
 
 <p>References <a class="el" href="pc__manager_8h_source.html#l00120">DEFAULT_DOWSEAMPLIG_RATE</a>.</p>
 
-<p>Referenced by <a class="el" href="pc__manager_8cpp_source.html#l00058">downSampling()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00315">setOriginalCloud()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00058">downSampling()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00315">setOriginalCloud()</a>.</p>
 
 </div>
 </div>
@@ -791,7 +792,7 @@ Here is the call graph for this function:</div>
 
 <p>References <a class="el" href="pc__manager_8h_source.html#l00119">DEFAULT_NORM_SEARCH</a>.</p>
 
-<p>Referenced by <a class="el" href="pc__manager_8cpp_source.html#l00315">setOriginalCloud()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00315">setOriginalCloud()</a>.</p>
 
 </div>
 </div>
@@ -932,7 +933,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00121">121</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="srv__manager_8h_source.html#l00149">srvm::getPathParameter()</a>.</p>
+<p>Referenced by <a class="el" href="srv__manager_8h_source.html#l00150">srvm::getPathParameter()</a>.</p>
 
 </div>
 </div>
@@ -1147,7 +1148,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00105">105</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -1175,7 +1176,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00100">100</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -1203,7 +1204,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00095">95</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="pc__manager_8cpp_source.html#l00299">getOriginalNormalRosMsg()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00299">getOriginalNormalRosMsg()</a>.</p>
 
 </div>
 </div>
@@ -1461,7 +1462,7 @@ Here is the call graph for this function:</div>
 
 <p>References <a class="el" href="pc__manager_8h_source.html#l00110">VISUALIZER_POINT_SIZE</a>.</p>
 
-<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00148">updateVisor()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, and <a class="el" href="pc__manager_8cpp_source.html#l00148">updateVisor()</a>.</p>
 
 </div>
 </div>
@@ -1814,6 +1815,8 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="pc__manager_8cpp_source.html#l00215">215</a> of file <a class="el" href="pc__manager_8cpp_source.html">pc_manager.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00451">depthAcquisition()</a>, and <a class="el" href="obj__segmentation_8cpp_source.html#l00571">main()</a>.</p>
 
 </div>
 </div>
@@ -2206,7 +2209,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacepcm.html">pcm</a></li><li class="navelem"><a class="el" href="classpcm_1_1PCManager.html">PCManager</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:35 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

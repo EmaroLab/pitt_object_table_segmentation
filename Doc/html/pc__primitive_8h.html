@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: src/point_cloud_library/pc_primitive.h File Reference</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): src/point_cloud_library/pc_primitive.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -117,15 +118,13 @@ $(document).ready(function(){initNavTree('pc__primitive_8h.html','');});
 Include dependency graph for pc_primitive.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="pc__primitive_8h__incl.png" border="0" usemap="#src_2point__cloud__library_2pc__primitive_8h" alt=""/></div>
-<map name="src_2point__cloud__library_2pc__primitive_8h" id="src_2point__cloud__library_2pc__primitive_8h">
-</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="pc__primitive_8h__dep__incl.png" border="0" usemap="#src_2point__cloud__library_2pc__primitive_8hdep" alt=""/></div>
 <map name="src_2point__cloud__library_2pc__primitive_8hdep" id="src_2point__cloud__library_2pc__primitive_8hdep">
-<area shape="rect" id="node2" href="pc__manager_8h.html" title="src/point_cloud_library\l/pc_manager.h" alt="" coords="1024,97,1176,138"/><area shape="rect" id="node15" href="pc__primitive_8cpp.html" title="src/point_cloud_library\l/pc_primitive.cpp" alt="" coords="1200,97,1352,138"/><area shape="rect" id="node3" href="obj__segmentation_8cpp.html" title="src/obj_segmentation.cpp" alt="" coords="5,292,176,319"/><area shape="rect" id="node4" href="srv__manager_8h.html" title="src/point_cloud_library\l/srv_manager.h" alt="" coords="968,187,1120,229"/><area shape="rect" id="node5" href="ransac__segmentation_8cpp.html" title="src/ransac_segmentation.cpp" alt="" coords="201,292,393,319"/><area shape="rect" id="node6" href="arm__filter__srv_8cpp.html" title="src/segmentation_services\l/arm_filter_srv.cpp" alt="" coords="419,285,597,326"/><area shape="rect" id="node7" href="cluster__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cluster_segmentation_srv.cpp" alt="" coords="621,285,820,326"/><area shape="rect" id="node8" href="cone__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cone_segmentation_srv.cpp" alt="" coords="845,285,1035,326"/><area shape="rect" id="node9" href="cylinder__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cylinder_segmentation\l_srv.cpp" alt="" coords="1059,277,1237,333"/><area shape="rect" id="node10" href="deep__filter__srv_8cpp.html" title="src/segmentation_services\l/deep_filter_srv.cpp" alt="" coords="1261,285,1440,326"/><area shape="rect" id="node11" href="plane__segmentation__srv_8cpp.html" title="src/segmentation_services\l/plane_segmentation_srv.cpp" alt="" coords="1464,285,1656,326"/><area shape="rect" id="node12" href="sphere__segmentation__srv_8cpp.html" title="src/segmentation_services\l/sphere_segmentation_srv.cpp" alt="" coords="1680,285,1879,326"/><area shape="rect" id="node13" href="supports__segmentation__srv_8cpp.html" title="src/segmentation_services\l/supports_segmentation\l_srv.cpp" alt="" coords="1904,277,2083,333"/><area shape="rect" id="node14" href="pc__manager_8cpp.html" title="src/point_cloud_library\l/pc_manager.cpp" alt="" coords="1397,187,1549,229"/></map>
+<area shape="rect" id="node2" href="pc__manager_8h.html" title="src/point_cloud_library\l/pc_manager.h" alt="" coords="1024,97,1176,138"/><area shape="rect" id="node15" href="pc__primitive_8cpp.html" title="src/point_cloud_library\l/pc_primitive.cpp" alt="" coords="1200,97,1352,138"/><area shape="rect" id="node3" href="obj__segmentation_8cpp.html" title="The PITT starting node, to preprocessing the Point Cloud for primitive identification. " alt="" coords="5,292,176,319"/><area shape="rect" id="node4" href="srv__manager_8h.html" title="src/point_cloud_library\l/srv_manager.h" alt="" coords="968,187,1120,229"/><area shape="rect" id="node5" href="ransac__segmentation_8cpp.html" title="src/ransac_segmentation.cpp" alt="" coords="201,292,393,319"/><area shape="rect" id="node6" href="arm__filter__srv_8cpp.html" title="src/segmentation_services\l/arm_filter_srv.cpp" alt="" coords="419,285,597,326"/><area shape="rect" id="node7" href="cluster__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cluster_segmentation_srv.cpp" alt="" coords="621,285,820,326"/><area shape="rect" id="node8" href="cone__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cone_segmentation_srv.cpp" alt="" coords="845,285,1035,326"/><area shape="rect" id="node9" href="cylinder__segmentation__srv_8cpp.html" title="src/segmentation_services\l/cylinder_segmentation\l_srv.cpp" alt="" coords="1059,277,1237,333"/><area shape="rect" id="node10" href="deep__filter__srv_8cpp.html" title="src/segmentation_services\l/deep_filter_srv.cpp" alt="" coords="1261,285,1440,326"/><area shape="rect" id="node11" href="plane__segmentation__srv_8cpp.html" title="src/segmentation_services\l/plane_segmentation_srv.cpp" alt="" coords="1464,285,1656,326"/><area shape="rect" id="node12" href="sphere__segmentation__srv_8cpp.html" title="The ROS service, to identify a sphere in a point cloud. " alt="" coords="1680,285,1879,326"/><area shape="rect" id="node13" href="supports__segmentation__srv_8cpp.html" title="src/segmentation_services\l/supports_segmentation\l_srv.cpp" alt="" coords="1904,277,2083,333"/><area shape="rect" id="node14" href="pc__manager_8cpp.html" title="src/point_cloud_library\l/pc_manager.cpp" alt="" coords="1397,187,1549,229"/></map>
 </div>
 </div>
 <p><a href="pc__primitive_8h_source.html">Go to the source code of this file.</a></p>
@@ -251,7 +250,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5e23dc2f4fff83684b554677feda7b95.html">point_cloud_library</a></li><li class="navelem"><a class="el" href="pc__primitive_8h.html">pc_primitive.h</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:35 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

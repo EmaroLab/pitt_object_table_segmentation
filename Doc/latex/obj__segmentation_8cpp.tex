@@ -1,28 +1,23 @@
 \hypertarget{obj__segmentation_8cpp}{\section{src/obj\-\_\-segmentation.cpp File Reference}
 \label{obj__segmentation_8cpp}\index{src/obj\-\_\-segmentation.\-cpp@{src/obj\-\_\-segmentation.\-cpp}}
 }
+
+
+The P\-I\-T\-T starting node, to {\bfseries preprocessing} the Point Cloud for primitive identification.  
+
+
 {\ttfamily \#include $<$pcl\-\_\-ros/point\-\_\-cloud.\-h$>$}\\*
-{\ttfamily \#include $<$std\-\_\-msgs/\-Float64.\-h$>$}\\*
 {\ttfamily \#include $<$pcl/common/transforms.\-h$>$}\\*
-{\ttfamily \#include $<$eigen3/\-Eigen/\-Dense$>$}\\*
-{\ttfamily \#include $<$eigen3/\-Eigen/\-Core$>$}\\*
-{\ttfamily \#include $<$math.\-h$>$}\\*
 {\ttfamily \#include $<$tf/transform\-\_\-listener.\-h$>$}\\*
-{\ttfamily \#include $<$tf/tf.\-h$>$}\\*
+{\ttfamily \#include $<$std\-\_\-msgs/\-Float64.\-h$>$}\\*
 {\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Deep\-Filter.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Support\-Segmentation.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Cluster\-Segmentation.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Arm\-Filter.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Support.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Inliers\-Cluster.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}pitt\-\_\-msgs/\-Clusters\-Output.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}point\-\_\-cloud\-\_\-library/pc\-\_\-manager.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}point\-\_\-cloud\-\_\-library/srv\-\_\-manager.\-h\char`\"{}}\\*
-{\ttfamily \#include $<$boost/thread.\-hpp$>$}\\*
-{\ttfamily \#include $<$boost/thread/mutex.\-hpp$>$}\\*
-{\ttfamily \#include $<$boost/format.\-hpp$>$}\\*
-Include dependency graph for obj\-\_\-segmentation.\-cpp\-:
-\nopagebreak
+Include dependency graph for obj\-\_\-segmentation.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,99 +27,202 @@ Include dependency graph for obj\-\_\-segmentation.\-cpp\-:
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+typedef vector\\*
+$<$ pitt\-\_\-msgs\-::\-Support $>$ \hyperlink{obj__segmentation_8cpp_a54e1c5ec7922766e1a02d8e9b7e3856e}{Inlier\-Supports}
+\begin{DoxyCompactList}\small\item\em a vector of costom messages to describe tables. \end{DoxyCompactList}\item 
 typedef boost\-::shared\-\_\-ptr\\*
-$<$ vector$<$ Support $>$ $>$ \hyperlink{obj__segmentation_8cpp_a2e5691fdacd383e69e88a6ea80c51884}{Inlier\-Supports\-Ptr}
-\item 
-typedef vector$<$ Support $>$ \hyperlink{obj__segmentation_8cpp_af8e00b01b83bb50a18345fc3806f4ac7}{Inlier\-Supports}
-\item 
+$<$ vector$<$ pitt\-\_\-msgs\-::\-Support $>$ $>$ \hyperlink{obj__segmentation_8cpp_a794c4e0ea8acf9f34c17b066fbf0869d}{Inlier\-Supports\-Ptr}
+\begin{DoxyCompactList}\small\item\em a pointer to a \hyperlink{obj__segmentation_8cpp_a54e1c5ec7922766e1a02d8e9b7e3856e}{Inlier\-Supports}. \end{DoxyCompactList}\item 
+typedef vector\\*
+$<$ pitt\-\_\-msgs\-::\-Inliers\-Cluster $>$ \hyperlink{obj__segmentation_8cpp_a6b657f4959d56c53eaf6be891386bd22}{Inlier\-Clusters}
+\begin{DoxyCompactList}\small\item\em a vector of costom messages to describe objects on a table. \end{DoxyCompactList}\item 
 typedef boost\-::shared\-\_\-ptr\\*
-$<$ vector$<$ Inliers\-Cluster $>$ $>$ \hyperlink{obj__segmentation_8cpp_a8f4c38bb82a38d13ea44bb3c66816597}{Inlier\-Cluster\-Ptr}
-\item 
-typedef vector$<$ Inliers\-Cluster $>$ \hyperlink{obj__segmentation_8cpp_a7abe79d0733f39c4aa0c917a5af115ae}{Inlier\-Clusters}
-\end{DoxyCompactItemize}
+$<$ vector\\*
+$<$ pitt\-\_\-msgs\-::\-Inliers\-Cluster $>$ $>$ \hyperlink{obj__segmentation_8cpp_a50bb89dc3a9b0601f031cbd80235d27e}{Inlier\-Cluster\-Ptr}
+\begin{DoxyCompactList}\small\item\em a pointer to a \hyperlink{obj__segmentation_8cpp_a6b657f4959d56c53eaf6be891386bd22}{Inlier\-Clusters}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{obj__segmentation_8cpp_aca73ab26cae45b4b998a3cca9e4f75bc}{vis\-Spin} ()
-\item 
+\begin{DoxyCompactList}\small\item\em make the visualisation spinning without lagging acroos multi updating. \end{DoxyCompactList}\item 
 bool \hyperlink{obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2}{call\-Deep\-Filter} (\hyperlink{pc__primitive_8h_aa14a240c8d999c4f56133c0f70e88783}{P\-C\-L\-Cloud\-Ptr} \&cloud)
-\begin{DoxyCompactList}\small\item\em B\-B\-B\-B. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em call \hyperlink{deep__filter__srv_8cpp}{deep\-\_\-filter\-\_\-srv.\-cpp} R\-O\-S service. \end{DoxyCompactList}\item 
 bool \hyperlink{obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae}{call\-Arm\-Filter} (\hyperlink{pc__primitive_8h_aa14a240c8d999c4f56133c0f70e88783}{P\-C\-L\-Cloud\-Ptr} \&cloud)
-\item 
-\hyperlink{obj__segmentation_8cpp_a2e5691fdacd383e69e88a6ea80c51884}{Inlier\-Supports\-Ptr} \hyperlink{obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae}{call\-Support\-Filter} (\hyperlink{pc__primitive_8h_aa14a240c8d999c4f56133c0f70e88783}{P\-C\-L\-Cloud\-Ptr} \hyperlink{arm__filter__srv_8cpp_a974bd4721d13dc5fa4bd9608eca657db}{input\-Cloud}, \hyperlink{pc__primitive_8h_a1bc38ce8b0c26e5f2d28fae9f3e3ea97}{P\-C\-L\-Normal\-Ptr} normal)
-\item 
-\hyperlink{obj__segmentation_8cpp_a8f4c38bb82a38d13ea44bb3c66816597}{Inlier\-Cluster\-Ptr} \hyperlink{obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b}{call\-Cluster\-Segmentation} (\hyperlink{pc__primitive_8h_aa14a240c8d999c4f56133c0f70e88783}{P\-C\-L\-Cloud\-Ptr} cloud)
-\item 
+\begin{DoxyCompactList}\small\item\em call \hyperlink{arm__filter__srv_8cpp}{arm\-\_\-filter\-\_\-srv.\-cpp} R\-O\-S service. \end{DoxyCompactList}\item 
+\hyperlink{obj__segmentation_8cpp_a794c4e0ea8acf9f34c17b066fbf0869d}{Inlier\-Supports\-Ptr} \hyperlink{obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae}{call\-Support\-Filter} (\hyperlink{pc__primitive_8h_aa14a240c8d999c4f56133c0f70e88783}{P\-C\-L\-Cloud\-Ptr} \hyperlink{arm__filter__srv_8cpp_a974bd4721d13dc5fa4bd9608eca657db}{input\-Cloud}, \hyperlink{pc__primitive_8h_a1bc38ce8b0c26e5f2d28fae9f3e3ea97}{P\-C\-L\-Normal\-Ptr} normal)
+\begin{DoxyCompactList}\small\item\em call support\-\_\-segmentation\-\_\-srv.\-cpp R\-O\-S service. \end{DoxyCompactList}\item 
+\hyperlink{obj__segmentation_8cpp_a50bb89dc3a9b0601f031cbd80235d27e}{Inlier\-Cluster\-Ptr} \hyperlink{obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b}{call\-Cluster\-Segmentation} (\hyperlink{pc__primitive_8h_aa14a240c8d999c4f56133c0f70e88783}{P\-C\-L\-Cloud\-Ptr} cloud)
+\begin{DoxyCompactList}\small\item\em call \hyperlink{cluster__segmentation__srv_8cpp}{cluster\-\_\-segmentation\-\_\-srv.\-cpp} R\-O\-S service. \end{DoxyCompactList}\item 
 void \hyperlink{obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a}{depth\-Acquisition} (const Point\-Cloud2\-Ptr \&input)
-\item 
+\begin{DoxyCompactList}\small\item\em Node callback. \end{DoxyCompactList}\item 
 int \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em It initialise this R\-O\-S node and spin in order to activate the \hyperlink{obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a}{depth\-Acquisition} callback as soon as new data is available. It also listens and updates the \hyperlink{obj__segmentation_8cpp_abeb91134d7b10cc7475f7fa946e66a34}{pcl\-Transform} matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-ros\-::\-Node\-Handle $\ast$ \hyperlink{obj__segmentation_8cpp_afe3fec681d3658d114dfa8cfff163e82}{nh\-\_\-ptr} = N\-U\-L\-L
-\item 
-bool \hyperlink{obj__segmentation_8cpp_acece8259b4a7b4327562daa817a43ef0}{input\-Show\-Support\-Clouds}
-\item 
-bool \hyperlink{obj__segmentation_8cpp_ac6f703bc9e7358560334737266db326c}{input\-Show\-Original\-Cloud}
-\item 
-bool \hyperlink{obj__segmentation_8cpp_ab64cbde8b32aa3524e9fb94bb4d24525}{input\-Show\-Cluster\-Clouds}
-\item 
-bool \hyperlink{obj__segmentation_8cpp_aea198f61928e89fc5332d092619b04f5}{input\-Show\-Object\-On\-Support}
-\item 
-string \hyperlink{obj__segmentation_8cpp_a6317446c893a78108aab89bf69a4b66a}{centroid\-Log\-File\-Path}
-\item 
-string \hyperlink{obj__segmentation_8cpp_a484374fe771cd860a2ea9f9feda68905}{log\-\_\-str\-\_\-depth} = \char`\"{}Loading...\char`\"{}
-\item 
-string \hyperlink{obj__segmentation_8cpp_a7024ef4623a4562d025033aa950364f5}{log\-\_\-str\-\_\-supp} = \char`\"{}Loading...\char`\"{}
-\item 
-long \hyperlink{obj__segmentation_8cpp_a848f9977cb150e83cf5464a65dcc9fe4}{scan\-Id} = 0
-\item 
 static const int \hyperlink{obj__segmentation_8cpp_a3fea3689c92e1b2fcebd3eeafee94a5e}{M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D} = 30
-\item 
+\begin{DoxyCompactList}\small\item\em the cloud will be not not processed if has less number of points \end{DoxyCompactList}\item 
+bool \hyperlink{obj__segmentation_8cpp_ac6f703bc9e7358560334737266db326c}{input\-Show\-Original\-Cloud}
+\begin{DoxyCompactList}\small\item\em flag for showing raw cloud (white points) on the visualiser of this node. \end{DoxyCompactList}\item 
+bool \hyperlink{obj__segmentation_8cpp_acece8259b4a7b4327562daa817a43ef0}{input\-Show\-Support\-Clouds}
+\begin{DoxyCompactList}\small\item\em flag for showing identified tables (brown points) on the visualiser of this node. \end{DoxyCompactList}\item 
+bool \hyperlink{obj__segmentation_8cpp_ab64cbde8b32aa3524e9fb94bb4d24525}{input\-Show\-Cluster\-Clouds}
+\begin{DoxyCompactList}\small\item\em flag for showing identified objects (random colors) on the visualiser of this node. \end{DoxyCompactList}\item 
+bool \hyperlink{obj__segmentation_8cpp_aea198f61928e89fc5332d092619b04f5}{input\-Show\-Object\-On\-Support}
+\begin{DoxyCompactList}\small\item\em flag for showing identified all the points on the table (orange points) on the visualiser of this node. \end{DoxyCompactList}\item 
+string \hyperlink{obj__segmentation_8cpp_a6317446c893a78108aab89bf69a4b66a}{centroid\-Log\-File\-Path}
+\begin{DoxyCompactList}\small\item\em file path to lag the centroids of the acquired objects in a table. Set to empty to do not log on file. \end{DoxyCompactList}\item 
 \hyperlink{classpcm_1_1PCManager}{pcm\-::\-P\-C\-Manager} $\ast$ \hyperlink{obj__segmentation_8cpp_a21221f555fa05f2c3f45ff5592a25197}{manager} = new \hyperlink{classpcm_1_1PCManager}{pcm\-::\-P\-C\-Manager}( false)
-\item 
+\begin{DoxyCompactList}\small\item\em variable to initialise the \hyperlink{classpcm_1_1PCManager}{pcm\-::\-P\-C\-Manager}. \end{DoxyCompactList}\item 
+ros\-::\-Node\-Handle $\ast$ \hyperlink{obj__segmentation_8cpp_afe3fec681d3658d114dfa8cfff163e82}{nh\-\_\-ptr} = N\-U\-L\-L
+\begin{DoxyCompactList}\small\item\em ros handle passed across all services calls. \end{DoxyCompactList}\item 
 boost\-::shared\-\_\-ptr\\*
 $<$ \hyperlink{pc__manager_8h_a38c805dbc7ad6f06109b85c8e540817a}{visualization\-::\-P\-C\-L\-Visualizer} $>$ \hyperlink{obj__segmentation_8cpp_a6c2d87234fca8dcca11f888098558986}{vis}
-\item 
-Publisher \hyperlink{obj__segmentation_8cpp_a27c3ab807dd4360a5b35f9b4813ac85c}{cluster\-Pub}
-\item 
-boost\-::thread \hyperlink{obj__segmentation_8cpp_ab83e6219895a4d26706c0d858f8ec288}{vis\-\_\-thread}
-\item 
-boost\-::mutex \hyperlink{obj__segmentation_8cpp_a0dc8882293908d9c8cc15f76a2a49588}{vis\-\_\-mutex}
-\item 
+\begin{DoxyCompactList}\small\item\em the P\-C\-L visualiser for this node. \end{DoxyCompactList}\item 
+ros\-::\-Publisher \hyperlink{obj__segmentation_8cpp_a431711d7fd270977af34b226ed5d5cef}{cluster\-Pub}
+\begin{DoxyCompactList}\small\item\em the R\-O\-S publisher in which the message of a new acquistion will be send. \end{DoxyCompactList}\item 
 Eigen\-::\-Matrix4f \hyperlink{obj__segmentation_8cpp_abeb91134d7b10cc7475f7fa946e66a34}{pcl\-Transform}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the transformation matrix between the R\-G\-B-\/\-D sensor and the \hyperlink{namespacesrvm_ac5228e86d6d396c944b11f847746b3b8}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E} frame (it can be changed on the fly). \end{DoxyCompactList}\item 
+boost\-::thread \hyperlink{obj__segmentation_8cpp_ab83e6219895a4d26706c0d858f8ec288}{vis\-\_\-thread}
+\begin{DoxyCompactList}\small\item\em for a better visualiser updating on parallel thread. \end{DoxyCompactList}\item 
+boost\-::mutex \hyperlink{obj__segmentation_8cpp_a0dc8882293908d9c8cc15f76a2a49588}{vis\-\_\-mutex}
+\begin{DoxyCompactList}\small\item\em for a better visualiser updating during different services calls. \end{DoxyCompactList}\item 
+string \hyperlink{obj__segmentation_8cpp_a484374fe771cd860a2ea9f9feda68905}{log\-\_\-str\-\_\-depth} = \char`\"{}Loading...\char`\"{}
+\begin{DoxyCompactList}\small\item\em string that will contains info about \hyperlink{deep__filter__srv_8cpp}{deep\-\_\-filter\-\_\-srv.\-cpp} service, shown in the visualiser while the parameters are changed on the fly. \end{DoxyCompactList}\item 
+string \hyperlink{obj__segmentation_8cpp_a7024ef4623a4562d025033aa950364f5}{log\-\_\-str\-\_\-supp} = \char`\"{}Loading...\char`\"{}
+\begin{DoxyCompactList}\small\item\em string that will contains info about support\-\_\-segmentation\-\_\-srv.\-cpp service, shown in the visualiser while the parameters are changed on the fly. \end{DoxyCompactList}\item 
+long \hyperlink{obj__segmentation_8cpp_a848f9977cb150e83cf5464a65dcc9fe4}{scan\-Id} = 0
+\begin{DoxyCompactList}\small\item\em so far, it is used only for logging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The P\-I\-T\-T starting node, to {\bfseries preprocessing} the Point Cloud for primitive identification. {\bfseries File} \par
+ ~~~~~~~~~ \hyperlink{obj__segmentation_8cpp}{src/obj\-\_\-segmentation.\-cpp} \begin{DoxyAuthor}{Author}
+Buoncompagni Luca, 
+\end{DoxyAuthor}
+{\bfseries Contacts} \par
+ ~~~~~~~~~ \href{mailto:luca.buoncompagni@edu.unige.it}{\tt luca.\-buoncompagni@edu.\-unige.\-it} \begin{DoxyDate}{Date}
+May 10, 2015 
+\end{DoxyDate}
+{\bfseries Institution} \par
+ ~~~~~~~~~ D\-I\-B\-R\-I\-S, emaro\-L\-A\-B, University of Genoa. \begin{DoxyVersion}{Version}
+2.\-1 
+
+ {\bfseries Programm behaviour} 
+\end{DoxyVersion}
+
+
+~~~~~~~~~ This file implements a R\-O\-S node that acquires Kinect Point Cloud (P\-C) from the topic specified through the\-: \hyperlink{namespacesrvm_afb9bab9dced618a8992cf505cf484b1c}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-R\-A\-W\-\_\-\-C\-L\-O\-U\-D\-\_\-\-T\-O\-P\-I\-C} parameter (see \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} function for more) and performs preprocessing (on \hyperlink{obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a}{depth\-Acquisition} callback) with the following order\-:
+\begin{DoxyEnumerate}
+\item P\-C downsampling (see P\-C\-L documentation for more),
+\item filtering out far points (see \hyperlink{deep__filter__srv_8cpp}{deep\-\_\-filter\-\_\-srv.\-cpp} R\-O\-S service),
+\item filtering out points of robotic arms (see \hyperlink{arm__filter__srv_8cpp}{arm\-\_\-filter\-\_\-srv.\-cpp} R\-O\-S service),
+\item P\-C transforming w.\-r.\-t. robot base frame (see T\-F for more),
+\item tables segmentation (see \hyperlink{supports__segmentation__srv_8cpp}{supports\-\_\-segmentation\-\_\-srv.\-cpp} R\-O\-S service),
+\item objects segmentation, for each support (see \hyperlink{cluster__segmentation__srv_8cpp}{cluster\-\_\-segmentation\-\_\-srv.\-cpp} R\-O\-S service)
+\end{DoxyEnumerate}
+
+~~~~~~~~~ The results of this computation (for each table) is published into the topic specified through the \hyperlink{namespacesrvm_a520b8813dc65ba764d59f05a0b316e5c}{srvm\-::\-T\-O\-P\-I\-C\-\_\-\-O\-U\-T\-\_\-\-N\-A\-M\-E\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-P\-E\-R\-C\-E\-P\-T\-I\-O\-N} parameter. This topic accommodates an array of 
+\begin{DoxyCode}
+pitt\_msgs/msg/InlierCluster.msg 
+\end{DoxyCode}
+ messages (see \href{https://github.com/EmaroLab/pitt_msgs}{\tt pitt\-\_\-msgs} package for more details) that contains, for each recognised object in that table\-:
+\begin{DoxyItemize}
+\item {\ttfamily sensor\-\_\-msgs/\-Point\-Cloud2} {\ttfamily cloud\-:} ~~ the cloud containing only the object,
+\item {\ttfamily int32}\mbox{[}\mbox{]} {\ttfamily inliers\-:} ~~ the index of the points of the object w.\-r.\-t. the original cloud,
+\item {\ttfamily float32} {\ttfamily x\-\_\-centroid}, {\ttfamily y\-\_\-centroid}, {\ttfamily z\-\_\-centroid\-:} ~~ the coordinates of the center of mass of the cloud
+\item {\ttfamily int32} {\ttfamily shape\-\_\-id\-:} ~~ object identifier. At this stage of the architecture this value is not set (the tracker will do it, see the \href{https://github.com/EmaroLab/pitt_geometric_tracking}{\tt pitt\-\_\-geometric\-\_\-tracking } for an example).
+\end{DoxyItemize}
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{pc__manager_8h}{pc\-\_\-manager.\-h} 
+
+\hyperlink{pc__primitive_8h}{pc\-\_\-primitive.\-h} 
+
+\hyperlink{srv__manager_8h}{srv\-\_\-manager.\-h} 
+
+\hyperlink{ransac__segmentation_8cpp}{ransac\-\_\-segmentation.\-cpp} 
+
+$<$a href="\href{https://github.com/EmaroLab/pitt_geometric_tracking}{\tt https\-://github.\-com/\-Emaro\-Lab/pitt\-\_\-geometric\-\_\-tracking}$>$pitt\-\_\-geometric\-\_\-tracking 
+\end{DoxySeeAlso}
+
+
+Definition in file \hyperlink{obj__segmentation_8cpp_source}{obj\-\_\-segmentation.\-cpp}.
+
 
 
 \subsection{Typedef Documentation}
-\hypertarget{obj__segmentation_8cpp_a8f4c38bb82a38d13ea44bb3c66816597}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Cluster\-Ptr@{Inlier\-Cluster\-Ptr}}
+\hypertarget{obj__segmentation_8cpp_a50bb89dc3a9b0601f031cbd80235d27e}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Cluster\-Ptr@{Inlier\-Cluster\-Ptr}}
 \index{Inlier\-Cluster\-Ptr@{Inlier\-Cluster\-Ptr}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
-\subsubsection[{Inlier\-Cluster\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<$ vector$<$ Inliers\-Cluster$>$ $>$ {\bf Inlier\-Cluster\-Ptr}}}\label{obj__segmentation_8cpp_a8f4c38bb82a38d13ea44bb3c66816597}
+\subsubsection[{Inlier\-Cluster\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<$ vector$<$ pitt\-\_\-msgs\-::\-Inliers\-Cluster$>$ $>$ {\bf Inlier\-Cluster\-Ptr}}}\label{obj__segmentation_8cpp_a50bb89dc3a9b0601f031cbd80235d27e}
 
 
-Definition at line 40 of file obj\-\_\-segmentation.\-cpp.
+a pointer to a \hyperlink{obj__segmentation_8cpp_a6b657f4959d56c53eaf6be891386bd22}{Inlier\-Clusters}. 
 
-\hypertarget{obj__segmentation_8cpp_a7abe79d0733f39c4aa0c917a5af115ae}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Clusters@{Inlier\-Clusters}}
+\begin{DoxySeeAlso}{See Also}
+
+\begin{DoxyCode}
+pitt\_msgs/msg/InliersCluster.msg 
+\end{DoxyCode}
+ 
+\end{DoxySeeAlso}
+
+
+Definition at line 92 of file obj\-\_\-segmentation.\-cpp.
+
+\hypertarget{obj__segmentation_8cpp_a6b657f4959d56c53eaf6be891386bd22}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Clusters@{Inlier\-Clusters}}
 \index{Inlier\-Clusters@{Inlier\-Clusters}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
-\subsubsection[{Inlier\-Clusters}]{\setlength{\rightskip}{0pt plus 5cm}typedef vector$<$ Inliers\-Cluster$>$ {\bf Inlier\-Clusters}}}\label{obj__segmentation_8cpp_a7abe79d0733f39c4aa0c917a5af115ae}
+\subsubsection[{Inlier\-Clusters}]{\setlength{\rightskip}{0pt plus 5cm}typedef vector$<$ pitt\-\_\-msgs\-::\-Inliers\-Cluster$>$ {\bf Inlier\-Clusters}}}\label{obj__segmentation_8cpp_a6b657f4959d56c53eaf6be891386bd22}
 
 
-Definition at line 41 of file obj\-\_\-segmentation.\-cpp.
+a vector of costom messages to describe objects on a table. 
 
-\hypertarget{obj__segmentation_8cpp_af8e00b01b83bb50a18345fc3806f4ac7}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Supports@{Inlier\-Supports}}
+\begin{DoxySeeAlso}{See Also}
+
+\begin{DoxyCode}
+pitt\_msgs/msg/InliersCluster.msg 
+\end{DoxyCode}
+ 
+\end{DoxySeeAlso}
+
+
+Definition at line 87 of file obj\-\_\-segmentation.\-cpp.
+
+\hypertarget{obj__segmentation_8cpp_a54e1c5ec7922766e1a02d8e9b7e3856e}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Supports@{Inlier\-Supports}}
 \index{Inlier\-Supports@{Inlier\-Supports}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
-\subsubsection[{Inlier\-Supports}]{\setlength{\rightskip}{0pt plus 5cm}typedef vector$<$ Support$>$ {\bf Inlier\-Supports}}}\label{obj__segmentation_8cpp_af8e00b01b83bb50a18345fc3806f4ac7}
+\subsubsection[{Inlier\-Supports}]{\setlength{\rightskip}{0pt plus 5cm}typedef vector$<$ pitt\-\_\-msgs\-::\-Support$>$ {\bf Inlier\-Supports}}}\label{obj__segmentation_8cpp_a54e1c5ec7922766e1a02d8e9b7e3856e}
 
 
-Definition at line 39 of file obj\-\_\-segmentation.\-cpp.
+a vector of costom messages to describe tables. 
 
-\hypertarget{obj__segmentation_8cpp_a2e5691fdacd383e69e88a6ea80c51884}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Supports\-Ptr@{Inlier\-Supports\-Ptr}}
+\begin{DoxySeeAlso}{See Also}
+
+\begin{DoxyCode}
+pitt\_msgs/msg/Support.msg 
+\end{DoxyCode}
+ 
+\end{DoxySeeAlso}
+
+
+Definition at line 77 of file obj\-\_\-segmentation.\-cpp.
+
+\hypertarget{obj__segmentation_8cpp_a794c4e0ea8acf9f34c17b066fbf0869d}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!Inlier\-Supports\-Ptr@{Inlier\-Supports\-Ptr}}
 \index{Inlier\-Supports\-Ptr@{Inlier\-Supports\-Ptr}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
-\subsubsection[{Inlier\-Supports\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<$ vector$<$ Support$>$ $>$ {\bf Inlier\-Supports\-Ptr}}}\label{obj__segmentation_8cpp_a2e5691fdacd383e69e88a6ea80c51884}
+\subsubsection[{Inlier\-Supports\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}typedef boost\-::shared\-\_\-ptr$<$ vector$<$ pitt\-\_\-msgs\-::\-Support$>$ $>$ {\bf Inlier\-Supports\-Ptr}}}\label{obj__segmentation_8cpp_a794c4e0ea8acf9f34c17b066fbf0869d}
 
 
-Definition at line 38 of file obj\-\_\-segmentation.\-cpp.
+a pointer to a \hyperlink{obj__segmentation_8cpp_a54e1c5ec7922766e1a02d8e9b7e3856e}{Inlier\-Supports}. 
+
+\begin{DoxySeeAlso}{See Also}
+
+\begin{DoxyCode}
+pitt\_msgs/msg/Support.msg 
+\end{DoxyCode}
+ 
+\end{DoxySeeAlso}
+
+
+Definition at line 82 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -138,11 +236,39 @@ Definition at line 38 of file obj\-\_\-segmentation.\-cpp.
 )}}\label{obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae}
 
 
-Definition at line 112 of file obj\-\_\-segmentation.\-cpp.
+call \hyperlink{arm__filter__srv_8cpp}{arm\-\_\-filter\-\_\-srv.\-cpp} R\-O\-S service. 
+
+It removes, from input parameter, all the points that are belonging to a bounding box around the robot arms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cloud} & the P\-C from which remove all the points of the arms. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if an error occurs during service call, true otherwise. 
+\end{DoxyReturn}
+Following, the steeps that this function performs\-:
+\begin{DoxyItemize}
+\item load the baunding box parameters (default values\-: \hyperlink{namespacesrvm_a78080cf77ae5d29a39ebcd3309b836fc}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-C\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T})\-:
+\begin{DoxyItemize}
+\item \hyperlink{namespacesrvm_a78229888a94a0362b2a4242a212e496f}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-I\-N\-\_\-\-F\-O\-R\-E\-A\-R\-M\-\_\-\-B\-O\-X},
+\item \hyperlink{namespacesrvm_a566bcfbd837fb5450a2c9c6de09d522a}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-A\-X\-\_\-\-F\-O\-R\-E\-A\-R\-M\-\_\-\-B\-O\-X},
+\item \hyperlink{namespacesrvm_ae85ac94c938b94bb075b175237d198b0}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-I\-N\-\_\-\-E\-L\-B\-O\-W\-\_\-\-B\-O\-X},
+\item \hyperlink{namespacesrvm_afeb3197fee2f13444309f3e4ed314392}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-A\-X\-\_\-\-E\-L\-B\-O\-W\-\_\-\-B\-O\-X},
+\end{DoxyItemize}
+\item initialise arm filter server,
+\item set input data and parameters,
+\item call service
+\item check for error during service calls.
+\item get the repose and overwrite the cloud, if no errors occur. 
+\end{DoxyItemize}
+
+Definition at line 251 of file obj\-\_\-segmentation.\-cpp.
 
 
 
-References srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-C\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T(), nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-A\-X\-\_\-\-E\-L\-B\-O\-W\-\_\-\-B\-O\-X, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-A\-X\-\_\-\-F\-O\-R\-E\-A\-R\-M\-\_\-\-B\-O\-X, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-I\-N\-\_\-\-E\-L\-B\-O\-W\-\_\-\-B\-O\-X, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-I\-N\-\_\-\-F\-O\-R\-E\-A\-R\-M\-\_\-\-B\-O\-X, and srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-F\-I\-L\-T\-E\-R.
+References pcm\-::\-P\-C\-Manager\-::cloud\-For\-Ros\-Msg(), pcm\-::\-P\-C\-Manager\-::cloud\-To\-Ros\-Msg(), srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-C\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T(), nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-A\-X\-\_\-\-E\-L\-B\-O\-W\-\_\-\-B\-O\-X, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-A\-X\-\_\-\-F\-O\-R\-E\-A\-R\-M\-\_\-\-B\-O\-X, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-I\-N\-\_\-\-E\-L\-B\-O\-W\-\_\-\-B\-O\-X, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-S\-R\-V\-\_\-\-M\-I\-N\-\_\-\-F\-O\-R\-E\-A\-R\-M\-\_\-\-B\-O\-X, and srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-A\-R\-M\-\_\-\-F\-I\-L\-T\-E\-R.
 
 
 
@@ -150,8 +276,7 @@ Referenced by depth\-Acquisition().
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -169,15 +294,54 @@ Here is the call graph for this function\-:
 )}}\label{obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b}
 
 
-Definition at line 214 of file obj\-\_\-segmentation.\-cpp.
+call \hyperlink{cluster__segmentation__srv_8cpp}{cluster\-\_\-segmentation\-\_\-srv.\-cpp} R\-O\-S service. 
+
+It segments a P\-C in smaller structure where each of them represents a separated object. The points are also described in terms of index in the original cloud.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cloud} & the P\-C to be segmented in clusters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an array of structures that describes separated objects in the cloud. An empty array if errors occur on service call. 
+\end{DoxyReturn}
+Following, the steeps that this function performs\-:
+\begin{DoxyItemize}
+\item load the parameters for the server (default values\-: \hyperlink{namespacesrvm_a27b2693a98ba8791767e3c8bebdab105}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T} or \hyperlink{namespacesrvm_a5a9ae08c1a139bbf76b39c5d34f90e2a}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F})\-:
+\begin{DoxyItemize}
+\item \hyperlink{namespacesrvm_a606c20312640e9cc8710e4d43f0cb167}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-T\-O\-L\-E\-R\-A\-N\-C\-E},
+\item \hyperlink{namespacesrvm_a68216326c13293ff70084f03bb4efa98}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-M\-I\-N\-\_\-\-R\-A\-T\-E},
+\item \hyperlink{namespacesrvm_ac57a3b8f3addc024383db76f1d2c55da}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-M\-A\-X\-\_\-\-R\-A\-T\-E},
+\item \hyperlink{namespacesrvm_a606c20312640e9cc8710e4d43f0cb167}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-T\-O\-L\-E\-R\-A\-N\-C\-E},
+\end{DoxyItemize}
+\item initialise claster segmentation server,
+\item set input data and parameters,
+\item call service,
+\item check and log for errors,
+\item get the service responce to be returned. 
+\end{DoxyItemize}
+
+Definition at line 387 of file obj\-\_\-segmentation.\-cpp.
 
 
 
-References nh\-\_\-ptr, and srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-C\-U\-S\-T\-E\-R\-\_\-\-F\-I\-L\-T\-E\-R.
+References pcm\-::\-P\-C\-Manager\-::cloud\-To\-Ros\-Msg(), srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F, nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-M\-A\-X\-\_\-\-R\-A\-T\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-M\-I\-N\-\_\-\-R\-A\-T\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-C\-L\-U\-S\-T\-E\-R\-\_\-\-T\-O\-L\-E\-R\-A\-N\-C\-E, and srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-C\-U\-S\-T\-E\-R\-\_\-\-F\-I\-L\-T\-E\-R.
 
 
 
 Referenced by depth\-Acquisition().
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b_cgraph}
+\end{center}
+\end{figure}
+
 
 \hypertarget{obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!call\-Deep\-Filter@{call\-Deep\-Filter}}
 \index{call\-Deep\-Filter@{call\-Deep\-Filter}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
@@ -188,27 +352,49 @@ Referenced by depth\-Acquisition().
 )}}\label{obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2}
 
 
-B\-B\-B\-B. 
+call \hyperlink{deep__filter__srv_8cpp}{deep\-\_\-filter\-\_\-srv.\-cpp} R\-O\-S service. 
 
-A\-A\-A\-A\-A 
+It removes, from input parameter, all the points further than a threshold on the z-\/axis of the cloud.
+
+
 \begin{DoxyParams}{Parameters}
-{\em cloud} & \\
+{\em cloud} & the P\-C from which remove all the points further than a threshold. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+false if an error occurs during service call, true otherwise. 
 \end{DoxyReturn}
+Following, the steeps that this function performs\-:
+\begin{DoxyItemize}
+\item load the threshold parameter\-: \hyperlink{namespacesrvm_af5f0c98fe811a1ad130ec625e9b2cf75}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-D\-E\-E\-P\-\_\-\-S\-R\-V\-\_\-\-Z\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D} from R\-O\-S pull. Use \hyperlink{namespacesrvm_a5a9ae08c1a139bbf76b39c5d34f90e2a}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F} as default value,
+\item update visualiser texts about the deep threshold value,
+\item initialise deep filter server,
+\item set input data and parameters,
+\item call service,
+\item check for error during service calls.
+\item get the repose and overwrite the cloud, if no errors occur. 
+\end{DoxyItemize}
+
+Definition at line 207 of file obj\-\_\-segmentation.\-cpp.
 
 
-Definition at line 79 of file obj\-\_\-segmentation.\-cpp.
 
-
-
-References srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F, input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, log\-\_\-str\-\_\-depth, nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-D\-E\-E\-P\-\_\-\-S\-R\-V\-\_\-\-Z\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-D\-E\-E\-P\-\_\-\-F\-I\-L\-T\-E\-R, vis, and vis\-\_\-mutex.
+References pcm\-::\-P\-C\-Manager\-::cloud\-For\-Ros\-Msg(), pcm\-::\-P\-C\-Manager\-::cloud\-To\-Ros\-Msg(), srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F, input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, log\-\_\-str\-\_\-depth, nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-D\-E\-E\-P\-\_\-\-S\-R\-V\-\_\-\-Z\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-D\-E\-E\-P\-\_\-\-F\-I\-L\-T\-E\-R, vis, and vis\-\_\-mutex.
 
 
 
 Referenced by depth\-Acquisition().
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2_cgraph}
+\end{center}
+\end{figure}
+
 
 \hypertarget{obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!call\-Support\-Filter@{call\-Support\-Filter}}
 \index{call\-Support\-Filter@{call\-Support\-Filter}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
@@ -220,11 +406,46 @@ Referenced by depth\-Acquisition().
 )}}\label{obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae}
 
 
-Definition at line 147 of file obj\-\_\-segmentation.\-cpp.
+call support\-\_\-segmentation\-\_\-srv.\-cpp R\-O\-S service. 
+
+It detects all the vertical planes in the scene and returns the index of their point w.\-r.\-t. to original cloud.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Cloud} & the P\-C from which retrieve the supports. \\
+\hline
+{\em normal} & the Nolrmal vector of the points of the above cloud. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector of set of index indicating the points of a support w.\-r.\-t. to acquired cloud. It returns an empty array if errors occur during service call. 
+\end{DoxyReturn}
+Following, the steeps that this function performs\-:
+\begin{DoxyItemize}
+\item load the parameters for the server (default values\-: \hyperlink{namespacesrvm_a27b2693a98ba8791767e3c8bebdab105}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T} or \hyperlink{namespacesrvm_a5a9ae08c1a139bbf76b39c5d34f90e2a}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F})\-:
+\begin{DoxyItemize}
+\item \hyperlink{namespacesrvm_ac6d56e59d27ae79b392d58c0b57d03e1}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-N\-\_\-\-I\-T\-E\-R\-A\-T\-I\-V\-E\-\_\-\-C\-L\-O\-U\-D\-\_\-\-P\-E\-R\-C\-E\-N\-T\-A\-G\-E},
+\item \hyperlink{namespacesrvm_a209e7ad2de58ec5193770fc4d9cd98ab}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-N\-\_\-\-I\-T\-E\-R\-A\-T\-I\-V\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-P\-E\-R\-C\-E\-N\-T\-A\-G\-E},
+\item \hyperlink{namespacesrvm_adb071b5e180a1109af154bd4241a250e}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-H\-O\-R\-I\-Z\-O\-N\-T\-A\-L\-\_\-\-V\-A\-R\-I\-A\-N\-C\-E\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D},
+\item \hyperlink{namespacesrvm_af1a83a2964c2f60f7f497f05ef454cfd}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-I\-N\-\_\-\-S\-H\-A\-P\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-P\-O\-I\-N\-T\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D},
+\item \hyperlink{namespacesrvm_ad592efae9026788849614a69053f3914}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-M\-O\-D\-E\-L\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-H\-T},
+\item \hyperlink{namespacesrvm_aa6b5f05b01cb661c1481c0f40bd916e4}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D},
+\item \hyperlink{namespacesrvm_a2957bf6ee16944664364c470f1beb958}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-H\-O\-R\-I\-Z\-O\-N\-T\-A\-L\-\_\-\-A\-X\-I\-S},
+\item \hyperlink{namespacesrvm_a07211b3f36f93931af6e67097b75f145}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-E\-D\-G\-E\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-O\-F\-F\-S\-E\-T},
+\end{DoxyItemize}
+\item initialise support segmentation server,
+\item set input data and parameters,
+\item call service,
+\item check and log for errors,
+\item get the service responce to be returned,
+\item update the visualiser texts. 
+\end{DoxyItemize}
+
+Definition at line 299 of file obj\-\_\-segmentation.\-cpp.
 
 
 
-References srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-C\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T(), horizontal\-Axis, input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, log\-\_\-str\-\_\-supp, nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-H\-O\-R\-I\-Z\-O\-N\-T\-A\-L\-\_\-\-A\-X\-I\-S, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-H\-O\-R\-I\-Z\-O\-N\-T\-A\-L\-\_\-\-V\-A\-R\-I\-A\-N\-C\-E\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-N\-\_\-\-I\-T\-E\-R\-A\-T\-I\-V\-E\-\_\-\-C\-L\-O\-U\-D\-\_\-\-P\-E\-R\-C\-E\-N\-T\-A\-G\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-N\-\_\-\-I\-T\-E\-R\-A\-T\-I\-V\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-P\-E\-R\-C\-E\-N\-T\-A\-G\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-I\-N\-\_\-\-S\-H\-A\-P\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-P\-O\-I\-N\-T\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-M\-O\-D\-E\-L\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-H\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-E\-D\-G\-E\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-O\-F\-F\-S\-E\-T, srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-F\-I\-L\-T\-E\-R, vis, and vis\-\_\-mutex.
+References pcm\-::\-P\-C\-Manager\-::cloud\-To\-Ros\-Msg(), srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T\-\_\-\-F, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-S\-E\-R\-V\-I\-C\-E\-\_\-\-V\-E\-C\-\_\-\-P\-A\-R\-A\-M\-E\-T\-E\-R\-\_\-\-R\-E\-Q\-U\-E\-S\-T(), horizontal\-Axis, input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, log\-\_\-str\-\_\-supp, nh\-\_\-ptr, pcm\-::\-P\-C\-Manager\-::norm\-To\-Ros\-Msg(), srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-H\-O\-R\-I\-Z\-O\-N\-T\-A\-L\-\_\-\-A\-X\-I\-S, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-H\-O\-R\-I\-Z\-O\-N\-T\-A\-L\-\_\-\-V\-A\-R\-I\-A\-N\-C\-E\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-N\-\_\-\-I\-T\-E\-R\-A\-T\-I\-V\-E\-\_\-\-C\-L\-O\-U\-D\-\_\-\-P\-E\-R\-C\-E\-N\-T\-A\-G\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-M\-I\-N\-\_\-\-I\-T\-E\-R\-A\-T\-I\-V\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-P\-E\-R\-C\-E\-N\-T\-A\-G\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-I\-N\-\_\-\-S\-H\-A\-P\-E\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-P\-O\-I\-N\-T\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-M\-A\-X\-\_\-\-I\-T\-E\-R\-A\-T\-I\-O\-N\-\_\-\-T\-H\-R\-E\-S\-H\-O\-L\-D, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-R\-A\-N\-S\-A\-C\-\_\-\-M\-O\-D\-E\-L\-\_\-\-N\-O\-R\-M\-A\-L\-\_\-\-D\-I\-S\-T\-A\-N\-C\-E\-\_\-\-W\-E\-I\-G\-H\-T, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-E\-D\-G\-E\-\_\-\-R\-E\-M\-O\-V\-E\-\_\-\-O\-F\-F\-S\-E\-T, ransac\-Max\-Iteration, srvm\-::\-S\-R\-V\-\_\-\-N\-A\-M\-E\-\_\-\-S\-U\-P\-P\-O\-R\-T\-\_\-\-F\-I\-L\-T\-E\-R, vis, and vis\-\_\-mutex.
 
 
 
@@ -232,8 +453,7 @@ Referenced by depth\-Acquisition().
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -251,11 +471,64 @@ Here is the call graph for this function\-:
 )}}\label{obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a}
 
 
-Definition at line 234 of file obj\-\_\-segmentation.\-cpp.
+Node callback. 
+
+It is called as soon as a new P\-C acquisition is available from the sensor. It processes the clud based on R\-O\-S services\-:
+\begin{DoxyEnumerate}
+\item \hyperlink{deep__filter__srv_8cpp}{deep\-\_\-filter\-\_\-srv.\-cpp}
+\item \hyperlink{arm__filter__srv_8cpp}{arm\-\_\-filter\-\_\-srv.\-cpp}
+\item \hyperlink{supports__segmentation__srv_8cpp}{supports\-\_\-segmentation\-\_\-srv.\-cpp}
+\item \hyperlink{cluster__segmentation__srv_8cpp}{cluster\-\_\-segmentation\-\_\-srv.\-cpp}
+\end{DoxyEnumerate}
+
+and publishes the output message if a successfully acquisition occurs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & the Point Cloud message published on the input topic. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} 
+
+\hyperlink{obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2}{call\-Deep\-Filter} 
+
+\hyperlink{obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae}{call\-Arm\-Filter} 
+
+\hyperlink{obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae}{call\-Support\-Filter} 
+
+\hyperlink{obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b}{call\-Cluster\-Segmentation} 
+\end{DoxySeeAlso}
+Following, the steeps that this function performs\-:
+
+
+\begin{DoxyItemize}
+\item get Kinect P\-C inputs as a standard pcl cloud,
+\item compute down-\/sampling (\hyperlink{classpcm_1_1PCManager_ab9c66b0834ca1ef0c1c01e21400103dd}{pcm\-::\-P\-C\-Manager\-::down\-Sampling}),
+\item call deep filter server (\hyperlink{obj__segmentation_8cpp_af07806e44f4c8e8e053c64eeee54dca2}{call\-Deep\-Filter}),
+\item if success\-: call arm filter server (\hyperlink{obj__segmentation_8cpp_a3bba1d36e0ba20c917da78be7258a8ae}{call\-Arm\-Filter}),
+\item if success\-: transform the cloud w.\-r.\-t. \hyperlink{obj__segmentation_8cpp_abeb91134d7b10cc7475f7fa946e66a34}{pcl\-Transform},
+\item stop if too few points are remaining (w.\-r.\-t. \hyperlink{obj__segmentation_8cpp_a3fea3689c92e1b2fcebd3eeafee94a5e}{M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D}). Otherwise ...
+\item compute the normals off all the points,
+\item show original cloud as gray points, if \hyperlink{obj__segmentation_8cpp_ac6f703bc9e7358560334737266db326c}{input\-Show\-Original\-Cloud} is true,
+\item call the support segmentation service (\hyperlink{obj__segmentation_8cpp_a7eb9ce1c694ace5adb8e94f09e54cdae}{call\-Support\-Filter}),
+\item for all the detected supports ...
+\item show supports as brown points, if \hyperlink{obj__segmentation_8cpp_acece8259b4a7b4327562daa817a43ef0}{input\-Show\-Support\-Clouds} is true,
+\item show cloud of the object on the horizontal plane, as orange points, if \hyperlink{obj__segmentation_8cpp_aea198f61928e89fc5332d092619b04f5}{input\-Show\-Object\-On\-Support} is true,
+\item call cluster segmentation service (\hyperlink{obj__segmentation_8cpp_a35f42b33ad39e60ed879678fd116fa5b}{call\-Cluster\-Segmentation}),
+\item if there is at least one cluster, prepare node output message containing all the claster information for a support,
+\item show cloud of the segmented objects, with random colors, if \hyperlink{obj__segmentation_8cpp_ab64cbde8b32aa3524e9fb94bb4d24525}{input\-Show\-Cluster\-Clouds} is true,
+\item prepare detached clusters center of mass for logging,
+\item publish the center of mass of the detached clusters for a specific support,
+\item print on screen the results,
+\item if \hyperlink{obj__segmentation_8cpp_a6317446c893a78108aab89bf69a4b66a}{centroid\-Log\-File\-Path} is not empty, print the same results on file. 
+\end{DoxyItemize}
+
+Definition at line 451 of file obj\-\_\-segmentation.\-cpp.
 
 
 
-References call\-Arm\-Filter(), call\-Cluster\-Segmentation(), call\-Deep\-Filter(), call\-Support\-Filter(), centroid\-File\-Log, centroid\-Log\-File\-Path, cluster\-Pub, input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D, pcl\-Transform, scan\-Id, vis, and vis\-\_\-mutex.
+References call\-Arm\-Filter(), call\-Cluster\-Segmentation(), call\-Deep\-Filter(), call\-Support\-Filter(), centroid\-File\-Log, centroid\-Log\-File\-Path, pcm\-::\-P\-C\-Manager\-::cloud\-For\-Ros\-Msg(), cluster\-Pub, pcm\-::\-P\-C\-Manager\-::down\-Sampling(), pcm\-::\-P\-C\-Manager\-::estimate\-Normal(), input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D, pcl\-Transform, scan\-Id, pcm\-::\-P\-C\-Manager\-::update\-Visor(), vis, vis\-\_\-mutex, and pcm\-::\-P\-C\-Manager\-::write\-To\-File().
 
 
 
@@ -263,8 +536,7 @@ Referenced by main().
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -281,28 +553,54 @@ Here is the call graph for this function\-:
 \item[{char $\ast$$\ast$}]{argv}
 \end{DoxyParamCaption}
 )}}\label{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
-This method implements the main node loop and it spins as soon as a new data is available in the input topic. Particularly, the input topic can be specified through its name into the parameter ..... 
+
+
+It initialise this R\-O\-S node and spin in order to activate the \hyperlink{obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a}{depth\-Acquisition} callback as soon as new data is available. It also listens and updates the \hyperlink{obj__segmentation_8cpp_abeb91134d7b10cc7475f7fa946e66a34}{pcl\-Transform} matrix. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em argc} & \\
+{\em argv} & the value of the input parameters, respectively\-:
+\begin{DoxyEnumerate}
+\item the name of the input topic (containing a Point\-Cloud2) (default value\-: \hyperlink{namespacesrvm_afb9bab9dced618a8992cf505cf484b1c}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-R\-A\-W\-\_\-\-C\-L\-O\-U\-D\-\_\-\-T\-O\-P\-I\-C}),
+\item the flag for showing the original cloud (see \hyperlink{obj__segmentation_8cpp_ac6f703bc9e7358560334737266db326c}{input\-Show\-Original\-Cloud}),
+\item the flag for showing the supports cloud (see \hyperlink{obj__segmentation_8cpp_acece8259b4a7b4327562daa817a43ef0}{input\-Show\-Support\-Clouds}),
+\item the flag for showing the clusters cloud (see \hyperlink{obj__segmentation_8cpp_ab64cbde8b32aa3524e9fb94bb4d24525}{input\-Show\-Cluster\-Clouds}),
+\item the flag for showing the cloud of the object above the supports (see \hyperlink{obj__segmentation_8cpp_aea198f61928e89fc5332d092619b04f5}{input\-Show\-Object\-On\-Support}),
+\item the file path in which store the logging information about the segmented cluster centroids (see \hyperlink{obj__segmentation_8cpp_a6317446c893a78108aab89bf69a4b66a}{centroid\-Log\-File\-Path}). 
+\end{DoxyEnumerate}\\
 \hline
-{\em argv} & \\
+{\em argc} & the number of input parameters + 1 (defaults\-: executable name). It has to be equal to 7.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+0. 
 \end{DoxyReturn}
+Following, the steeps that this function performs\-:
 
 
-Definition at line 337 of file obj\-\_\-segmentation.\-cpp.
+\begin{DoxyItemize}
+\item instantiate the R\-O\-S node with name \char`\"{}obj\-\_\-segmentation\char`\"{},
+\item read and configure input parameters,
+\item log info about this node set up,
+\item set subscriber to get R\-G\-B-\/\-D data (from the topic defied by argv\mbox{[} 1\mbox{]}) that will be processed from \hyperlink{obj__segmentation_8cpp_a480da8a5bc48bba4ac0cd49cfa4e5e7a}{depth\-Acquisition} callback,
+\item eventually, create window (with name \char`\"{}\-Object Table Segmentation\char`\"{}) to visualize clouds from this node,
+\item set the publisher for the node output to contains
+\begin{DoxyCode}
+pitt\_msgs::msg::ClustersOutput
+\end{DoxyCode}
+ and named as \hyperlink{namespacesrvm_a520b8813dc65ba764d59f05a0b316e5c}{srvm\-::\-T\-O\-P\-I\-C\-\_\-\-O\-U\-T\-\_\-\-N\-A\-M\-E\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-P\-E\-R\-C\-E\-P\-T\-I\-O\-N} (with buffer size 10),
+\item wait for callbacl and listen for the transformation between the sensor camera (specified through the parameter\-: \hyperlink{namespacesrvm_ac5228e86d6d396c944b11f847746b3b8}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E}) and the output frame (specified through the parameter\-: \hyperlink{namespacesrvm_a2984c458ad628e1230d49e4f1a3ee84a}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E}).. 
+\end{DoxyItemize}
+
+Definition at line 571 of file obj\-\_\-segmentation.\-cpp.
 
 
 
-References centroid\-Log\-File\-Path, cluster\-Pub, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-C\-E\-N\-T\-R\-O\-I\-D\-\_\-\-L\-O\-G\-\_\-\-F\-I\-L\-E, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-R\-A\-W\-\_\-\-C\-L\-O\-U\-D\-\_\-\-T\-O\-P\-I\-C, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-C\-L\-U\-S\-T\-E\-R\-S, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-O\-N\-\_\-\-S\-U\-P\-P\-O\-R\-T, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-S\-U\-P\-P\-O\-R\-T\-S, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-F\-\_\-\-W\-A\-I\-T\-\_\-\-S\-E\-C\-O\-N\-D\-S, depth\-Acquisition(), srvm\-::get\-Bool\-Ptr\-Parameter(), srvm\-::get\-Flag\-Value\-To\-Print(), srvm\-::get\-Path\-Ptr\-Parameter(), srvm\-::get\-String\-Parameter(), srvm\-::get\-String\-Ptr\-Parameter(), input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, log\-\_\-str\-\_\-depth, log\-\_\-str\-\_\-supp, nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, pcl\-Transform, srvm\-::\-T\-O\-P\-I\-C\-\_\-\-O\-U\-T\-\_\-\-N\-A\-M\-E\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-P\-E\-R\-C\-E\-P\-T\-I\-O\-N, vis, vis\-\_\-thread, and vis\-Spin().
+References centroid\-Log\-File\-Path, cluster\-Pub, pcm\-::\-P\-C\-Manager\-::create\-Visor(), srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-C\-E\-N\-T\-R\-O\-I\-D\-\_\-\-L\-O\-G\-\_\-\-F\-I\-L\-E, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-R\-A\-W\-\_\-\-C\-L\-O\-U\-D\-\_\-\-T\-O\-P\-I\-C, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-C\-L\-U\-S\-T\-E\-R\-S, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-O\-N\-\_\-\-S\-U\-P\-P\-O\-R\-T, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-S\-U\-P\-P\-O\-R\-T\-S, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-F\-\_\-\-W\-A\-I\-T\-\_\-\-S\-E\-C\-O\-N\-D\-S, depth\-Acquisition(), srvm\-::get\-Bool\-Ptr\-Parameter(), srvm\-::get\-Flag\-Value\-To\-Print(), srvm\-::get\-Path\-Ptr\-Parameter(), srvm\-::get\-String\-Parameter(), srvm\-::get\-String\-Ptr\-Parameter(), input\-Show\-Cluster\-Clouds, input\-Show\-Object\-On\-Support, input\-Show\-Original\-Cloud, input\-Show\-Support\-Clouds, log\-\_\-str\-\_\-depth, log\-\_\-str\-\_\-supp, nh\-\_\-ptr, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E, pcl\-Transform, srvm\-::\-T\-O\-P\-I\-C\-\_\-\-O\-U\-T\-\_\-\-N\-A\-M\-E\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-P\-E\-R\-C\-E\-P\-T\-I\-O\-N, vis, vis\-\_\-thread, vis\-Spin(), and pcm\-::\-P\-C\-Manager\-::write\-To\-File().
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -320,7 +618,11 @@ Here is the call graph for this function\-:
 )}}\label{obj__segmentation_8cpp_aca73ab26cae45b4b998a3cca9e4f75bc}
 
 
-Definition at line 64 of file obj\-\_\-segmentation.\-cpp.
+make the visualisation spinning without lagging acroos multi updating. 
+
+
+
+Definition at line 192 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -338,18 +640,34 @@ Referenced by main().
 \subsubsection[{centroid\-Log\-File\-Path}]{\setlength{\rightskip}{0pt plus 5cm}string centroid\-Log\-File\-Path}}\label{obj__segmentation_8cpp_a6317446c893a78108aab89bf69a4b66a}
 
 
-Definition at line 45 of file obj\-\_\-segmentation.\-cpp.
+file path to lag the centroids of the acquired objects in a table. Set to empty to do not log on file. 
+
+The data, that will be appended on the file for each acquisition will have the following shape\-: 
+\begin{DoxyCode}
+\textcolor{stringliteral}{"scan id, support idx, cluster idx, centroid X, centroid Y, centroid Z;\(\backslash\)n"} 
+\end{DoxyCode}
+
+
+This is a global input parameter that is settable from launcher and acquired during node initialization (see also \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} function\-: argv\mbox{[} 6\mbox{]}). \par
+ It cannot be changed on the fly. \par
+ It default values is set to\-: \hyperlink{namespacesrvm_a92921b8b79655fa69a697a54dca42056}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-C\-E\-N\-T\-R\-O\-I\-D\-\_\-\-L\-O\-G\-\_\-\-F\-I\-L\-E} 
+
+Definition at line 156 of file obj\-\_\-segmentation.\-cpp.
 
 
 
 Referenced by depth\-Acquisition(), and main().
 
-\hypertarget{obj__segmentation_8cpp_a27c3ab807dd4360a5b35f9b4813ac85c}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!cluster\-Pub@{cluster\-Pub}}
+\hypertarget{obj__segmentation_8cpp_a431711d7fd270977af34b226ed5d5cef}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!cluster\-Pub@{cluster\-Pub}}
 \index{cluster\-Pub@{cluster\-Pub}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
-\subsubsection[{cluster\-Pub}]{\setlength{\rightskip}{0pt plus 5cm}Publisher cluster\-Pub}}\label{obj__segmentation_8cpp_a27c3ab807dd4360a5b35f9b4813ac85c}
+\subsubsection[{cluster\-Pub}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Publisher cluster\-Pub}}\label{obj__segmentation_8cpp_a431711d7fd270977af34b226ed5d5cef}
 
 
-Definition at line 60 of file obj\-\_\-segmentation.\-cpp.
+the R\-O\-S publisher in which the message of a new acquistion will be send. 
+
+Its name is\-: \hyperlink{namespacesrvm_a520b8813dc65ba764d59f05a0b316e5c}{srvm\-::\-T\-O\-P\-I\-C\-\_\-\-O\-U\-T\-\_\-\-N\-A\-M\-E\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-P\-E\-R\-C\-E\-P\-T\-I\-O\-N}. 
+
+Definition at line 171 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -360,7 +678,13 @@ Referenced by depth\-Acquisition(), and main().
 \subsubsection[{input\-Show\-Cluster\-Clouds}]{\setlength{\rightskip}{0pt plus 5cm}bool input\-Show\-Cluster\-Clouds}}\label{obj__segmentation_8cpp_ab64cbde8b32aa3524e9fb94bb4d24525}
 
 
-Definition at line 44 of file obj\-\_\-segmentation.\-cpp.
+flag for showing identified objects (random colors) on the visualiser of this node. 
+
+This is a global input parameter that is settable from launcher and acquired during node initialization (see also \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} function\-: argv\mbox{[} 4\mbox{]}). \par
+ It cannot be changed on the fly. \par
+ It default values is set to\-: \hyperlink{namespacesrvm_aef053199a3f95b1da712ef187b096f93}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-C\-L\-U\-S\-T\-E\-R\-S} 
+
+Definition at line 135 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -371,7 +695,13 @@ Referenced by call\-Deep\-Filter(), call\-Support\-Filter(), depth\-Acquisition(
 \subsubsection[{input\-Show\-Object\-On\-Support}]{\setlength{\rightskip}{0pt plus 5cm}bool input\-Show\-Object\-On\-Support}}\label{obj__segmentation_8cpp_aea198f61928e89fc5332d092619b04f5}
 
 
-Definition at line 44 of file obj\-\_\-segmentation.\-cpp.
+flag for showing identified all the points on the table (orange points) on the visualiser of this node. 
+
+This is a global input parameter that is settable from launcher and acquired during node initialization (see also \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} function\-: argv\mbox{[} 5\mbox{]}). \par
+ It cannot be changed on the fly. \par
+ It default values is set to\-: \hyperlink{namespacesrvm_a8e6760e3e9557fc2fb87cbb6fcd8b3e6}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-O\-B\-J\-E\-C\-T\-\_\-\-O\-N\-\_\-\-S\-U\-P\-P\-O\-R\-T} 
+
+Definition at line 144 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -382,7 +712,13 @@ Referenced by call\-Deep\-Filter(), call\-Support\-Filter(), depth\-Acquisition(
 \subsubsection[{input\-Show\-Original\-Cloud}]{\setlength{\rightskip}{0pt plus 5cm}bool input\-Show\-Original\-Cloud}}\label{obj__segmentation_8cpp_ac6f703bc9e7358560334737266db326c}
 
 
-Definition at line 44 of file obj\-\_\-segmentation.\-cpp.
+flag for showing raw cloud (white points) on the visualiser of this node. 
+
+This is a global input parameter that is settable from launcher and acquired during node initialization (see also \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} function\-: argv\mbox{[} 2\mbox{]}). \par
+ It cannot be changed on the fly. \par
+ It default values is set to\-: \hyperlink{namespacesrvm_ac54afc31491c977345ef1a1fbb563be3}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D} 
+
+Definition at line 117 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -393,7 +729,13 @@ Referenced by call\-Deep\-Filter(), call\-Support\-Filter(), depth\-Acquisition(
 \subsubsection[{input\-Show\-Support\-Clouds}]{\setlength{\rightskip}{0pt plus 5cm}bool input\-Show\-Support\-Clouds}}\label{obj__segmentation_8cpp_acece8259b4a7b4327562daa817a43ef0}
 
 
-Definition at line 44 of file obj\-\_\-segmentation.\-cpp.
+flag for showing identified tables (brown points) on the visualiser of this node. 
+
+This is a global input parameter that is settable from launcher and acquired during node initialization (see also \hyperlink{obj__segmentation_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} function\-: argv\mbox{[} 3\mbox{]}). \par
+ It cannot be changed on the fly. \par
+ It default values is set to\-: \hyperlink{namespacesrvm_a9880144ef0df953c3b583e4f20dbff76}{srvm\-::\-D\-E\-F\-A\-U\-L\-T\-\_\-\-I\-N\-P\-U\-T\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-H\-O\-W\-\_\-\-S\-U\-P\-P\-O\-R\-T\-S} 
+
+Definition at line 126 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -404,7 +746,11 @@ Referenced by call\-Deep\-Filter(), call\-Support\-Filter(), depth\-Acquisition(
 \subsubsection[{log\-\_\-str\-\_\-depth}]{\setlength{\rightskip}{0pt plus 5cm}string log\-\_\-str\-\_\-depth = \char`\"{}Loading...\char`\"{}}}\label{obj__segmentation_8cpp_a484374fe771cd860a2ea9f9feda68905}
 
 
-Definition at line 48 of file obj\-\_\-segmentation.\-cpp.
+string that will contains info about \hyperlink{deep__filter__srv_8cpp}{deep\-\_\-filter\-\_\-srv.\-cpp} service, shown in the visualiser while the parameters are changed on the fly. 
+
+
+
+Definition at line 179 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -415,7 +761,11 @@ Referenced by call\-Deep\-Filter(), and main().
 \subsubsection[{log\-\_\-str\-\_\-supp}]{\setlength{\rightskip}{0pt plus 5cm}string log\-\_\-str\-\_\-supp = \char`\"{}Loading...\char`\"{}}}\label{obj__segmentation_8cpp_a7024ef4623a4562d025033aa950364f5}
 
 
-Definition at line 49 of file obj\-\_\-segmentation.\-cpp.
+string that will contains info about support\-\_\-segmentation\-\_\-srv.\-cpp service, shown in the visualiser while the parameters are changed on the fly. 
+
+
+
+Definition at line 181 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -426,14 +776,22 @@ Referenced by call\-Support\-Filter(), and main().
 \subsubsection[{manager}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pcm\-::\-P\-C\-Manager}$\ast$ manager = new {\bf pcm\-::\-P\-C\-Manager}( false)}}\label{obj__segmentation_8cpp_a21221f555fa05f2c3f45ff5592a25197}
 
 
-Definition at line 58 of file obj\-\_\-segmentation.\-cpp.
+variable to initialise the \hyperlink{classpcm_1_1PCManager}{pcm\-::\-P\-C\-Manager}. 
+
+
+
+Definition at line 165 of file obj\-\_\-segmentation.\-cpp.
 
 \hypertarget{obj__segmentation_8cpp_a3fea3689c92e1b2fcebd3eeafee94a5e}{\index{obj\-\_\-segmentation.\-cpp@{obj\-\_\-segmentation.\-cpp}!M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D@{M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D}}
 \index{M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D@{M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D}!obj_segmentation.cpp@{obj\-\_\-segmentation.\-cpp}}
 \subsubsection[{M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D}]{\setlength{\rightskip}{0pt plus 5cm}const int M\-I\-N\-\_\-\-P\-O\-I\-N\-T\-\_\-\-I\-N\-\_\-\-O\-R\-I\-G\-I\-N\-A\-L\-\_\-\-C\-L\-O\-U\-D = 30\hspace{0.3cm}{\ttfamily [static]}}}\label{obj__segmentation_8cpp_a3fea3689c92e1b2fcebd3eeafee94a5e}
 
 
-Definition at line 55 of file obj\-\_\-segmentation.\-cpp.
+the cloud will be not not processed if has less number of points 
+
+
+
+Definition at line 101 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -444,7 +802,11 @@ Referenced by depth\-Acquisition().
 \subsubsection[{nh\-\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}ros\-::\-Node\-Handle$\ast$ nh\-\_\-ptr = N\-U\-L\-L}}\label{obj__segmentation_8cpp_afe3fec681d3658d114dfa8cfff163e82}
 
 
-Definition at line 36 of file obj\-\_\-segmentation.\-cpp.
+ros handle passed across all services calls. 
+
+
+
+Definition at line 167 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -455,7 +817,11 @@ Referenced by call\-Arm\-Filter(), call\-Cluster\-Segmentation(), call\-Deep\-Fi
 \subsubsection[{pcl\-Transform}]{\setlength{\rightskip}{0pt plus 5cm}Eigen\-::\-Matrix4f pcl\-Transform}}\label{obj__segmentation_8cpp_abeb91134d7b10cc7475f7fa946e66a34}
 
 
-Definition at line 232 of file obj\-\_\-segmentation.\-cpp.
+the transformation matrix between the R\-G\-B-\/\-D sensor and the \hyperlink{namespacesrvm_ac5228e86d6d396c944b11f847746b3b8}{srvm\-::\-P\-A\-R\-A\-M\-\_\-\-N\-A\-M\-E\-\_\-\-I\-N\-P\-U\-T\-\_\-\-C\-L\-O\-U\-D\-\_\-\-R\-E\-F\-E\-R\-E\-N\-C\-E\-\_\-\-F\-R\-A\-M\-E} frame (it can be changed on the fly). 
+
+
+
+Definition at line 173 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -466,7 +832,11 @@ Referenced by depth\-Acquisition(), and main().
 \subsubsection[{scan\-Id}]{\setlength{\rightskip}{0pt plus 5cm}long scan\-Id = 0}}\label{obj__segmentation_8cpp_a848f9977cb150e83cf5464a65dcc9fe4}
 
 
-Definition at line 52 of file obj\-\_\-segmentation.\-cpp.
+so far, it is used only for logging. 
+
+
+
+Definition at line 183 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -477,7 +847,11 @@ Referenced by depth\-Acquisition().
 \subsubsection[{vis}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::shared\-\_\-ptr$<$ {\bf visualization\-::\-P\-C\-L\-Visualizer}$>$ vis}}\label{obj__segmentation_8cpp_a6c2d87234fca8dcca11f888098558986}
 
 
-Definition at line 59 of file obj\-\_\-segmentation.\-cpp.
+the P\-C\-L visualiser for this node. 
+
+It will happear if at least one of\-: \hyperlink{obj__segmentation_8cpp_ac6f703bc9e7358560334737266db326c}{input\-Show\-Original\-Cloud}, \hyperlink{obj__segmentation_8cpp_acece8259b4a7b4327562daa817a43ef0}{input\-Show\-Support\-Clouds}, \hyperlink{obj__segmentation_8cpp_ab64cbde8b32aa3524e9fb94bb4d24525}{input\-Show\-Cluster\-Clouds}, \hyperlink{obj__segmentation_8cpp_aea198f61928e89fc5332d092619b04f5}{input\-Show\-Object\-On\-Support}; is true. 
+
+Definition at line 169 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -488,7 +862,11 @@ Referenced by call\-Deep\-Filter(), call\-Support\-Filter(), depth\-Acquisition(
 \subsubsection[{vis\-\_\-mutex}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::mutex vis\-\_\-mutex}}\label{obj__segmentation_8cpp_a0dc8882293908d9c8cc15f76a2a49588}
 
 
-Definition at line 62 of file obj\-\_\-segmentation.\-cpp.
+for a better visualiser updating during different services calls. 
+
+
+
+Definition at line 177 of file obj\-\_\-segmentation.\-cpp.
 
 
 
@@ -499,7 +877,11 @@ Referenced by call\-Deep\-Filter(), call\-Support\-Filter(), depth\-Acquisition(
 \subsubsection[{vis\-\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::thread vis\-\_\-thread}}\label{obj__segmentation_8cpp_ab83e6219895a4d26706c0d858f8ec288}
 
 
-Definition at line 61 of file obj\-\_\-segmentation.\-cpp.
+for a better visualiser updating on parallel thread. 
+
+
+
+Definition at line 175 of file obj\-\_\-segmentation.\-cpp.
 
 
 

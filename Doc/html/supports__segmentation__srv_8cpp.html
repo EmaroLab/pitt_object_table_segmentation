@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: src/segmentation_services/supports_segmentation_srv.cpp File Reference</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): src/segmentation_services/supports_segmentation_srv.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -379,7 +380,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00070">70</a> of file <a class="el" href="supports__segmentation__srv_8cpp_source.html">supports_segmentation_srv.cpp</a>.</p>
 
-<p>References <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00038">DEFAULT_PARAM_SUPPORT_SRV_HORIZONTAL_AXIS</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00030">DEFAULT_PARAM_SUPPORT_SRV_MIN_ITERATIVE_CLOUD_PERCENTAGE</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00031">DEFAULT_PARAM_SUPPORT_SRV_MIN_ITERATIVE_SUPPORT_PERCENTAGE</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00035">DEFAULT_PARAM_SUPPORT_SRV_RANSAC_DISTANCE_POINT_IN_SHAPE_THRESHOLD</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00037">DEFAULT_PARAM_SUPPORT_SRV_RANSAC_MAX_ITERATION_THRESHOLD</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00036">DEFAULT_PARAM_SUPPORT_SRV_RANSAC_MODEL_NORMAL_DISTANCE_WEIGHT</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00039">DEFAULT_PARAM_SUPPORT_SRV_SUPPORT_EDGE_REMOVE_OFFSET</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00033">DEFAULT_PARAM_SUPPORT_SRV_VARIANCE_THRESHOLD_FOR_HORIZONTAL</a>, <a class="el" href="srv__manager_8h_source.html#l00176">srvm::getService3DArrayParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00163">srvm::getServiceFloatParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00168">srvm::getServiceIntParameter()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">horizontalAxis</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">maxVarianceThForHorizontal</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">minIterativeCloudPercentage</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">minPlanePercentageSize</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">minVarianceThForHorizontal</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00047">ransacMaxIteration</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">ransacNormalDistanceWeigth</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">ransacThDistancePointShape</a>, and <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">supportEdgeRemoveOffset</a>.</p>
+<p>References <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00038">DEFAULT_PARAM_SUPPORT_SRV_HORIZONTAL_AXIS</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00030">DEFAULT_PARAM_SUPPORT_SRV_MIN_ITERATIVE_CLOUD_PERCENTAGE</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00031">DEFAULT_PARAM_SUPPORT_SRV_MIN_ITERATIVE_SUPPORT_PERCENTAGE</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00035">DEFAULT_PARAM_SUPPORT_SRV_RANSAC_DISTANCE_POINT_IN_SHAPE_THRESHOLD</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00037">DEFAULT_PARAM_SUPPORT_SRV_RANSAC_MAX_ITERATION_THRESHOLD</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00036">DEFAULT_PARAM_SUPPORT_SRV_RANSAC_MODEL_NORMAL_DISTANCE_WEIGHT</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00039">DEFAULT_PARAM_SUPPORT_SRV_SUPPORT_EDGE_REMOVE_OFFSET</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00033">DEFAULT_PARAM_SUPPORT_SRV_VARIANCE_THRESHOLD_FOR_HORIZONTAL</a>, <a class="el" href="srv__manager_8h_source.html#l00177">srvm::getService3DArrayParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00164">srvm::getServiceFloatParameter()</a>, <a class="el" href="srv__manager_8h_source.html#l00169">srvm::getServiceIntParameter()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">horizontalAxis</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">maxVarianceThForHorizontal</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">minIterativeCloudPercentage</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">minPlanePercentageSize</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">minVarianceThForHorizontal</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00047">ransacMaxIteration</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">ransacNormalDistanceWeigth</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00044">ransacThDistancePointShape</a>, and <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">supportEdgeRemoveOffset</a>.</p>
 
 <p>Referenced by <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00241">findSupports()</a>.</p>
 
@@ -733,7 +734,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00046">46</a> of file <a class="el" href="supports__segmentation__srv_8cpp_source.html">supports_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00147">callSupportFilter()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00241">findSupports()</a>, and <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00070">initializeInputParameters()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00241">findSupports()</a>, and <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00070">initializeInputParameters()</a>.</p>
 
 </div>
 </div>
@@ -877,7 +878,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00047">47</a> of file <a class="el" href="supports__segmentation__srv_8cpp_source.html">supports_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00241">findSupports()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00070">initializeInputParameters()</a>, and <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00090">ransacPlaneSegmentator()</a>.</p>
+<p>Referenced by <a class="el" href="obj__segmentation_8cpp_source.html#l00299">callSupportFilter()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00241">findSupports()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00070">initializeInputParameters()</a>, and <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00090">ransacPlaneSegmentator()</a>.</p>
 
 </div>
 </div>
@@ -925,7 +926,7 @@ Here is the call graph for this function:</div>
 
 <p>Definition at line <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00089">89</a> of file <a class="el" href="supports__segmentation__srv_8cpp_source.html">supports_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00090">ransacPlaneSegmentator()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="cone__segmentation__srv_8cpp_source.html#l00083">ransacConeDetaction()</a>, <a class="el" href="cylinder__segmentation__srv_8cpp_source.html#l00082">ransacCylinderDetaction()</a>, <a class="el" href="plane__segmentation__srv_8cpp_source.html#l00027">ransacPlaneDetaction()</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00090">ransacPlaneSegmentator()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -993,7 +994,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a831fd66c547c951e6317761ec0f4309.html">segmentation_services</a></li><li class="navelem"><a class="el" href="supports__segmentation__srv_8cpp.html">supports_segmentation_srv.cpp</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:35 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

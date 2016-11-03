@@ -1,9 +1,9 @@
 var obj__segmentation_8cpp =
 [
-    [ "InlierClusterPtr", "obj__segmentation_8cpp.html#a8f4c38bb82a38d13ea44bb3c66816597", null ],
-    [ "InlierClusters", "obj__segmentation_8cpp.html#a7abe79d0733f39c4aa0c917a5af115ae", null ],
-    [ "InlierSupports", "obj__segmentation_8cpp.html#af8e00b01b83bb50a18345fc3806f4ac7", null ],
-    [ "InlierSupportsPtr", "obj__segmentation_8cpp.html#a2e5691fdacd383e69e88a6ea80c51884", null ],
+    [ "InlierClusterPtr", "obj__segmentation_8cpp.html#a50bb89dc3a9b0601f031cbd80235d27e", null ],
+    [ "InlierClusters", "obj__segmentation_8cpp.html#a6b657f4959d56c53eaf6be891386bd22", null ],
+    [ "InlierSupports", "obj__segmentation_8cpp.html#a54e1c5ec7922766e1a02d8e9b7e3856e", null ],
+    [ "InlierSupportsPtr", "obj__segmentation_8cpp.html#a794c4e0ea8acf9f34c17b066fbf0869d", null ],
     [ "callArmFilter", "obj__segmentation_8cpp.html#a3bba1d36e0ba20c917da78be7258a8ae", null ],
     [ "callClusterSegmentation", "obj__segmentation_8cpp.html#a35f42b33ad39e60ed879678fd116fa5b", null ],
     [ "callDeepFilter", "obj__segmentation_8cpp.html#af07806e44f4c8e8e053c64eeee54dca2", null ],
@@ -12,7 +12,7 @@ var obj__segmentation_8cpp =
     [ "main", "obj__segmentation_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627", null ],
     [ "visSpin", "obj__segmentation_8cpp.html#aca73ab26cae45b4b998a3cca9e4f75bc", null ],
     [ "centroidLogFilePath", "obj__segmentation_8cpp.html#a6317446c893a78108aab89bf69a4b66a", null ],
-    [ "clusterPub", "obj__segmentation_8cpp.html#a27c3ab807dd4360a5b35f9b4813ac85c", null ],
+    [ "clusterPub", "obj__segmentation_8cpp.html#a431711d7fd270977af34b226ed5d5cef", null ],
     [ "inputShowClusterClouds", "obj__segmentation_8cpp.html#ab64cbde8b32aa3524e9fb94bb4d24525", null ],
     [ "inputShowObjectOnSupport", "obj__segmentation_8cpp.html#aea198f61928e89fc5332d092619b04f5", null ],
     [ "inputShowOriginalCloud", "obj__segmentation_8cpp.html#ac6f703bc9e7358560334737266db326c", null ],

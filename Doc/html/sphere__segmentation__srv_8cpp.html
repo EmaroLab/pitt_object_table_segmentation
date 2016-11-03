@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: src/segmentation_services/sphere_segmentation_srv.cpp File Reference</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): src/segmentation_services/sphere_segmentation_srv.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -109,6 +110,9 @@ $(document).ready(function(){initNavTree('sphere__segmentation__srv_8cpp.html','
 <div class="title">sphere_segmentation_srv.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The ROS service, to <b>identify a sphere</b> in a point cloud.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;ros/ros.h&quot;</code><br/>
 <code>#include &lt;pcl_ros/point_cloud.h&gt;</code><br/>
 <code>#include &lt;pcl/segmentation/sac_segmentation.h&gt;</code><br/>
@@ -153,7 +157,27 @@ Variables</h2></td></tr>
 <tr class="memitem:a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sphere__segmentation__srv_8cpp.html#a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b">SPHERE_MAX_OPENING_ANGLE_DEGREE</a> = 180.0</td></tr>
 <tr class="separator:a4cb5a0882ef8c8ddbe1c83f4ec2dfb5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The ROS service, to <b>identify a sphere</b> in a point cloud. </p>
+<p><b>File</b> <br/>
+ &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <a class="el" href="sphere__segmentation__srv_8cpp.html" title="The ROS service, to identify a sphere in a point cloud. ">src/segmentation_services/sphere_segmentation_srv.cpp</a> </p>
+<dl class="section author"><dt>Author</dt><dd>Buoncompagni Luca, </dd></dl>
+<p><b>Contacts</b> <br/>
+ &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <a href="#" onclick="location.href='mai'+'lto:'+'luc'+'a.'+'buo'+'nc'+'omp'+'ag'+'ni@'+'ed'+'u.u'+'ni'+'ge.'+'it'; return false;">luca.<span style="display: none;">.nosp@m.</span>buon<span style="display: none;">.nosp@m.</span>compa<span style="display: none;">.nosp@m.</span>gni@<span style="display: none;">.nosp@m.</span>edu.u<span style="display: none;">.nosp@m.</span>nige<span style="display: none;">.nosp@m.</span>.it</a> </p>
+<dl class="section date"><dt>Date</dt><dd>May 10, 2015 </dd></dl>
+<p><b>Institution</b> <br/>
+ &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; DIBRIS, emaroLAB, University of Genoa. </p>
+<dl class="section version"><dt>Version</dt><dd>2.1 <hr/>
+ <b>Programm behaviour</b> </dd></dl>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; This is the implementation of a ROS service which uses RANSAC methods to identify a sphere in a point cloud. Its inputs and outputs messages are implmented in the <a href="https://github.com/EmaroLab/pitt_msgs">pitt_msgs</a> package: </p>
+<div class="fragment"><div class="line">pitt_message/srv/PrimitiveSegmentation.srv </div>
+</div><!-- fragment --><p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; It ta</p>
+<dl class="section see"><dt>See Also</dt><dd>Point Cloud Library (PCL) <a href="http://docs.pointclouds.org/1.7.0/group__sample__consensus.html">RANSAC</a> API </dd>
+<dd>
+ransac_segmentation </dd></dl>
+
+<p>Definition in file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <div class="memitem">
 <div class="memproto">
@@ -178,9 +202,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00100">100</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00132">132</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>References <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00016">nh_ptr</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>, and <a class="el" href="srv__manager_8h_source.html#l00029">srvm::SRV_NAME_RANSAC_SPHERE_FILTER</a>.</p>
+<p>References <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00048">nh_ptr</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>, and <a class="el" href="srv__manager_8h_source.html#l00029">srvm::SRV_NAME_RANSAC_SPHERE_FILTER</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -217,11 +241,11 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">29</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">61</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>References <a class="el" href="pc__manager_8cpp_source.html#l00090">pcm::PCManager::cloudForRosMsg()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00112">pcm::PCManager::coefficientToVectorMsg()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00105">pcm::PCManager::inlierToVectorMsg()</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00016">nh_ptr</a>, <a class="el" href="pc__manager_8cpp_source.html#l00100">pcm::PCManager::normForRosMsg()</a>, <a class="el" href="srv__manager_8h_source.html#l00050">srvm::PARAM_NAME_SPHERE_DISTANCE_TH</a>, <a class="el" href="srv__manager_8h_source.html#l00054">srvm::PARAM_NAME_SPHERE_EPS_ANGLE_TH</a>, <a class="el" href="srv__manager_8h_source.html#l00051">srvm::PARAM_NAME_SPHERE_MAX_ITERATION_LIMIT</a>, <a class="el" href="srv__manager_8h_source.html#l00056">srvm::PARAM_NAME_SPHERE_MAX_OPENING_ANGLE_DEGREE</a>, <a class="el" href="srv__manager_8h_source.html#l00053">srvm::PARAM_NAME_SPHERE_MAX_RADIUS_LIMIT</a>, <a class="el" href="srv__manager_8h_source.html#l00055">srvm::PARAM_NAME_SPHERE_MIN_OPENING_ANGLE_DEGREE</a>, <a class="el" href="srv__manager_8h_source.html#l00052">srvm::PARAM_NAME_SPHERE_MIN_RADIUS_LIMIT</a>, <a class="el" href="srv__manager_8h_source.html#l00049">srvm::PARAM_NAME_SPHERE_NORMAL_DISTANCE_WEIGHT</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00089">seg</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00020">SPHERE_DISTANCE_TH</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00024">SPHERE_EPS_ANGLE_TH</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00023">SPHERE_MAX_ITERATION_LIMIT</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00026">SPHERE_MAX_OPENING_ANGLE_DEGREE</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00022">SPHERE_MAX_RADIUS_LIMIT</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00025">SPHERE_MIN_OPENING_ANGLE_DEGREE</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00021">SPHERE_MIN_RADIUS_LIMIT</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00019">SPHERE_NORMAL_DISTANCE_WEIGTH</a>.</p>
+<p>References <a class="el" href="pc__manager_8cpp_source.html#l00090">pcm::PCManager::cloudForRosMsg()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00112">pcm::PCManager::coefficientToVectorMsg()</a>, <a class="el" href="pc__manager_8cpp_source.html#l00105">pcm::PCManager::inlierToVectorMsg()</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00048">nh_ptr</a>, <a class="el" href="pc__manager_8cpp_source.html#l00100">pcm::PCManager::normForRosMsg()</a>, <a class="el" href="srv__manager_8h_source.html#l00050">srvm::PARAM_NAME_SPHERE_DISTANCE_TH</a>, <a class="el" href="srv__manager_8h_source.html#l00054">srvm::PARAM_NAME_SPHERE_EPS_ANGLE_TH</a>, <a class="el" href="srv__manager_8h_source.html#l00051">srvm::PARAM_NAME_SPHERE_MAX_ITERATION_LIMIT</a>, <a class="el" href="srv__manager_8h_source.html#l00056">srvm::PARAM_NAME_SPHERE_MAX_OPENING_ANGLE_DEGREE</a>, <a class="el" href="srv__manager_8h_source.html#l00053">srvm::PARAM_NAME_SPHERE_MAX_RADIUS_LIMIT</a>, <a class="el" href="srv__manager_8h_source.html#l00055">srvm::PARAM_NAME_SPHERE_MIN_OPENING_ANGLE_DEGREE</a>, <a class="el" href="srv__manager_8h_source.html#l00052">srvm::PARAM_NAME_SPHERE_MIN_RADIUS_LIMIT</a>, <a class="el" href="srv__manager_8h_source.html#l00049">srvm::PARAM_NAME_SPHERE_NORMAL_DISTANCE_WEIGHT</a>, <a class="el" href="supports__segmentation__srv_8cpp_source.html#l00089">seg</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00052">SPHERE_DISTANCE_TH</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00056">SPHERE_EPS_ANGLE_TH</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00055">SPHERE_MAX_ITERATION_LIMIT</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00058">SPHERE_MAX_OPENING_ANGLE_DEGREE</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00054">SPHERE_MAX_RADIUS_LIMIT</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00057">SPHERE_MIN_OPENING_ANGLE_DEGREE</a>, <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00053">SPHERE_MIN_RADIUS_LIMIT</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00051">SPHERE_NORMAL_DISTANCE_WEIGTH</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00100">main()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00132">main()</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -245,9 +269,9 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00016">16</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00048">48</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00100">main()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00132">main()</a>, and <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -269,9 +293,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00020">20</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00052">52</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -293,9 +317,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00024">24</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00056">56</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -317,9 +341,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00023">23</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00055">55</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -341,9 +365,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00026">26</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00058">58</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -365,9 +389,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00022">22</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00054">54</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -389,9 +413,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00025">25</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00057">57</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -413,9 +437,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00021">21</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00053">53</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -437,9 +461,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00019">19</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00051">51</a> of file <a class="el" href="sphere__segmentation__srv_8cpp_source.html">sphere_segmentation_srv.cpp</a>.</p>
 
-<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00029">ransacSphereDetection()</a>.</p>
+<p>Referenced by <a class="el" href="sphere__segmentation__srv_8cpp_source.html#l00061">ransacSphereDetection()</a>.</p>
 
 </div>
 </div>
@@ -449,7 +473,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a831fd66c547c951e6317761ec0f4309.html">segmentation_services</a></li><li class="navelem"><a class="el" href="sphere__segmentation__srv_8cpp.html">sphere_segmentation_srv.cpp</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:35 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

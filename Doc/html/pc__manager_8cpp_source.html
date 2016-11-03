@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>DocumentClassHierarchy: src/point_cloud_library/pc_manager.cpp Source File</title>
+<title>Primitive Identification Tagging &amp; Tracking (PITT): src/point_cloud_library/pc_manager.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -29,9 +29,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DocumentClassHierarchy
-   &#160;<span id="projectnumber">1.0</span>
+   <div id="projectname">Primitive Identification Tagging &amp; Tracking (PITT)
+   &#160;<span id="projectnumber">V.2.1</span>
    </div>
+   <div id="projectbrief">A ROS architecture for object perception in a tabletop scenario through RGB-D camera. It detects tables and objects on them, also it estimates its primitive shape (and parameter) as well as tracking its center of mass.</div>
   </td>
  </tr>
  </tbody>
@@ -124,7 +125,7 @@ $(document).ready(function(){initNavTree('pc__manager_8cpp_source.html','');});
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">string</span> <a class="code" href="classpcm_1_1PCManager.html#a87b7714f198b56306c4fc8f10b71ba27">PCManager::DEFAULT_VISUALIZER_TITLE</a> = <span class="stringliteral">&quot;PointCloud manager&quot;</span>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="comment">// constants for common preprocessing</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classpcm_1_1PCManager.html#a507973d100aef370fd7a2feeda4fb273">PCManager::DEFAULT_NORM_SEARCH</a> = 50;<span class="comment">//20;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classpcm_1_1PCManager.html#a21a35f215779915eda52dbf8d77f1e9f">PCManager::DEFAULT_DOWSEAMPLIG_RATE</a> = 0.01f;<span class="comment">//0.007f;// 0.0098f;// 0.015f;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classpcm_1_1PCManager.html#a21a35f215779915eda52dbf8d77f1e9f">PCManager::DEFAULT_DOWSEAMPLIG_RATE</a> = 0.01f;<span class="comment">//0.007f;// 0.0098f;// 0.015f; // TODO: make it as parameter!!!!</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// ######################################## GLOBAL VARAIBLES #######################################</span></div>
@@ -519,7 +520,7 @@ $(document).ready(function(){initNavTree('pc__manager_8cpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5e23dc2f4fff83684b554677feda7b95.html">point_cloud_library</a></li><li class="navelem"><a class="el" href="pc__manager_8cpp.html">pc_manager.cpp</a></li>
-    <li class="footer">Generated on Wed Nov 2 2016 19:37:34 for DocumentClassHierarchy by
+    <li class="footer">Generated on Thu Nov 3 2016 23:03:12 for Primitive Identification Tagging &amp; Tracking (PITT) by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
