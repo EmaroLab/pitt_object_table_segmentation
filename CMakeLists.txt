@@ -15,23 +15,6 @@ find_package(catkin REQUIRED COMPONENTS
    pitt_msgs
 )
 
-## set up the doxygen documentation framework
-find_package(Doxygen)
-if(NOT DOXYGEN_FOUND)
-    message(WARNING "doxygen not found - target 'doc' will be unavailable.")
-    return()
-endif()
-set(doxyfile_in ${CMAKE_CURRENT_SOURCE_DIR}/Doc/Doxyfile.in)
-set(doxyfile ${CMAKE_CURRENT_BINARY_DIR}/Doc)
-configure_file(${doxyfile_in} ${doxyfile} @ONLY)
-add_custom_target(documenting
-    COMMAND ${DOXYGEN_EXECUTABLE} ${doxyfile_in}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/Doc
-    COMMENT "Generating API documentation with Doxygen"
-    VERBATIM
-)
-
-
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 

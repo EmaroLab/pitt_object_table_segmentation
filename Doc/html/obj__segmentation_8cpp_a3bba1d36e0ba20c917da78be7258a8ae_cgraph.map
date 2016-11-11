@@ -1,5 +1,0 @@
-<map id="callArmFilter" name="callArmFilter">
-<area shape="rect" id="node2" href="$classpcm_1_1PCManager.html#acb513ed7a3b898e398fd211bafac6f6a" title="pcm::PCManager::cloudFor\lRosMsg" alt="" coords="171,5,354,46"/>
-<area shape="rect" id="node3" href="$classpcm_1_1PCManager.html#a9ec6cf99c0c34c9761fd923aace594dc" title="pcm::PCManager::cloudToRosMsg" alt="" coords="149,71,376,97"/>
-<area shape="rect" id="node4" href="$namespacesrvm.html#a78080cf77ae5d29a39ebcd3309b836fc" title="srvm::DEFAULT_SERVICE\l_VEC_PARAMETER_REQUEST" alt="" coords="153,122,373,163"/>
-</map>
